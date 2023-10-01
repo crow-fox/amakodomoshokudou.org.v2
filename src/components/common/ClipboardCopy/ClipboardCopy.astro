@@ -1,0 +1,125 @@
+---
+import Icon from "@/components/common/Icon/Icon.astro";
+export type Props = {
+  copyText: string;
+  successText?: string;
+};
+
+const { copyText, successText = "コピーしました" } = Astro.props;
+---
+
+<clipboard-copy data-copy-text={copyText} data-success-text={successText}>
+  <span class="copy">
+    <button class="copy__button">
+      <slot />
+      <Icon type="copy" />
+    </button>
+    <span aria-live="assertive" data-open="false" class="copy__notify"></span>
+  </span>
+</clipboard-copy>
+
+<style>
+  .copy {
+    position: relative;
+    display: inline-block;
+  }
+
+  .copy__button {
+    display: flex;
+    display: inline-grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.25em;
+    align-items: center;
+    padding-block: 0.5rem;
+    padding-inline: 0.75rem;
+    font-weight: 700;
+    color: var(--c-blue-dark);
+    background-color: var(--c-white);
+    border: 1px solid currentcolor;
+    border-radius: 2px;
+  }
+
+  .copy__notify[data-open="true"] {
+    position: absolute;
+    inset: auto 0 calc(100% + 0.25em) auto;
+    z-index: 1;
+    padding: 0.25rem;
+    font-size: var(--fz-sm);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--c-white);
+    background-color: var(--c-blue-dark);
+    border-radius: 2px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .copy__button {
+      color: var(--c-gray);
+      background-color: var(--c-black);
+      border-color: var(--c-gray);
+    }
+
+    .copy__notify[data-open="true"] {
+      color: var(--c-blue-dark);
+      background-color: var(--c-white);
+    }
+  }
+</style>
+
+<script>
+  class ClipboardCopy extends HTMLElement {
+    private button: HTMLButtonElement;
+    private notify: HTMLSpanElement;
+    private onClickCopy: EventListener;
+
+    constructor() {
+      super();
+
+      const button = this.querySelector("button");
+      const notify = this.querySelector('span[aria-live="assertive"]');
+
+      if (button instanceof HTMLButtonElement) {
+        this.button = button;
+      } else {
+        throw new Error("button is not found");
+      }
+
+      if (notify instanceof HTMLSpanElement) {
+        this.notify = notify;
+      } else {
+        throw new Error("notify is not found");
+      }
+
+      this.onClickCopy = async () => this.copyToClipboard();
+      this.button.addEventListener("click", this.onClickCopy);
+    }
+
+    async copyToClipboard() {
+      const copyText = this.dataset.copyText;
+      const successText = this.dataset.successText;
+
+      if (!copyText || !successText)
+        throw new Error("copyText or successText is not defined");
+
+      try {
+        await navigator.clipboard.writeText(copyText);
+        this.notify.textContent = successText;
+        this.notify.dataset.open = "true";
+      } catch {
+        this.notify.textContent = "コピーに失敗しました";
+        this.notify.dataset.open = "true";
+      } finally {
+        setTimeout(() => {
+          this.notify.textContent = "";
+          this.notify.dataset.open = "false";
+        }, 3000);
+      }
+    }
+
+    disconnectedCallback() {
+      this.button.removeEventListener("click", this.onClickCopy);
+    }
+  }
+
+  customElements.define("clipboard-copy", ClipboardCopy);
+</script>
