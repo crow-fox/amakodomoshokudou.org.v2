@@ -1,0 +1,25 @@
+---
+import AboutPage from "@/components/pages/AboutPage/AboutPage.astro";
+import type { BreadcrumbItems } from "@/components/common/Breadcrumb/types";
+import Document from "@/components/layouts/Document/Document.astro";
+import Layout from "@/components/layouts/Layout/Layout.astro";
+
+const breadcrumb: BreadcrumbItems = [
+  {
+    title: "トップページ",
+    href: "/",
+  },
+  {
+    title: "私たちについて",
+  },
+];
+---
+
+<Document
+  title="私たちについて"
+  desc="尼崎こども食堂ネットワークは尼崎市内のこども食堂が、これからもアマのこどもたちにとっての「身近な地域の居場所」であり続けられるように活動している団体です。"
+>
+  <Layout breadcrumb={breadcrumb}>
+    <AboutPage />
+  </Layout>
+</Document>

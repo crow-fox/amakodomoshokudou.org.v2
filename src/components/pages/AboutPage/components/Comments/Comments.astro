@@ -1,0 +1,54 @@
+---
+
+---
+
+<div class="comments">
+  <section class="comment">
+    <h3 class="comment__name">夢遊病</h3>
+    <div class="comment__body">
+      <p>今回、子供食堂のロゴを担当させて頂きました、夢遊病です。</p>
+      <p>
+        僕は個人で起業して自分と同じ境遇の方に寄り添うことがしたいと日々活動しているので、子供食堂に関わることができて、すごくうれしいです。
+      </p>
+    </div>
+  </section>
+</div>
+
+<style>
+  .comments {
+    display: grid;
+    row-gap: 1rem;
+  }
+
+  .comment {
+    display: grid;
+    row-gap: 0.5rem;
+    padding: 1rem;
+    background-color: var(--c-gray-light);
+  }
+
+  .comment__name {
+    padding-block-end: 0.5rem;
+    border-block-end: 1px solid var(--c-gray-dark);
+  }
+
+  .comment__body {
+    display: grid;
+    row-gap: 0.75rem;
+  }
+
+  .comment__body p {
+    max-inline-size: var(--w-prose);
+    line-height: 2;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .comment {
+      background-color: var(--c-black-dark);
+    }
+
+    .comment__name {
+      border-block-end-color: var(--c-black-light);
+    }
+  }
+</style>
