@@ -72,7 +72,7 @@ globalStyle("body", {
   backgroundColor: cssVars.color.white,
   "@media": {
     "(prefers-color-scheme: dark)": {
-      color: cssVars.color.grayLight,
+      color: cssVars.color.gray,
       backgroundColor: cssVars.color.black,
     },
   },

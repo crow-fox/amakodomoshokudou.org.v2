@@ -1,4 +1,5 @@
 ---
+import style from "./PageTitle.css";
 export type Props = {
   page?: number;
 };
@@ -6,44 +7,7 @@ export type Props = {
 const { page = 1 } = Astro.props;
 ---
 
-<h1 class="title">
+<h1 class={style.title}>
   <slot />
-  {page > 1 && <em class="title__page">{`${page}ページ目`}</em>}
+  {page > 1 && <em class={style.page}>{`${page}ページ目`}</em>}
 </h1>
-
-<style>
-  .title {
-    display: grid;
-    font-size: var(--fz-3xl);
-    line-height: 1.25;
-    color: var(--c-blue-dark);
-  }
-
-  @media (width >= 64em) {
-    .title {
-      font-size: var(--fz-4xl);
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .title {
-      color: var(--c-gray);
-    }
-  }
-
-  .title__page {
-    display: flex;
-    gap: 0.5em;
-    align-items: center;
-    font-size: var(--fz-md);
-    font-style: normal;
-  }
-
-  .title__page::before {
-    width: 1em;
-    height: 2px;
-    content: "";
-    background-color: currentcolor;
-    border-radius: 2px;
-  }
-</style>
