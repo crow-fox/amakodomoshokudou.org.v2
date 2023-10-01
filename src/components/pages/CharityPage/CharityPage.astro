@@ -1,0 +1,166 @@
+---
+import BankAccount from "@/components/pages/CharityPage/components/BankAccount/BankAccount.astro";
+import AlertHighlight from "@/components/common/AlertHighlight/AlertHighlight.astro";
+import ContactArea from "@/components/common/ContactArea/ContactArea.astro";
+import LetterContent from "@/components/common/LetterContent/LetterContent.astro";
+import PageTitle from "@/components/common/PageTitle/PageTitle.astro";
+import TOC from "@/components/common/TOC/TOC.astro";
+import type { TOCItem } from "@/components/common/TOC/types";
+import TextLink from "@/components/common/TextLink/TextLink.astro";
+
+const toc: TOCItem[] = [
+  {
+    id: "with-items",
+    title: "物品で支援する方法",
+  },
+  {
+    id: "with-donations",
+    title: "寄付金で支援する方法",
+  },
+];
+---
+
+<div class="wrapper">
+  <div class="header">
+    <div class="header__title">
+      <PageTitle>尼崎のこども食堂を支援する</PageTitle>
+    </div>
+    <div class="header__toc">
+      <TOC items={toc} />
+    </div>
+  </div>
+  <div class="contents">
+    <div class="contents__item">
+      <LetterContent>
+        <h2 id={toc[0].id}>{toc[0].title}</h2>
+        <p>
+          フードパントリーで使うレトルト食品や日持ちのする食料品、会食や弁当づくりに使う缶詰やお米等を寄付頂ける方は、こちらの手順にそって、ご支援をよろしくお願いします。
+        </p>
+        <div>
+          <AlertHighlight>
+            <p>
+              現在、生鮮食品や冷凍食品は保管場所の関係から、原則受付していません。
+            </p>
+            <p>ご理解のほど、よろしくお願いします。</p>
+          </AlertHighlight>
+        </div>
+        <h3>1. 寄付頂けるものをお選びください</h3>
+        <p>
+          <TextLink
+            href="https://www.amazon.co.jp/hz/wishlist/ls/2H3AWSTZSQY2L?ref_=wl_share"
+            isExternal={true}
+          >
+            Amazon「ほしいものリスト」
+          </TextLink>を公開しています。
+        </p>
+        <p>掲載している物品でなくても、類似のものでも有難いです。</p>
+        <h3>2. 事務局まで事前のご連絡をお願いします</h3>
+        <p>
+          寄付頂けるものがご準備できましたら、下記メールアドレスまで寄付頂ける物品等の情報を、事務局までご連絡ください。
+        </p>
+        <p>送付先の情報等、折り返しご連絡させていただきます。</p>
+        <div>
+          <ContactArea />
+        </div>
+      </LetterContent>
+    </div>
+
+    <div class="contents__item">
+      <LetterContent>
+        <h2 id={toc[1].id}>{toc[1].title}</h2>
+        <p>
+          「アマのこども食堂を応援したい！」という思いで寄付金をお寄せ頂ける方は、以下の口座よりお願いいたします。
+        </p>
+        <div class="highlight">
+          <p>
+            お寄せ頂いた寄付金は<em>こども食堂の運営にかかる経費助成等</em
+            >に使わせて頂きます。
+          </p>
+        </div>
+        <h3>1. 指定の口座までご振込ください</h3>
+        <div>
+          <BankAccount />
+        </div>
+        <h3>2. 事務局までご連絡をお願いします</h3>
+        <p>
+          ご寄付をお寄せ頂いた場合は、お手数ですが下記のメールアドレスまでご連絡ください。
+        </p>
+        <div>
+          <ContactArea />
+        </div>
+      </LetterContent>
+    </div>
+  </div>
+</div>
+
+<style>
+  .wrapper {
+    border-block-start: 8px solid var(--c-orange);
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns:
+      [main-start] auto [content-start] min(var(--w-container), 100%)
+      [content-end] auto [main-end];
+    row-gap: 1rem;
+    padding-block: 2rem;
+    padding-inline: 1rem;
+  }
+
+  .header__title {
+    grid-column: content-start / content-end;
+  }
+
+  .header__toc {
+    grid-column: content-start / content-end;
+  }
+
+  .contents {
+    display: grid;
+    grid-template-columns:
+      [main-start] auto [content-start] min(var(--w-container), 100%)
+      [content-end] auto [main-end];
+    row-gap: 4rem;
+    padding-block: 2rem;
+    padding-inline: 1rem;
+    background-color: var(--c-orange-light);
+  }
+
+  .contents__item {
+    grid-column: content-start / content-end;
+  }
+
+  @media (width >= 64em) {
+    .wrapper {
+      grid-template-columns:
+        1.5rem
+        auto
+        min(var(--w-container), calc(100% - 2rem))
+        auto
+        1.5rem;
+    }
+
+    .header {
+      row-gap: 1.5rem;
+      padding-block: 3rem;
+      padding-inline: 1.5rem;
+    }
+
+    .contents {
+      row-gap: 6rem;
+      padding-block: 3rem;
+      padding-inline: 1.5rem;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .wrapper {
+      border-block-start-color: var(--c-orange-dark);
+    }
+
+    .contents {
+      background-color: var(--c-orange-darkest);
+    }
+  }
+</style>
