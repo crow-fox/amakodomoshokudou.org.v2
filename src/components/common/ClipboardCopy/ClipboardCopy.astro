@@ -1,4 +1,5 @@
 ---
+import styles from "./ClipboardCopy.css";
 import Icon from "@/components/common/Icon/Icon.astro";
 export type Props = {
   copyText: string;
@@ -9,62 +10,14 @@ const { copyText, successText = "コピーしました" } = Astro.props;
 ---
 
 <clipboard-copy data-copy-text={copyText} data-success-text={successText}>
-  <span class="copy">
-    <button class="copy__button">
+  <span class={styles.copy}>
+    <button class={styles.button}>
       <slot />
       <Icon type="copy" />
     </button>
-    <span aria-live="assertive" data-open="false" class="copy__notify"></span>
+    <span aria-live="assertive" data-open="false" class={styles.notify}></span>
   </span>
 </clipboard-copy>
-
-<style>
-  .copy {
-    position: relative;
-    display: inline-block;
-  }
-
-  .copy__button {
-    display: flex;
-    display: inline-grid;
-    grid-template-columns: 1fr auto;
-    gap: 0.25em;
-    align-items: center;
-    padding-block: 0.5rem;
-    padding-inline: 0.75rem;
-    font-weight: 700;
-    color: var(--c-blue-dark);
-    background-color: var(--c-white);
-    border: 1px solid currentcolor;
-    border-radius: 2px;
-  }
-
-  .copy__notify[data-open="true"] {
-    position: absolute;
-    inset: auto 0 calc(100% + 0.25em) auto;
-    z-index: 1;
-    padding: 0.25rem;
-    font-size: var(--fz-sm);
-    font-weight: 700;
-    line-height: 1;
-    color: var(--c-white);
-    background-color: var(--c-blue-dark);
-    border-radius: 2px;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .copy__button {
-      color: var(--c-gray);
-      background-color: var(--c-black);
-      border-color: var(--c-gray);
-    }
-
-    .copy__notify[data-open="true"] {
-      color: var(--c-blue-dark);
-      background-color: var(--c-white);
-    }
-  }
-</style>
 
 <script>
   class ClipboardCopy extends HTMLElement {
