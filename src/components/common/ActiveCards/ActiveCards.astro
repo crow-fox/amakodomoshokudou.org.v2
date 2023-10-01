@@ -1,4 +1,5 @@
 ---
+import styles from "./ActiveCards.css";
 import { Image } from "astro:assets";
 import img1 from "./assets/training.png";
 import img2 from "./assets/food.png";
@@ -32,15 +33,15 @@ const activities = [
 ];
 ---
 
-<ul class="activities">
+<div class={styles.activities}>
   {
     activities.map(({ title, content, image }) => (
-      <li class="activity">
-        <div class="activity__body">
-          <h3 class="activity__title">{title}</h3>
+      <div class={styles.activity}>
+        <div class={styles.activity__body}>
+          <h3 class={styles.activity__title}>{title}</h3>
           <p>{content}</p>
         </div>
-        <figure class="activity__image">
+        <figure class={styles.activity__image}>
           <Image
             src={image.metadata}
             alt={image.alt}
@@ -49,55 +50,7 @@ const activities = [
             decoding="auto"
           />
         </figure>
-      </li>
+      </div>
     ))
   }
-</ul>
-
-<style>
-  .activities {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
-    gap: 2rem;
-    align-items: flex-start;
-    list-style: none;
-  }
-
-  .activity {
-    display: grid;
-    grid-template-areas: "image" "body";
-    gap: 0.75rem;
-  }
-
-  .activity__body {
-    display: grid;
-    grid-area: body;
-    gap: 0.5rem;
-    padding: 0.5rem;
-  }
-
-  .activity__image {
-    grid-area: image;
-    border-radius: 4px;
-    box-shadow: 0.5rem 0.5rem var(--c-orange-light);
-  }
-
-  .activity__image img {
-    border-radius: inherit;
-  }
-
-  .activity__title {
-    font-size: var(--fz-lg);
-    font-weight: 700;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .activity__title {
-      font-size: var(--fz-xl);
-    }
-
-    .activity__image {
-      box-shadow: 0.5rem 0.5rem var(--c-orange-darkest);
-    }
-  }
-</style>
+</div>
