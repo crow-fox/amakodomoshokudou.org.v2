@@ -1,0 +1,55 @@
+---
+import PageTitle from "@/components/common/PageTitle/PageTitle.astro";
+---
+
+<div class="wrapper">
+  <div class="header">
+    <div class="header__title">
+      <PageTitle>お探しのページは見つかりませんでした</PageTitle>
+    </div>
+    <div class="header__desc">
+      <p>お探しのページはすでに削除されたか、URLが変更されています。</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .wrapper {
+    border-block-start: 8px solid var(--c-orange);
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns:
+      [main-start] auto [content-start] min(var(--w-container), 100%)
+      [content-end] auto [main-end];
+    row-gap: 1rem;
+    padding-block: 2rem;
+    padding-inline: 1rem;
+  }
+
+  .header__title {
+    grid-column: content-start / content-end;
+  }
+
+  .header__desc {
+    grid-column: content-start / content-end;
+  }
+
+  @media (width >= 64em) {
+    .wrapper {
+      grid-template-columns:
+        1.5rem
+        auto
+        min(var(--w-container), calc(100% - 2rem))
+        auto
+        1.5rem;
+    }
+
+    .header {
+      row-gap: 1.5rem;
+      padding-block: 3rem;
+      padding-inline: 1.5rem;
+    }
+  }
+</style>

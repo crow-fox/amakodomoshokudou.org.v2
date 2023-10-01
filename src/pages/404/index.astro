@@ -1,0 +1,22 @@
+---
+import NotFoundPage from "@/components/pages/NotFoundPage/NotFoundPage.astro";
+import type { BreadcrumbItems } from "@/components/common/Breadcrumb/types";
+import Document from "@/components/layouts/Document/Document.astro";
+import Layout from "@/components/layouts/Layout/Layout.astro";
+
+const breadcrumb: BreadcrumbItems = [
+  {
+    title: "トップページ",
+    href: "/",
+  },
+  {
+    title: "お探しのページは見つかりませんでした",
+  },
+];
+---
+
+<Document title="お探しのページは見つかりませんでした">
+  <Layout breadcrumb={breadcrumb}>
+    <NotFoundPage />
+  </Layout>
+</Document>
