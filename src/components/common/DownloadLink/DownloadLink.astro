@@ -1,4 +1,5 @@
 ---
+import styles from "./DownloadLink.css";
 import Icon from "@/components/common/Icon/Icon.astro";
 export type Props = {
   href: string;
@@ -8,30 +9,7 @@ export type Props = {
 const { href, filename } = Astro.props;
 ---
 
-<a href={href} download={filename} class="download">
+<a href={href} download={filename} class={styles.link}>
   <slot />
   <Icon type="download" label="ダウンロード" />
 </a>
-
-<style>
-  .download {
-    padding-block-end: 2px;
-    color: var(--c-blue);
-    text-decoration: none;
-    border-bottom: 1px solid currentcolor;
-  }
-
-  @media (hover: hover) {
-    .download:hover {
-      box-shadow:
-        0 0 0 2px white,
-        0 0 0 4px var(--c-blue);
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .download {
-      color: var(--c-blue-light);
-    }
-  }
-</style>
