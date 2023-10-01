@@ -1,0 +1,93 @@
+---
+import { site } from "@/consts/site";
+const links = [
+  {
+    title: "プライバシーポリシー",
+    href: "/privacy-policy",
+  },
+];
+---
+
+<footer class="footer">
+  <div class="footer__inner">
+    <ul class="list">
+      {
+        links.map((link) => (
+          <li class="list__item">
+            <a href={link.href} class="list__link">
+              {link.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="copy"><small>&copy; 2023 {site.title}</small></p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    display: grid;
+    grid-template-columns:
+      [out-start] auto [content-start] min(100%, var(--w-container))
+      [content-end] auto [out-end];
+    padding-block: 2rem;
+    padding-inline: 1rem;
+    background-color: var(--c-gray-light);
+    border-block-start: 1px solid var(--c-gray-dark);
+  }
+
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    grid-column: content-start / content-end;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style: none;
+  }
+
+  .list__link {
+    display: inline-block;
+    padding-block: 0.25em;
+    padding-inline: 0.25em;
+    margin-block: -0.25em;
+    margin-inline: -0.25em;
+    color: var(--c-blue);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  @media (hover: hover) {
+    .list__link:hover {
+      box-shadow: 0 0 0 2px currentcolor;
+    }
+  }
+
+  .list__link:focus-visible {
+    box-shadow: 0 0 0 2px currentcolor;
+  }
+
+  .copy {
+    font-size: var(--fz-sm);
+    line-height: 1.25;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .footer {
+      background-color: var(--c-black-dark);
+      border-block-start-color: var(--c-black-light);
+    }
+
+    .list__link {
+      color: var(--c-blue-light);
+    }
+  }
+</style>
