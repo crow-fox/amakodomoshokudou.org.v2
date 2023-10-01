@@ -1,0 +1,33 @@
+---
+import ButtonLink from "@/components/common/ButtonLink/ButtonLink.astro";
+import Heading from "@/components/common/Heading/Heading.astro";
+---
+
+<section class="section">
+  <Heading>こども食堂を立ち上げる</Heading>
+  <div class="descs">
+    <p>
+      尼崎市でこども食堂を始めたい場合は、立ち上げの流れを解説したページを参考にしてください。
+    </p>
+  </div>
+  <p>
+    <ButtonLink href="/start-cafe">こども食堂の立ち上げ</ButtonLink>
+  </p>
+</section>
+
+<style>
+  .section {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .descs {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .descs > p {
+    max-inline-size: 40rem;
+    line-height: 1.75;
+  }
+</style>

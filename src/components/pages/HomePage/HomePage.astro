@@ -1,0 +1,98 @@
+---
+import Activities from "@/components/pages/HomePage/components/Activities/Activities.astro";
+import Charity from "@/components/pages/HomePage/components/Charity/Charity.astro";
+import Key from "@/components/pages/HomePage/components/Key/Key.astro";
+import SearchCafes from "@/components/pages/HomePage/components/SearchCafes/SearchCafes.astro";
+import StartCafe from "@/components/pages/HomePage/components/StartCafe/StartCafe.astro";
+---
+
+<div class="page">
+  <div class="page__header">
+    <div class="key">
+      <Key />
+    </div>
+  </div>
+  <div class="page__body">
+    <div class="activities">
+      <Activities />
+    </div>
+    <div class="searchcafes">
+      <SearchCafes />
+    </div>
+    <div class="charity">
+      <Charity />
+    </div>
+    <div class="startcafe">
+      <StartCafe />
+    </div>
+  </div>
+</div>
+
+<style>
+  .page {
+    display: grid;
+  }
+
+  .page__header {
+    display: grid;
+    grid-template-columns:
+      [main-start] auto [content-start] min(var(--w-container), 100%)
+      [content-end] auto [main-end];
+    padding-block: 2rem;
+    padding-inline: 1rem;
+    background-color: var(--c-orange-light);
+    border: 4px solid var(--c-orange);
+  }
+
+  .key {
+    grid-column: content-start / content-end;
+  }
+
+  .page__body {
+    display: grid;
+    grid-template-columns:
+      [main-start] auto [content-start] min(var(--w-container), 100%)
+      [content-end] auto [main-end];
+    row-gap: 4rem;
+    padding-block-start: 3rem;
+    padding-block-end: 4rem;
+    padding-inline: 1rem;
+  }
+
+  .activities {
+    grid-column: content-start / content-end;
+  }
+
+  .searchcafes {
+    grid-column: content-start / content-end;
+  }
+
+  .charity {
+    grid-column: content-start / content-end;
+  }
+
+  .startcafe {
+    grid-column: content-start / content-end;
+  }
+
+  @media (width >= 64em) {
+    .page__header {
+      padding-block: 3rem;
+      padding-inline: 1.5rem;
+    }
+
+    .page__body {
+      row-gap: 6rem;
+      padding-block-start: 4rem;
+      padding-block-end: 6rem;
+      padding-inline: 1.5rem;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .page__header {
+      background-color: var(--c-orange-darkest);
+      border-color: var(--c-orange-dark);
+    }
+  }
+</style>
