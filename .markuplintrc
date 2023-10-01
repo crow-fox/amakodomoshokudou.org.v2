@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "markuplint:recommended"
+  ],
+  "parser": {
+    ".astro$": "@markuplint/astro-parser"
+  },
+  "pretenders": [
+    {
+      "selector": "Head",
+      "as": "head"
+    }
+  ],
+  "rules": {
+    "character-reference": false
+  }
+}
