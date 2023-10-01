@@ -1,0 +1,148 @@
+---
+import LetterContent from "@/components/common/LetterContent/LetterContent.astro";
+import PageTitle from "@/components/common/PageTitle/PageTitle.astro";
+import TOC from "@/components/common/TOC/TOC.astro";
+import type { TOCItem } from "@/components/common/TOC/types";
+
+const toc: TOCItem[] = [
+  {
+    id: "personal",
+    title: "個人情報について",
+  },
+  {
+    id: "update",
+    title: "プライバシーポリシーの改訂について",
+  },
+];
+---
+
+<div class="wrapper">
+  <div class="header">
+    <div class="header__title">
+      <PageTitle>プライバシーポリシー</PageTitle>
+    </div>
+    <div class="header__desc">
+      <p>
+        尼崎こども食堂ネットワーク（以下、「当ネットワーク」という。）は、以下の方針に基づき、個人情報の保護に努めます。
+      </p>
+    </div>
+    <div class="header__toc">
+      <TOC items={toc} />
+    </div>
+  </div>
+  <div class="contents">
+    <div class="contents__item">
+      <LetterContent>
+        <h2 id={toc[0].id}>{toc[0].title}</h2>
+        <p>
+          当ネットワークは、収集した個人情報（名前、メールアドレス）を次の目的の範囲内で利用します。
+        </p>
+        <ul>
+          <li>お問い合わせ内容に関する返答</li>
+          <li>当ネットワークからの事業案内</li>
+        </ul>
+        <p>
+          また、ここに定めのない目的で、個人情報を取得、保有、管理又は利用する場合には、その情報を取得する際に、あらかじめその目的を明示します。
+        </p>
+        <p>
+          当ネットワークは、関係法令等を遵守し、実施するあらゆる事業において、個人情報を慎重に取り扱います。
+        </p>
+        <p>当ネットワークは、個人情報を適法かつ適正な方法で取得します。</p>
+        <p>
+          当ネットワークは、個人情報の利用目的をできる限り特定するとともに、その利用目的の範囲内でのみ個人情報を利用します。
+        </p>
+        <p>
+          当ネットワークは、あらかじめ明示した範囲および法令等の規定に基づく場合を除いて、個人情報を事前に本人の同意を得ることなく外部に提供しません。
+        </p>
+        <p>
+          当ネットワークは、個人情報を正確な状態に保つとともに、漏洩、滅失、毀損などを防止するため、適切な措置を講じます。
+        </p>
+        <p>
+          当ネットワークは、本人が自己の個人情報について、開示・訂正・追加・削除・利用停止を求める権利を有していることを確認し、これらの申し出があった場合は速やかに対応します。
+        </p>
+        <p>
+          当ネットワークは、個人情報の取り扱いに関する苦情があったときは、適切かつ速やかに対応します。
+        </p>
+        <p>
+          当ネットワークは、個人情報を保護するために適切な管理体制を講じるとともに、スタッフの個人情報保護に関する意識啓発に努めます。
+        </p>
+      </LetterContent>
+    </div>
+
+    <div class="contents__item">
+      <LetterContent>
+        <h2 id={toc[1].id}>{toc[1].title}</h2>
+        <p>
+          当ネットワークでは、個人情報の保護を図るため、又は法令等の変更に対応するため、プライバシーポリシーを改定する場合があります。
+        </p>
+        <p>改定があった場合は、ホームページにおいてお知らせします。</p>
+      </LetterContent>
+    </div>
+  </div>
+</div>
+
+<style>
+  .wrapper {
+    border-block-start: 8px solid var(--c-orange);
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns:
+      [main-start] auto [content-start] min(var(--w-container), 100%)
+      [content-end] auto [main-end];
+    row-gap: 1rem;
+    padding-block: 2rem;
+    padding-inline: 1rem;
+  }
+
+  .header__title {
+    grid-column: content-start / content-end;
+  }
+
+  .header__desc {
+    grid-column: content-start / content-end;
+  }
+
+  .header__toc {
+    grid-column: content-start / content-end;
+  }
+
+  .contents {
+    display: grid;
+    grid-template-columns:
+      [main-start] auto [content-start] min(var(--w-container), 100%)
+      [content-end] auto [main-end];
+    row-gap: 4rem;
+    padding-block: 2rem;
+    padding-inline: 1rem;
+    background-color: var(--c-orange-light);
+  }
+
+  .contents__item {
+    grid-column: content-start / content-end;
+  }
+
+  @media (width >= 64em) {
+    .wrapper {
+      grid-template-columns:
+        1.5rem
+        auto
+        min(var(--w-container), calc(100% - 2rem))
+        auto
+        1.5rem;
+    }
+
+    .header {
+      row-gap: 1.5rem;
+      padding-block: 3rem;
+      padding-inline: 1.5rem;
+    }
+
+    .contents {
+      row-gap: 6rem;
+      padding-block: 3rem;
+      padding-inline: 1.5rem;
+    }
+  }
+</style>
