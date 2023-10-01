@@ -1,0 +1,103 @@
+---
+import { Image } from "astro:assets";
+import img1 from "./assets/training.png";
+import img2 from "./assets/food.png";
+import img3 from "./assets/information.png";
+
+const activities = [
+  {
+    title: "研修・学習会",
+    content: "こども食堂スタッフや食堂に関心のある人への研修・学習会",
+    image: {
+      metadata: img1,
+      alt: "写真：研修会の様子",
+    },
+  },
+  {
+    title: "食料配布",
+    content: "寄付頂いた食料品等をこども食堂等の運営団体へ配布",
+    image: {
+      metadata: img2,
+      alt: "写真：配布するお菓子",
+    },
+  },
+  {
+    title: "情報発信",
+    content: "こども食堂等の活動への理解を促進する情報発信",
+    image: {
+      metadata: img3,
+      alt: "写真：掲示板にこども食堂の活動についてのチラシを掲載",
+    },
+  },
+];
+---
+
+<ul class="activities">
+  {
+    activities.map(({ title, content, image }) => (
+      <li class="activity">
+        <div class="activity__body">
+          <h3 class="activity__title">{title}</h3>
+          <p>{content}</p>
+        </div>
+        <figure class="activity__image">
+          <Image
+            src={image.metadata}
+            alt={image.alt}
+            format="webp"
+            loading="eager"
+            decoding="auto"
+          />
+        </figure>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .activities {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
+    gap: 2rem;
+    align-items: flex-start;
+    list-style: none;
+  }
+
+  .activity {
+    display: grid;
+    grid-template-areas: "image" "body";
+    gap: 0.75rem;
+  }
+
+  .activity__body {
+    display: grid;
+    grid-area: body;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .activity__image {
+    grid-area: image;
+    border-radius: 4px;
+    box-shadow: 0.5rem 0.5rem var(--c-orange-light);
+  }
+
+  .activity__image img {
+    border-radius: inherit;
+  }
+
+  .activity__title {
+    font-size: var(--fz-lg);
+    font-weight: 700;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .activity__title {
+      font-size: var(--fz-xl);
+    }
+
+    .activity__image {
+      box-shadow: 0.5rem 0.5rem var(--c-orange-darkest);
+    }
+  }
+</style>
