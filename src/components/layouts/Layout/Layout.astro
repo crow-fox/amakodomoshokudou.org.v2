@@ -1,0 +1,80 @@
+---
+import Breadcrumb from "@/components/common/Breadcrumb/Breadcrumb.astro";
+import type { BreadcrumbItems } from "@/components/common/Breadcrumb/types";
+import Footer from "@/components/common/Footer/Footer.astro";
+import Header from "@/components/common/Header/Header.astro";
+import SkipLink from "@/components/layouts/Layout/components/SkipLink/SkipLink.astro";
+
+import "@/styles/reset.css";
+import "@/styles/global.css";
+
+export type Props = {
+  breadcrumb?: BreadcrumbItems;
+};
+
+const { breadcrumb } = Astro.props;
+---
+
+<div class="root">
+  <SkipLink targetId="main" />
+  <div class="header">
+    <Header />
+  </div>
+  <main id="main" class="main">
+    <slot />
+  </main>
+  <div class="footer">
+    {breadcrumb && <Breadcrumb items={breadcrumb} />}
+    <Footer />
+  </div>
+</div>
+
+<style>
+  .root {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100svh;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding-inline: 1rem;
+    background-color: var(--c-white);
+    border-block-end: 1px solid var(--c-gray-dark);
+  }
+
+  @media (width >= 64em) {
+    .root {
+      grid-template-rows: 1fr auto;
+    }
+
+    .header {
+      position: fixed;
+      inline-size: 16rem;
+      height: 100svh;
+      padding-inline: 0;
+      overflow-y: auto;
+      border-block-end: 0;
+      border-inline-end: 1px solid var(--c-gray-dark);
+    }
+
+    .main {
+      margin-inline-start: 16rem;
+    }
+
+    .footer {
+      margin-inline-start: 16rem;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .header {
+      background-color: var(--c-black);
+      border-block-end-color: var(--c-black-light);
+      border-inline-end-color: var(--c-black-light);
+    }
+  }
+</style>

@@ -1,0 +1,54 @@
+---
+export type Props = {
+  targetId: string;
+};
+
+const { targetId } = Astro.props;
+---
+
+<a href={`#${targetId}`} class="skip">本文へスキップ</a>
+
+<style>
+  .skip {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .skip:focus {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 10;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    padding: 0;
+    padding-block: 1rem;
+    padding-inline: 1.5rem;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    font-size: var(--fz-lg);
+    font-weight: 700;
+    color: var(--c-blue-dark);
+    white-space: normal;
+    background-color: var(--c-orange);
+    border: 2px solid var(--c-blue-dark);
+    border-radius: 2px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .skip:focus {
+      color: var(--c-gray);
+      background-color: var(--c-orange-dark);
+      border-color: var(--c-gray);
+    }
+  }
+</style>
