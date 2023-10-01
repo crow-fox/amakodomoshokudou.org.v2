@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,5 +14,8 @@ export default defineConfig({
   build: {
     assets: "assets",
     inlineStylesheets: "never",
+  },
+  vite: {
+    plugins: [vanillaExtractPlugin()],
   },
 });
