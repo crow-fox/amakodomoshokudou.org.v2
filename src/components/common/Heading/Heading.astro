@@ -1,4 +1,5 @@
 ---
+import styles from "./Heading.css";
 export type Props = {
   id?: string;
 };
@@ -6,29 +7,6 @@ export type Props = {
 const { id } = Astro.props;
 ---
 
-<h2 class="heading" id={id ?? undefined}>
+<h2 class={styles.heading} id={id ?? undefined}>
   <slot />
 </h2>
-
-<style>
-  .heading {
-    padding-block-end: 0.25rem;
-    font-size: var(--fz-xl);
-    color: var(--c-blue-dark);
-    border-block-end: 2px solid var(--c-orange);
-  }
-
-  @media (width >= 64em) {
-    .heading {
-      font-size: var(--fz-3xl);
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .heading {
-      padding-block-end: 0.5rem;
-      color: var(--c-gray);
-      border-block-end-color: var(--c-orange-dark);
-    }
-  }
-</style>
