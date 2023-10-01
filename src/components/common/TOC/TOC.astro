@@ -1,0 +1,82 @@
+---
+import type { TOCItem } from "./types";
+export type Props = {
+  items: TOCItem[];
+};
+
+const { items } = Astro.props;
+---
+
+<nav aria-label="目次" class="toc">
+  <ul class="toc__list">
+    {
+      items.map(({ id, title }) => (
+        <li class="toc__item">
+          <a href={`#${id}`} class="toc__link">
+            {title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .toc {
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
+    border: 1px solid var(--c-gray-dark);
+    border-radius: 2px;
+  }
+
+  .toc__list {
+    list-style: none;
+    list-style-position: inside;
+  }
+
+  .toc__link {
+    display: inline-grid;
+    grid-template-columns: min-content auto;
+    column-gap: 0.5rem;
+    padding-block: 0.5em;
+    padding-inline: 0.25em;
+    color: var(--c-blue);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  .toc__link::before {
+    display: inline-block;
+    inline-size: 0.25em;
+    margin-block-start: calc(1em * 1.5 / 2);
+    content: "";
+    background-color: var(--c-black-light);
+    border-radius: 100%;
+    block-size: 0.25em;
+  }
+
+  @media (hover: hover) {
+    .toc__link:hover {
+      box-shadow: 0 0 0 2px currentcolor;
+    }
+  }
+
+  .toc__link:focus-visible {
+    box-shadow: 0 0 0 2px currentcolor;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .toc {
+      border-color: var(--c-black-light);
+    }
+
+    .toc__link {
+      color: var(--c-blue-light);
+    }
+
+    .toc__link::before {
+      background-color: var(--c-gray-dark);
+    }
+  }
+</style>
