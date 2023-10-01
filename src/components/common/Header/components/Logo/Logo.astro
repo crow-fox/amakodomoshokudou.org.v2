@@ -1,0 +1,62 @@
+---
+import { site } from "@/consts/site";
+import icon from "./assets/icon.svg";
+import name from "./assets/name.svg";
+import { Image } from "astro:assets";
+
+const isHomePage = Astro.url.pathname === "/";
+---
+
+<p>
+  <a aria-current={isHomePage ? "page" : undefined} href="/" class="logo">
+    <Image src={icon} alt="" class="logo__icon" />
+    <Image src={name} alt={site.title} class="logo__name" />
+  </a>
+</p>
+
+<style>
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  :is(.logo:hover, .logo:focus-visible) {
+    background-color: var(--c-orange-light);
+  }
+
+  .logo__icon {
+    width: auto;
+    height: 3rem;
+  }
+
+  .logo__name {
+    width: auto;
+    height: 2rem;
+  }
+
+  @media (width >= 64em) {
+    .logo {
+      flex-direction: column;
+      padding-block: 1rem;
+      padding-inline: 3rem;
+    }
+
+    .logo__icon {
+      height: 7rem;
+    }
+
+    .logo__name {
+      height: 3rem;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :is(.logo:hover, .logo:focus-visible) {
+      background-color: var(--c-orange-darkest);
+    }
+
+    .logo__name {
+      filter: invert(0.863);
+    }
+  }
+</style>

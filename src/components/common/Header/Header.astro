@@ -1,0 +1,70 @@
+---
+import Contact from "@/components/common/Header/components/Contact/Contact.astro";
+import GlobalNav from "@/components/common/Header/components/GlobalNav/GlobalNav.astro";
+import Logo from "@/components/common/Header/components/Logo/Logo.astro";
+import MenuDialog from "@/components/common/Header/components/MenuDialog/MenuDialog.astro";
+---
+
+<header class="header">
+  <div class="logo">
+    <Logo />
+  </div>
+  <div class="nav">
+    <GlobalNav />
+  </div>
+  <div class="contact">
+    <Contact />
+  </div>
+  <div class="menu">
+    <MenuDialog />
+  </div>
+</header>
+
+<style>
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 0.5rem;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .contact {
+    display: none;
+  }
+
+  @media (width >= 64em) {
+    .header {
+      display: grid;
+      grid-template-areas: "logo" "nav" "contact";
+      grid-template-rows: repeat(3, auto);
+      gap: 1rem;
+      padding-block: 0;
+      overflow-y: auto;
+    }
+
+    .logo {
+      grid-area: logo;
+    }
+
+    .nav {
+      display: block;
+      grid-area: nav;
+      padding-inline: 1rem;
+    }
+
+    .contact {
+      display: block;
+      grid-area: contact;
+    }
+
+    .menu {
+      grid-area: 1 / 1;
+    }
+  }
+</style>

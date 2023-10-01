@@ -1,0 +1,35 @@
+---
+import { summary } from "@/consts/summary";
+import ClipboardCopy from "@/components/common/ClipboardCopy/ClipboardCopy.astro";
+---
+
+<div class="contact">
+  <p class="contact__title">お問い合わせはこちらまで</p>
+  <p>{summary.mail.value}</p>
+  <ClipboardCopy copyText={summary.mail.value}>
+    メールアドレスをコピー
+  </ClipboardCopy>
+</div>
+
+<style>
+  .contact {
+    display: grid;
+    row-gap: 0.5rem;
+    padding: 1rem;
+    border-block-start: 1px solid var(--c-gray-dark);
+  }
+
+  .contact__title {
+    font-weight: bold;
+  }
+
+  .contact__messages > p {
+    line-height: 1.25;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .contact {
+      border-block-start-color: var(--c-black-light);
+    }
+  }
+</style>

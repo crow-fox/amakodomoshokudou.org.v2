@@ -1,0 +1,156 @@
+---
+import Icon from "@/components/common/Icon/Icon.astro";
+import Contact from "@/components/common/Header/components/Contact/Contact.astro";
+import GlobalNav from "@/components/common/Header/components/GlobalNav/GlobalNav.astro";
+---
+
+<menu-dialog>
+  <button class="open">
+    <Icon type="menu" size="lg" />メニュー
+  </button>
+  <dialog aria-label="メニュー" class="dialog">
+    <button class="close">
+      <Icon type="cancel" size="lg" />閉じる
+    </button>
+    <div class="nav">
+      <GlobalNav />
+    </div>
+    <div class="contact">
+      <Contact />
+    </div>
+  </dialog>
+</menu-dialog>
+
+<script>
+  class MenuDialog extends HTMLElement {
+    private dialog: HTMLDialogElement | null = null;
+    private openButton: HTMLButtonElement | null = null;
+    private closeButton: HTMLButtonElement | null = null;
+    private openListener: EventListener = () => {};
+    private closeListener: EventListener = () => {};
+
+    constructor() {
+      super();
+    }
+
+    connectedCallback() {
+      this.dialog = this.querySelector("dialog");
+      this.openButton = this.querySelector("button.open");
+      this.closeButton = this.querySelector("button.close");
+      this.openListener = this.openDialog.bind(this);
+      this.closeListener = this.closeDialog.bind(this);
+
+      if (
+        this.dialog === null ||
+        this.openButton === null ||
+        this.closeButton === null
+      ) {
+        throw new Error("DOMが正しく設定されていません。");
+      }
+
+      this.openButton.addEventListener("click", this.openListener);
+      this.closeButton.addEventListener("click", this.closeListener);
+    }
+
+    openDialog() {
+      this.dialog?.showModal();
+
+      document.body.style.overflow = "hidden";
+    }
+
+    closeDialog() {
+      this.dialog?.close();
+
+      document.body.style.overflow = "";
+    }
+
+    disconnectedCallback() {
+      this.openButton?.removeEventListener("click", this.openListener);
+      this.closeButton?.removeEventListener("click", this.closeListener);
+    }
+  }
+
+  customElements.define("menu-dialog", MenuDialog);
+</script>
+
+<style>
+  .open {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.5rem;
+    align-items: center;
+    padding: 0.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--c-blue-dark);
+    background-color: var(--c-orange);
+    border: 0;
+    border-radius: 2px;
+  }
+
+  .close {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 0.5rem;
+    place-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--c-blue-dark);
+    background-color: var(--c-orange);
+    border: 0;
+    border-radius: 2px;
+  }
+
+  .dialog[open] {
+    position: fixed;
+    inset: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    inline-size: calc(100% - 2rem);
+    max-inline-size: calc(100% - 2rem);
+    padding: 1rem;
+    overflow-y: auto;
+    overscroll-behavior-y: none;
+    color: inherit;
+    background-color: var(--c-white);
+    border: 0;
+    border: 1px solid var(--c-gray);
+    border-radius: 4px;
+    max-block-size: calc(100svh - 2rem);
+  }
+
+  .dialog::backdrop {
+    background: rgb(252 238 199 / 50%);
+    backdrop-filter: blur(4px);
+  }
+
+  @media (width >= 64em) {
+    .open {
+      display: none;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .open {
+      color: var(--c-gray);
+      background-color: var(--c-orange-dark);
+    }
+
+    .close {
+      color: var(--c-gray);
+      background-color: var(--c-orange-dark);
+    }
+
+    .dialog[open] {
+      background-color: var(--c-black);
+      border: 1px solid var(--c-black-light);
+    }
+
+    .dialog::backdrop {
+      background: rgb(56 54 51 / 50%);
+    }
+  }
+</style>

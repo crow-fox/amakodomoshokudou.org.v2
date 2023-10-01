@@ -1,0 +1,125 @@
+---
+import { summary } from "@/consts/summary";
+import Icon from "@/components/common/Icon/Icon.astro";
+import type { GlobalNavItem } from "./types";
+
+const navItems: GlobalNavItem[] = [
+  {
+    type: "internal",
+    title: "私たちについて",
+    href: "/about",
+    isCurrent: Astro.url.pathname === "/about",
+    isActive: Astro.url.pathname.startsWith("/about"),
+  },
+  {
+    type: "internal",
+    title: "尼崎のこども食堂一覧",
+    href: "/cafes",
+    isCurrent: Astro.url.pathname === "/cafes",
+    isActive: Astro.url.pathname.startsWith("/cafes"),
+  },
+  {
+    type: "internal",
+    title: "尼崎のこども食堂への支援",
+    href: "/charity",
+    isCurrent: Astro.url.pathname === "/charity",
+    isActive: Astro.url.pathname.startsWith("/charity"),
+  },
+  {
+    type: "internal",
+    title: "こども食堂の立ち上げ",
+    href: "/start-cafe",
+    isCurrent: Astro.url.pathname === "/start-cafe",
+    isActive: Astro.url.pathname.startsWith("/start-cafe"),
+  },
+  {
+    type: "external",
+    title: "お知らせ（Facebook）",
+    href: summary.facebook.value,
+  },
+];
+---
+
+<nav aria-label="メインメニュー" class="nav">
+  <ul class="nav__list">
+    {
+      navItems.map((item) => (
+        <li class="nav__item">
+          {item.type === "internal" && (
+            <a
+              href={item.href}
+              aria-current={item.isCurrent ? "page" : undefined}
+              data-active={item.isActive ? "true" : undefined}
+              class="nav__link"
+            >
+              {item.title}
+            </a>
+          )}
+          {item.type === "external" && (
+            <a
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="nav__link"
+            >
+              {item.title}
+              <Icon type="external" label="外部リンク" />
+            </a>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .nav__list {
+    list-style: none;
+  }
+
+  .nav__item:not(:first-child) {
+    margin-block-start: -1px;
+  }
+
+  .nav__link {
+    display: flex;
+    align-items: center;
+    padding-block: 0.75rem;
+    padding-inline: 0.5rem;
+    font-weight: 700;
+    color: var(--c-blue-dark);
+    text-decoration: none;
+    border-block: 1px solid var(--c-gray-dark);
+    border-inline-start: 2px solid transparent;
+  }
+
+  .nav__link[data-active="true"] {
+    background-color: var(--c-orange);
+    border-inline-start-color: currentcolor;
+  }
+
+  :is(
+      .nav__link:not([data-active="true"]):hover,
+      .nav__link:not([data-active="true"]):focus-visible
+    ) {
+    background-color: var(--c-orange-light);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .nav__link {
+      color: var(--c-gray);
+      border-block-color: var(--c-black-light);
+    }
+
+    .nav__link[data-active="true"] {
+      background-color: var(--c-orange-dark);
+    }
+
+    :is(
+        .nav__link:not([data-active="true"]):hover,
+        .nav__link:not([data-active="true"]):focus-visible
+      ) {
+      background-color: var(--c-orange-darkest);
+    }
+  }
+</style>
