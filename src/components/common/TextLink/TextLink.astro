@@ -1,5 +1,5 @@
 ---
-import { link } from "./TextLink.css";
+import styles from "./TextLink.css";
 import Icon from "@/components/common/Icon/Icon.astro";
 export type Props = {
   href: string;
@@ -13,7 +13,7 @@ const { href, isExternal = false } = Astro.props;
   href={href}
   target={isExternal ? "_blank" : undefined}
   rel={isExternal ? "noopener noreferrer" : undefined}
-  class={link}
+  class={styles.link}
 >
   <slot />
   {isExternal && <Icon type="external" label="外部リンク" />}

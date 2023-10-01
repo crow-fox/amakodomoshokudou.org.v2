@@ -1,5 +1,5 @@
 ---
-import { link } from "./ButtonLink.css";
+import styles from "./ButtonLink.css";
 import Icon from "@/components/common/Icon/Icon.astro";
 export type Props = {
   href: string;
@@ -8,7 +8,7 @@ export type Props = {
 const { href } = Astro.props;
 ---
 
-<a href={href} class={link}>
+<a href={href} class={styles.link}>
   <span><slot /></span>
   <Icon type="arrow" size="lg" />
 </a>
