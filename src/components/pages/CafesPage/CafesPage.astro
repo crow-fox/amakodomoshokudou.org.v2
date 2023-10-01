@@ -1,0 +1,109 @@
+---
+import MapPDFCallout from "@/components/pages/CafesPage/components/MapPDFCallout/MapPDFCallout.astro";
+---
+
+<div class="wrapper">
+  <div class="header">
+    <div class="header__top">
+      <div>
+        <slot name="title" />
+      </div>
+      <p>掲載許可の取れた食堂のみ掲載しています。</p>
+    </div>
+    <div class="header__callout">
+      <MapPDFCallout />
+    </div>
+    <div class="header__nav">
+      <slot name="nav" />
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="body__cafes">
+      <slot name="cafes" />
+    </div>
+    <div class="body__pagination">
+      <slot name="pagination" />
+    </div>
+  </div>
+</div>
+
+<style>
+  .wrapper {
+    border-block-start: 8px solid var(--c-orange);
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns:
+      [main-start] auto [content-start] min(var(--w-container), 100%)
+      [content-end] auto [main-end];
+    row-gap: 1rem;
+    padding-block: 2rem;
+    padding-inline: 1rem;
+  }
+
+  .header__top {
+    display: grid;
+    grid-column: content-start / content-end;
+    row-gap: 1rem;
+  }
+
+  .header__callout {
+    grid-column: content-start / content-end;
+  }
+
+  .header__nav {
+    grid-column: content-start / content-end;
+  }
+
+  .body {
+    display: grid;
+    grid-template-columns:
+      [main-start] auto [content-start] min(var(--w-container), 100%)
+      [content-end] auto [main-end];
+    padding-block: 2rem;
+    padding-inline: 1rem;
+    background-color: var(--c-orange-light);
+  }
+
+  .body__cafes {
+    grid-column: content-start / content-end;
+    inline-size: min(52.5rem, 100%);
+  }
+
+  .body__pagination {
+    grid-column: content-start / content-end;
+  }
+
+  .body__pagination :global(> *:first-child) {
+    margin-block-start: 2rem;
+  }
+
+  @media (width >= 64em) {
+    .header {
+      row-gap: 1.5rem;
+      padding-block: 3rem;
+      padding-inline: 1.5rem;
+    }
+
+    .body {
+      padding-block: 3rem;
+      padding-inline: 1.5rem;
+    }
+
+    .body__pagination :global(> *:first-child) {
+      margin-block-start: 3rem;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .wrapper {
+      border-block-start-color: var(--c-orange-dark);
+    }
+
+    .body {
+      background-color: var(--c-orange-darkest);
+    }
+  }
+</style>

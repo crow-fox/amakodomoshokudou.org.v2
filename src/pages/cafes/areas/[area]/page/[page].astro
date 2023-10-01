@@ -1,0 +1,124 @@
+---
+import CafeList from "@/components/pages/CafesPage/components/CafeList/CafeList.astro";
+import CafeNav from "@/components/pages/CafesPage/components/CafeNav/CafeNav.astro";
+import type { CafeNavItems } from "@/components/pages/CafesPage/components/CafeNav/types";
+import CafesPage from "@/components/pages/CafesPage/CafesPage.astro";
+import Pagination from "@/components/pages/CafesPage/components/Pagination/Pagination.astro";
+import type { PaginationItems } from "@/components/pages/CafesPage/components/Pagination/types";
+import PageTitle from "@/components/common/PageTitle/PageTitle.astro";
+import { site } from "@/consts/site";
+import type { BreadcrumbItems } from "@/components/common/Breadcrumb/types";
+import Document from "@/components/layouts/Document/Document.astro";
+import Layout from "@/components/layouts/Layout/Layout.astro";
+import {
+  generatePaginateDataWithoutFirstPage,
+  generatePaginationItems,
+} from "@/utils/page";
+import { getAllAreas, getCafesByArea } from "@/service/service";
+import type { InferGetStaticPropsType } from "astro";
+
+export const getStaticPaths = async () => {
+  const { areas } = await getAllAreas();
+
+  const paginateDataWithAreas = await Promise.all(
+    areas.map(async (area) => {
+      const { cafes, total } = await getCafesByArea(area._id, {
+        skip: 0,
+        limit: 1000,
+      });
+      const paginateData = generatePaginateDataWithoutFirstPage(
+        cafes,
+        site.cafesPerPage,
+      );
+
+      return {
+        area: {
+          name: area.name,
+          slug: area.slug,
+        },
+        paginateData,
+        total,
+      };
+    }),
+  );
+
+  return paginateDataWithAreas
+    .map(({ area, paginateData, total }) => {
+      return paginateData.map(({ page, data: cafes }) => ({
+        params: {
+          area: area.slug,
+          page: page.toString(),
+        },
+        props: {
+          area,
+          page,
+          total,
+          cafes,
+        },
+      }));
+    })
+    .flat();
+};
+export type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { cafes, page, total, area } = Astro.props;
+
+const breadcrumb: BreadcrumbItems = [
+  {
+    title: "トップページ",
+    href: "/",
+  },
+  {
+    title: "尼崎のこども食堂一覧",
+    href: "/cafes",
+  },
+  {
+    title: `${area.name}のこども食堂一覧`,
+    href: `/cafes/areas/${area.slug}`,
+  },
+  {
+    title: `${page}ページ目`,
+  },
+];
+
+const paginationItems: PaginationItems = generatePaginationItems(
+  page,
+  total,
+  site.cafesPerPage,
+);
+
+const { areas } = await getAllAreas();
+const cafeNavItems: CafeNavItems = [
+  { title: "全ての地区", href: "/cafes", isActive: false, isCurrent: false },
+  ...areas.map(({ name, slug }) => ({
+    title: name,
+    href: `/cafes/areas/${slug}`,
+    isActive: area.slug === slug,
+    isCurrent: false,
+  })),
+];
+---
+
+<Document
+  title={`${area.name}のこども食堂一覧 ${page}ページ目`}
+  desc={`掲載許可の取れた尼崎市${area.name}のこども食堂一覧を掲載したページです。`}
+>
+  <Layout breadcrumb={breadcrumb}>
+    <CafesPage>
+      <PageTitle slot="title" page={page}>
+        {`${area.name}のこども食堂一覧`}
+      </PageTitle>
+      <CafeNav slot="nav" items={cafeNavItems} />
+      <CafeList slot="cafes" cafes={cafes} />
+      {
+        paginationItems.length > 1 && (
+          <Pagination
+            slot="pagination"
+            baseUrl={`/cafes/areas/${area.slug}`}
+            items={paginationItems}
+          />
+        )
+      }
+    </CafesPage>
+  </Layout>
+</Document>

@@ -1,0 +1,34 @@
+---
+import DownloadLink from "@/components/common/DownloadLink/DownloadLink.astro";
+---
+
+<aside class="callout">
+  <p>最新のPDFの資料が必要な場合は下記のリンクからダウンロードしてください。</p>
+  <p>
+    <DownloadLink
+      href={new URL(
+        "/media/documents/amakodomoshokudou-map.pdf",
+        Astro.site,
+      ).toString()}
+      filename="amacodomoshokudou-map"
+    >
+      尼崎こども食堂マップ（PDF）
+    </DownloadLink>
+  </p>
+</aside>
+
+<style>
+  .callout {
+    display: grid;
+    row-gap: 0.5rem;
+    padding: 1rem;
+    background-color: var(--c-gray-light);
+    border-radius: 2px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .callout {
+      background-color: var(--c-black-dark);
+    }
+  }
+</style>

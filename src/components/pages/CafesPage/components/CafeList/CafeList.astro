@@ -1,0 +1,154 @@
+---
+import type { Cafe } from "@/types/Cafe";
+import { Image } from "astro:assets";
+import defaultImg from "./assets/default-cafe.png";
+
+export type Props = {
+  cafes: Cafe[];
+};
+
+const { cafes } = Astro.props;
+---
+
+<div class="cafes">
+  {
+    cafes.map(({ name, image, address, schedule, host, contact }, index) => (
+      <article class="cafe">
+        <h2 class="cafe__name">{name}</h2>
+        <figure class="cafe__image">
+          {image ? (
+            <Image
+              src={image.src}
+              width={1200}
+              height={675}
+              sizes="100vw, (min-width: 64em) 50vw"
+              decoding="auto"
+              loading={index > 3 ? "lazy" : "eager"}
+              alt=""
+              format="webp"
+            />
+          ) : (
+            <Image
+              src={defaultImg}
+              alt=""
+              format="webp"
+              loading={index > 3 ? "lazy" : "eager"}
+              decoding="auto"
+            />
+          )}
+        </figure>
+        <dl class="info">
+          <div class="info__item">
+            <dt class="info__title">住所</dt>
+            <dd class="info__desc">{address}</dd>
+          </div>
+          <div class="info__item">
+            <dt class="info__title">日時</dt>
+            <dd class="info__desc">{schedule}</dd>
+          </div>
+          <div class="info__item">
+            <dt class="info__title">主催者</dt>
+            <dd class="info__desc">{host}</dd>
+          </div>
+          {contact !== "" && (
+            <div class="info__item">
+              <dt class="info__title">連絡先</dt>
+              <dd class="info__desc">{contact}</dd>
+            </div>
+          )}
+        </dl>
+      </article>
+    ))
+  }
+</div>
+
+<style>
+  .cafes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(16.8rem, 100%), 1fr));
+    gap: 1.5rem;
+  }
+
+  .cafe {
+    display: grid;
+    grid-template-rows: repeat(3, min-content);
+    row-gap: 0.5rem;
+    padding: 1rem;
+    background-color: var(--c-white);
+    border-inline-start: 4px solid var(--c-orange);
+  }
+
+  .cafe__name {
+    font-size: var(--fz-lg);
+  }
+
+  .cafe__image {
+    background-color: var(--c-gray-light);
+    border: 1px solid var(--c-gray-dark);
+  }
+
+  .cafe__image > img {
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+  }
+
+  .info__item {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid var(--c-gray-dark);
+  }
+
+  .info__item:not(:first-child) {
+    border-block-start: 0;
+  }
+
+  .info__title {
+    flex: 1 0 calc(1rem * 2 + 3rem); /* 両サイドに1remのspaceと3文字分の幅を取る */
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
+    font-weight: 700;
+    background-color: var(--c-gray-light);
+  }
+
+  .info__desc {
+    flex: 999 0 0;
+    min-inline-size: 70%;
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
+    overflow-wrap: anywhere;
+  }
+
+  @media (width >= 64em) {
+    .cafe {
+      padding-inline: 1.5rem;
+    }
+
+    .cafe__name {
+      font-size: var(--fz-xl);
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cafes {
+      gap: 2.5rem;
+    }
+
+    .cafe {
+      background-color: var(--c-black);
+      border-inline-start-color: var(--c-orange-dark);
+    }
+
+    .cafe__image {
+      background-color: var(--c-black-dark);
+      border-color: var(--c-black-light);
+    }
+
+    .info__item {
+      border-color: var(--c-black-light);
+    }
+
+    .info__title {
+      background-color: var(--c-black-dark);
+    }
+  }
+</style>

@@ -1,0 +1,67 @@
+---
+import CafeList from "@/components/pages/CafesPage/components/CafeList/CafeList.astro";
+import CafeNav from "@/components/pages/CafesPage/components/CafeNav/CafeNav.astro";
+import type { CafeNavItems } from "@/components/pages/CafesPage/components/CafeNav/types";
+import CafesPage from "@/components/pages/CafesPage/CafesPage.astro";
+import Pagination from "@/components/pages/CafesPage/components/Pagination/Pagination.astro";
+import type { PaginationItems } from "@/components/pages/CafesPage/components/Pagination/types";
+import PageTitle from "@/components/common/PageTitle/PageTitle.astro";
+import { site } from "@/consts/site";
+import type { BreadcrumbItems } from "@/components/common/Breadcrumb/types";
+import Document from "@/components/layouts/Document/Document.astro";
+import Layout from "@/components/layouts/Layout/Layout.astro";
+import { generatePaginationItems } from "@/utils/page";
+import { getAllAreas, getCafes } from "@/service/service";
+
+const title = "尼崎のこども食堂一覧";
+const { cafes, total } = await getCafes({ skip: 0, limit: site.cafesPerPage });
+const { areas } = await getAllAreas();
+
+const breadcrumb: BreadcrumbItems = [
+  {
+    title: "トップページ",
+    href: "/",
+  },
+  {
+    title,
+  },
+];
+
+const cafeNavItems: CafeNavItems = [
+  { title: "全ての地区", href: "/cafes", isActive: true, isCurrent: true },
+  ...areas.map((area) => ({
+    title: area.name,
+    href: `/cafes/areas/${area.slug}`,
+    isActive: false,
+    isCurrent: false,
+  })),
+];
+
+const paginationItems: PaginationItems = generatePaginationItems(
+  1,
+  total,
+  site.cafesPerPage,
+);
+---
+
+<Document
+  title={title}
+  desc="掲載許可の取れた尼崎市のこども食堂一覧を掲載したページです。"
+>
+  <Layout breadcrumb={breadcrumb}>
+    <CafesPage>
+      <PageTitle slot="title" page={1}>{title}</PageTitle>
+      <CafeNav slot="nav" items={cafeNavItems} />
+      <CafeList slot="cafes" cafes={cafes} />
+      {
+        paginationItems.length > 1 && (
+          <Pagination
+            slot="pagination"
+            baseUrl="/cafes"
+            items={paginationItems}
+          />
+        )
+      }
+    </CafesPage>
+  </Layout>
+</Document>

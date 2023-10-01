@@ -1,0 +1,104 @@
+---
+import type { PaginationItems } from "./types";
+export type Props = {
+  baseUrl: `/${string}`;
+  items: PaginationItems;
+};
+
+const { baseUrl, items } = Astro.props;
+---
+
+<nav class="pagination" aria-label="ページ送り">
+  <ol class="pagination__list">
+    {
+      items.map(({ page, isCurrent = false }) => (
+        <li>
+          {isCurrent ? (
+            <span aria-current="page" class="pagination__link">
+              <span class="sr-only">{`${page}ページ目`}</span>
+              <span aria-hidden="true">{page}</span>
+            </span>
+          ) : (
+            <a
+              href={page === 1 ? baseUrl : `${baseUrl}/page/${page}`}
+              class="pagination__link"
+            >
+              <span class="sr-only">{`${page}ページ目`}</span>
+              <span aria-hidden="true">{page}</span>
+            </a>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  .pagination__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style: none;
+  }
+
+  .pagination__link {
+    display: grid;
+    place-content: center;
+    inline-size: 3rem;
+    font-size: var(--fz-lg);
+    font-weight: 700;
+    color: var(--c-blue-dark);
+    text-decoration: none;
+    border: 2px solid var(--c-gray-dark);
+    border-radius: 2px;
+    block-size: 3rem;
+  }
+
+  .pagination__link[aria-current="page"] {
+    color: var(--c-blue-dark);
+    background-color: var(--c-orange);
+    border-color: currentcolor;
+  }
+
+  .pagination__link:not([aria-current="page"]) {
+    color: var(--c-blue-dark);
+    background-color: var(--c-white);
+    border-color: currentcolor;
+  }
+
+  .pagination__link:not([aria-current="page"]):focus-visible {
+    background-color: var(--c-orange-light);
+    border-color: currentcolor;
+  }
+
+  @media (hover: hover) {
+    .pagination__link:not([aria-current="page"]):hover {
+      background-color: var(--c-orange-light);
+      border-color: currentcolor;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .pagination__link[aria-current="page"] {
+      color: var(--c-gray);
+      background-color: var(--c-orange-dark);
+    }
+
+    .pagination__link:not([aria-current="page"]) {
+      color: var(--c-gray);
+      background-color: var(--c-black);
+    }
+
+    .pagination__link:not([aria-current="page"]):focus-visible {
+      background-color: var(--c-orange-darkest);
+      border-color: var(--c-gray);
+    }
+  }
+
+  @media (prefers-color-scheme: dark) and (hover: hover) {
+    .pagination__link:not([aria-current="page"]):hover {
+      background-color: var(--c-orange-darkest);
+      border-color: var(--c-gray);
+    }
+  }
+</style>
