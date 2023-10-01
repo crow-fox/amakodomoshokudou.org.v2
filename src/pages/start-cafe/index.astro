@@ -1,0 +1,25 @@
+---
+import StartCafePage from "@/components/pages/StartCafePage/StartCafePage.astro";
+import type { BreadcrumbItems } from "@/components/common/Breadcrumb/types";
+import Document from "@/components/layouts/Document/Document.astro";
+import Layout from "@/components/layouts/Layout/Layout.astro";
+
+const breadcrumb: BreadcrumbItems = [
+  {
+    title: "トップページ",
+    href: "/",
+  },
+  {
+    title: "こども食堂の立ち上げ",
+  },
+];
+---
+
+<Document
+  title="こども食堂の立ち上げ"
+  desc="尼崎市でこども食堂を立ち上げる際の手順について解説しています。"
+>
+  <Layout breadcrumb={breadcrumb}>
+    <StartCafePage />
+  </Layout>
+</Document>
