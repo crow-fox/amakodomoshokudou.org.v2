@@ -1,70 +1,18 @@
 ---
 import { bankAccount } from "@/consts/bankAccount";
+import styles from "./BankAccount.css";
 ---
 
-<div class="wrapper">
-  <p class="title">口座情報</p>
-  <dl class="info">
+<div class={styles.bankAccount}>
+  <p class={styles.title}>口座情報</p>
+  <dl>
     {
       Object.values(bankAccount).map(({ title, value }) => (
-        <div class="info__item">
-          <dt class="info__title">{title}</dt>
-          <dd class="info__desc">{value}</dd>
+        <div class={styles.item}>
+          <dt class={styles.itemTitle}>{title}</dt>
+          <dd class={styles.itemDesc}>{value}</dd>
         </div>
       ))
     }
   </dl>
 </div>
-
-<style>
-  .wrapper {
-    display: grid;
-    row-gap: 1rem;
-    padding: 1rem;
-    border: 1px solid var(--c-gray-dark);
-  }
-
-  .title {
-    font-weight: bold;
-  }
-
-  .info__item {
-    display: flex;
-    flex-wrap: wrap;
-    border: 1px solid var(--c-gray-dark);
-  }
-
-  .info__item:not(:first-child) {
-    border-block-start: 0;
-  }
-
-  .info__title {
-    flex: 1 0 calc(1rem * 2 + 4rem);
-    padding-block: 0.5rem;
-    padding-inline: 1rem;
-    font-weight: bold;
-    background-color: var(--c-gray-light);
-  }
-
-  .info__desc {
-    flex: 999 0 0;
-    min-inline-size: 70%;
-    padding-block: 0.5rem;
-    padding-inline: 1rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .wrapper {
-      border-color: var(--c-black-light);
-    }
-
-    .info__item {
-      border-color: var(--c-black-light);
-    }
-
-    .info__title {
-      background-color: var(--c-black-dark);
-      border-color: var(--c-black-light);
-    }
-  }
-</style>
