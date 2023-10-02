@@ -1,87 +1,48 @@
 ---
+import styles from "./Overview.css";
 import TextLink from "@/components/common/TextLink/TextLink.astro";
 import { summary } from "@/consts/summary";
 ---
 
-<dl class="list">
-  <div class="list__item">
-    <dt class="list__title">{summary.name.title}</dt>
-    <dd class="list__desc">{summary.name.value}</dd>
+<dl class={styles.list}>
+  <div class={styles.item}>
+    <dt class={styles.title}>{summary.name.title}</dt>
+    <dd class={styles.desc}>{summary.name.value}</dd>
   </div>
-  <div class="list__item">
-    <dt class="list__title">{summary.constituent.title}</dt>
-    <dd class="list__desc">
+  <div class={styles.item}>
+    <dt class={styles.title}>{summary.constituent.title}</dt>
+    <dd class={styles.desc}>
       <ul>
         {summary.constituent.value.map((item) => <li>{item}</li>)}
       </ul>
     </dd>
   </div>
-  <div class="list__item">
-    <dt class="list__title">{summary.establish.title}</dt>
-    <dd class="list__desc">
+  <div class={styles.item}>
+    <dt class={styles.title}>{summary.establish.title}</dt>
+    <dd class={styles.desc}>
       <time datetime={summary.establish.value.datetime}
         >{summary.establish.value.display}</time
       >
     </dd>
   </div>
-  <div class="list__item">
-    <dt class="list__title">{summary.representative.title}</dt>
-    <dd class="list__desc">{summary.representative.value}</dd>
+  <div class={styles.item}>
+    <dt class={styles.title}>{summary.representative.title}</dt>
+    <dd class={styles.desc}>{summary.representative.value}</dd>
   </div>
-  <div class="list__item">
-    <dt class="list__title">{summary.location.title}</dt>
-    <dd class="list__desc">
+  <div class={styles.item}>
+    <dt class={styles.title}>{summary.location.title}</dt>
+    <dd class={styles.desc}>
       {`〒${summary.location.value.postalCode}`}<br />{
         summary.location.value.address
       }
     </dd>
   </div>
-  <div class="list__item">
-    <dt class="list__title">{summary.facebook.title}</dt>
-    <dd class="list__desc">
+  <div class={styles.item}>
+    <dt class={styles.title}>{summary.facebook.title}</dt>
+    <dd class={styles.desc}>
       <TextLink href={summary.facebook.value} isExternal>
         {summary.facebook.value}
       </TextLink>
     </dd>
   </div>
 </dl>
-
-<style>
-  .list {
-    display: grid;
-  }
-
-  .list__item {
-    display: flex;
-    flex-wrap: wrap;
-    border: 1px solid var(--c-gray-dark);
-  }
-
-  .list__item:not(:first-child) {
-    border-block-start: none;
-  }
-
-  .list__title {
-    display: flex;
-    flex: 1 0 calc(1rem * 2 + 6rem);
-    padding: 1rem;
-    font-weight: bold;
-    background-color: var(--c-gray-light);
-  }
-
-  .list__desc {
-    flex: 999 0 0;
-    min-inline-size: 70%;
-    padding: 1rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .list__item {
-      border-color: var(--c-black-light);
-    }
-
-    .list__title {
-      background-color: var(--c-black-dark);
-    }
-  }
-</style>

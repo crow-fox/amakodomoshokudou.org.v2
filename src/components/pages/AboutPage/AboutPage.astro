@@ -1,4 +1,5 @@
 ---
+import styles from "./AboutPage.css";
 import ActiveCards from "@/components/common/ActiveCards/ActiveCards.astro";
 import DownloadLink from "@/components/common/DownloadLink/DownloadLink.astro";
 import Heading from "@/components/common/Heading/Heading.astro";
@@ -30,10 +31,12 @@ const toc: TOCItem[] = [
 ];
 ---
 
-<div class="wrapper">
-  <div class="header">
-    <PageTitle>私たちについて</PageTitle>
-    <aside class="callout">
+<div class={styles.page}>
+  <div class={styles.header}>
+    <div class={styles.title}>
+      <PageTitle>私たちについて</PageTitle>
+    </div>
+    <aside class={styles.callout}>
       <p>PDF版の資料が必要な場合は下記のリンクからダウンロードしてください。</p>
       <p>
         <DownloadLink
@@ -47,10 +50,12 @@ const toc: TOCItem[] = [
         </DownloadLink>
       </p>
     </aside>
-    <TOC items={toc} />
+    <div class={styles.toc}>
+      <TOC items={toc} />
+    </div>
   </div>
 
-  <div class="philosophy">
+  <div class={styles.withBg}>
     <LetterContent>
       <h2 id={toc[0].id}>{toc[0].title}</h2>
       <h3>アマのこども食堂が身近な地域の居場所であり続けられるように</h3>
@@ -66,154 +71,41 @@ const toc: TOCItem[] = [
     </LetterContent>
   </div>
 
-  <section class="activities">
-    <Heading id={toc[1].id}>{toc[1].title}</Heading>
-    <ActiveCards />
-  </section>
+  <div class={styles.body}>
+    <section class={styles.activities}>
+      <div>
+        <Heading id={toc[1].id}>{toc[1].title}</Heading>
+      </div>
+      <div>
+        <ActiveCards />
+      </div>
+    </section>
 
-  <section class="histories">
-    <Heading id={toc[2].id}>{toc[2].title}</Heading>
-    <Histories />
-  </section>
+    <section class={styles.histories}>
+      <div>
+        <Heading id={toc[2].id}>{toc[2].title}</Heading>
+      </div>
+      <div>
+        <Histories />
+      </div>
+    </section>
 
-  <section class="overview">
-    <Heading id={toc[3].id}>{toc[3].title}</Heading>
-    <Overview />
-  </section>
+    <section class={styles.overview}>
+      <div>
+        <Heading id={toc[3].id}>{toc[3].title}</Heading>
+      </div>
+      <div>
+        <Overview />
+      </div>
+    </section>
 
-  <aside class="comments">
-    <Heading>コメント</Heading>
-    <Comments />
-  </aside>
+    <aside class={styles.comments}>
+      <div>
+        <Heading>コメント</Heading>
+      </div>
+      <div>
+        <Comments />
+      </div>
+    </aside>
+  </div>
 </div>
-
-<style>
-  .wrapper {
-    display: grid;
-    grid-template-areas:
-      ". . . . ."
-      ". . header . ."
-      ". . . . ."
-      "philosophy philosophy philosophy philosophy philosophy"
-      ". . . . ."
-      ". . activities . ."
-      ". . . . ."
-      ". . histories . ."
-      ". . . . ."
-      ". . overview . ."
-      ". . . . ."
-      ". . comments . ."
-      ". . . . .";
-    grid-template-rows: 2rem auto 2rem auto 6rem auto 6rem auto 6rem auto 6rem auto 6rem;
-    grid-template-columns:
-      1rem
-      auto
-      min(var(--w-container), calc(100% - 2rem))
-      auto
-      1rem;
-    border-block-start: 8px solid var(--c-orange);
-  }
-
-  .header {
-    display: grid;
-    grid-area: header;
-    row-gap: 1rem;
-  }
-
-  .callout {
-    display: grid;
-    row-gap: 0.5rem;
-    padding: 1rem;
-    background-color: var(--c-gray-light);
-    border-radius: 2px;
-  }
-
-  .philosophy {
-    display: grid;
-    grid-area: philosophy;
-    grid-template-columns:
-      [main-start] auto [content-start] min(var(--w-container), 100%)
-      [content-end] auto [main-end];
-    padding-block: 2rem;
-    padding-inline: 1rem;
-    background-color: var(--c-orange-light);
-  }
-
-  .philosophy__inner {
-    display: grid;
-    grid-column: content-start / content-end;
-    row-gap: 1rem;
-    padding-block: 1.5rem;
-    padding-inline: 1rem;
-    background-color: var(--c-white);
-    border-inline-start: 4px solid var(--c-orange);
-    border-radius: 2px;
-  }
-
-  .activities {
-    display: grid;
-    grid-area: activities;
-    row-gap: 1rem;
-  }
-
-  .histories {
-    display: grid;
-    grid-area: histories;
-    row-gap: 1rem;
-  }
-
-  .overview {
-    display: grid;
-    grid-area: overview;
-    row-gap: 1rem;
-  }
-
-  .comments {
-    display: grid;
-    grid-area: comments;
-    row-gap: 1rem;
-  }
-
-  @media (width >= 64em) {
-    .wrapper {
-      grid-template-rows: 3rem auto 3rem auto 6rem auto 6rem auto 6rem auto 6rem auto 6rem;
-      grid-template-columns:
-        1.5rem auto
-        min(var(--w-container), calc(100% - 3rem))
-        auto 1.5rem;
-    }
-
-    .header {
-      row-gap: 1.5rem;
-    }
-
-    .philosophy {
-      padding-block: 3rem;
-      padding-inline: 1.5rem;
-    }
-
-    .philosophy__inner {
-      padding-block: 3rem;
-      padding-inline: 2.5rem;
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .wrapper {
-      border-block-start-color: var(--c-orange-dark);
-    }
-
-    .callout {
-      background-color: var(--c-black-dark);
-    }
-
-    .philosophy {
-      background-color: var(--c-orange-darkest);
-    }
-
-    .philosophy__inner {
-      background-color: var(--c-black);
-      border-inline-start-color: var(--c-orange-dark);
-    }
-  }
-</style>
