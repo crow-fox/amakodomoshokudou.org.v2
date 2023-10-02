@@ -1,4 +1,5 @@
 ---
+import styles from "./GlobalNav.css";
 import { summary } from "@/consts/summary";
 import Icon from "@/components/common/Icon/Icon.astro";
 import type { GlobalNavItem } from "./types";
@@ -41,16 +42,16 @@ const navItems: GlobalNavItem[] = [
 ---
 
 <nav aria-label="メインメニュー" class="nav">
-  <ul class="nav__list">
+  <ul class={styles.list}>
     {
       navItems.map((item) => (
-        <li class="nav__item">
+        <li class={styles.item}>
           {item.type === "internal" && (
             <a
               href={item.href}
               aria-current={item.isCurrent ? "page" : undefined}
               data-active={item.isActive ? "true" : undefined}
-              class="nav__link"
+              class={styles.link}
             >
               {item.title}
             </a>
@@ -60,7 +61,7 @@ const navItems: GlobalNavItem[] = [
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              class="nav__link"
+              class={styles.link}
             >
               {item.title}
               <Icon type="external" label="外部リンク" />
@@ -71,55 +72,3 @@ const navItems: GlobalNavItem[] = [
     }
   </ul>
 </nav>
-
-<style>
-  .nav__list {
-    list-style: none;
-  }
-
-  .nav__item:not(:first-child) {
-    margin-block-start: -1px;
-  }
-
-  .nav__link {
-    display: flex;
-    align-items: center;
-    padding-block: 0.75rem;
-    padding-inline: 0.5rem;
-    font-weight: 700;
-    color: var(--c-blue-dark);
-    text-decoration: none;
-    border-block: 1px solid var(--c-gray-dark);
-    border-inline-start: 2px solid transparent;
-  }
-
-  .nav__link[data-active="true"] {
-    background-color: var(--c-orange);
-    border-inline-start-color: currentcolor;
-  }
-
-  :is(
-      .nav__link:not([data-active="true"]):hover,
-      .nav__link:not([data-active="true"]):focus-visible
-    ) {
-    background-color: var(--c-orange-light);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .nav__link {
-      color: var(--c-gray);
-      border-block-color: var(--c-black-light);
-    }
-
-    .nav__link[data-active="true"] {
-      background-color: var(--c-orange-dark);
-    }
-
-    :is(
-        .nav__link:not([data-active="true"]):hover,
-        .nav__link:not([data-active="true"]):focus-visible
-      ) {
-      background-color: var(--c-orange-darkest);
-    }
-  }
-</style>
