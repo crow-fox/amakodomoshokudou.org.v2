@@ -1,4 +1,5 @@
 ---
+import styles from "./Breadcrumb.css";
 import Icon from "@/components/common/Icon/Icon.astro";
 import type {
   BreadcrumbCurrentItem,
@@ -16,12 +17,12 @@ const currentItem = items[items.length - 1] as BreadcrumbCurrentItem;
 const parentItems = items.slice(0, items.length - 1) as BreadcrumbParentItem[];
 ---
 
-<nav aria-label="現在位置" class="breadcrumb">
-  <ul class="breadcrumb__list">
+<nav aria-label="現在位置" class={styles.nav}>
+  <ul class={styles.list}>
     {
       parentItems.map((item) => (
-        <li class="breadcrumb__item">
-          <a href={item.href} class="breadcrumb__link">
+        <li class={styles.item}>
+          <a href={item.href} class={styles.link}>
             {item.title}
           </a>
           <Icon type="next" label="の中の" />
@@ -30,8 +31,8 @@ const parentItems = items.slice(0, items.length - 1) as BreadcrumbParentItem[];
     }
     {
       currentItem && (
-        <li class="breadcrumb__item">
-          <span aria-current="page" class="breadcrumb__current">
+        <li class={styles.item}>
+          <span aria-current="page" class={styles.current}>
             {currentItem.title}
           </span>
         </li>
@@ -39,63 +40,3 @@ const parentItems = items.slice(0, items.length - 1) as BreadcrumbParentItem[];
     }
   </ul>
 </nav>
-
-<style>
-  .breadcrumb {
-    display: grid;
-    grid-template-columns:
-      [out-start] auto [content-start] min(100%, var(--w-container))
-      [content-end] auto [out-end];
-    padding: 1rem;
-    border-block-start: 1px solid var(--c-gray-dark);
-  }
-
-  .breadcrumb__list {
-    display: flex;
-    flex-wrap: wrap;
-    grid-column: content-start / content-end;
-    gap: 0.25rem;
-    align-items: center;
-    list-style: none;
-  }
-
-  .breadcrumb__item {
-    display: inline-grid;
-    grid-template-columns: auto min-content;
-    column-gap: 0.25rem;
-    align-items: center;
-  }
-
-  .breadcrumb__link {
-    padding-block: 0.25em;
-    padding-inline: 0.25em;
-    color: var(--c-blue);
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    border-radius: 2px;
-  }
-
-  @media (hover: hover) {
-    .breadcrumb__link:hover {
-      box-shadow: 0 0 0 2px currentcolor;
-    }
-  }
-
-  .breadcrumb__link:focus-visible {
-    box-shadow: 0 0 0 2px currentcolor;
-  }
-
-  .breadcrumb__current {
-    display: inline-block;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .breadcrumb {
-      border-block-start-color: var(--c-black-light);
-    }
-
-    .breadcrumb__link {
-      color: var(--c-blue-light);
-    }
-  }
-</style>
