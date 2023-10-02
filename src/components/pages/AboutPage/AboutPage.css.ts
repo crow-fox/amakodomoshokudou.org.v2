@@ -1,15 +1,6 @@
 import { cssVars } from "@/styles/app.css";
+import { contentLayout, contentLayoutInner } from "@/styles/utils.css";
 import { style } from "@vanilla-extract/css";
-
-// 使い回すスタイル
-const contentLayout = style({
-  display: "grid",
-  gridTemplateColumns: `auto [content-start] min(100%, ${cssVars.width.container}) [content-end] auto`,
-});
-
-const contentLayoutInner = style({
-  gridColumn: "content-start / content-end",
-});
 
 const page = style({
   display: "grid",

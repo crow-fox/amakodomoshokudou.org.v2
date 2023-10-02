@@ -1,13 +1,9 @@
 import { cssVars } from "@/styles/app.css";
+import { contentLayout, contentLayoutInner } from "@/styles/utils.css";
 import { style } from "@vanilla-extract/css";
 
 const page = style({
   display: "grid",
-});
-
-const contentLayout = style({
-  display: "grid",
-  gridTemplateColumns: `auto min(${cssVars.width.container}, 100%) auto`,
 });
 
 const header = style([
@@ -30,9 +26,7 @@ const header = style([
   },
 ]);
 
-const key = style({
-  gridColumn: "2",
-});
+const key = style([contentLayoutInner]);
 
 const body = style([
   contentLayout,
@@ -52,21 +46,10 @@ const body = style([
   },
 ]);
 
-const activities = style({
-  gridColumn: "2",
-});
-
-const search = style({
-  gridColumn: "2",
-});
-
-const start = style({
-  gridColumn: "2",
-});
-
-const charity = style({
-  gridColumn: "2",
-});
+const activities = style([contentLayoutInner]);
+const search = style([contentLayoutInner]);
+const start = style([contentLayoutInner]);
+const charity = style([contentLayoutInner]);
 
 export default {
   page,
