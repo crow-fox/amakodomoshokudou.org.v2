@@ -6,6 +6,7 @@ import PageTitle from "@/components/common/PageTitle/PageTitle.astro";
 import TOC from "@/components/common/TOC/TOC.astro";
 import type { TOCItem } from "@/components/common/TOC/types";
 import TextLink from "@/components/common/TextLink/TextLink.astro";
+import styles from "./StartCafePage.css";
 
 const toc: TOCItem[] = [
   {
@@ -19,12 +20,12 @@ const toc: TOCItem[] = [
 ];
 ---
 
-<div class="wrapper">
-  <div class="header">
-    <div class="header__title">
+<div class={styles.page}>
+  <div class={styles.header}>
+    <div class={styles.title}>
       <PageTitle>こども食堂の立ち上げ</PageTitle>
     </div>
-    <aside class="header__callout callout">
+    <aside class={styles.callout}>
       <p>PDF版の資料が必要な場合は下記のリンクからダウンロードしてください。</p>
       <p>
         <DownloadLink
@@ -38,12 +39,12 @@ const toc: TOCItem[] = [
         </DownloadLink>
       </p>
     </aside>
-    <div class="header__toc">
+    <div class={styles.toc}>
       <TOC items={toc} />
     </div>
   </div>
-  <div class="contents">
-    <div class="contents__item">
+  <div class={styles.contents}>
+    <div class={styles.content}>
       <LetterContent>
         <h2 id={toc[0].id}>{toc[0].title}</h2>
         <h3>1. まずは気持ちを整理！</h3>
@@ -90,7 +91,7 @@ const toc: TOCItem[] = [
       </LetterContent>
     </div>
 
-    <div class="contents__item">
+    <div class={styles.content}>
       <LetterContent>
         <h2 id={toc[1].id}>{toc[1].title}</h2>
         <p>
@@ -106,91 +107,3 @@ const toc: TOCItem[] = [
     </div>
   </div>
 </div>
-
-<style>
-  .wrapper {
-    border-block-start: 8px solid var(--c-orange);
-  }
-
-  .header {
-    display: grid;
-    grid-template-columns:
-      [main-start] auto [content-start] min(var(--w-container), 100%)
-      [content-end] auto [main-end];
-    row-gap: 1rem;
-    padding-block: 2rem;
-    padding-inline: 1rem;
-  }
-
-  .header__title {
-    grid-column: content-start / content-end;
-  }
-
-  .header__callout {
-    grid-column: content-start / content-end;
-  }
-
-  .header__toc {
-    grid-column: content-start / content-end;
-  }
-
-  .callout {
-    display: grid;
-    row-gap: 0.5rem;
-    padding: 1rem;
-    background-color: var(--c-gray-light);
-    border-radius: 2px;
-  }
-
-  .contents {
-    display: grid;
-    grid-template-columns:
-      [main-start] auto [content-start] min(var(--w-container), 100%)
-      [content-end] auto [main-end];
-    row-gap: 4rem;
-    padding-block: 2rem;
-    padding-inline: 1rem;
-    background-color: var(--c-orange-light);
-  }
-
-  .contents__item {
-    grid-column: content-start / content-end;
-  }
-
-  @media (width >= 64em) {
-    .wrapper {
-      grid-template-columns:
-        1.5rem
-        auto
-        min(var(--w-container), calc(100% - 2rem))
-        auto
-        1.5rem;
-    }
-
-    .header {
-      row-gap: 1.5rem;
-      padding-block: 3rem;
-      padding-inline: 1.5rem;
-    }
-
-    .contents {
-      row-gap: 6rem;
-      padding-block: 3rem;
-      padding-inline: 1.5rem;
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .wrapper {
-      border-block-start-color: var(--c-orange-dark);
-    }
-
-    .callout {
-      background-color: var(--c-black-dark);
-    }
-
-    .contents {
-      background-color: var(--c-orange-darkest);
-    }
-  }
-</style>
