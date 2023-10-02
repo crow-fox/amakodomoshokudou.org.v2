@@ -60,7 +60,7 @@ const breadcrumb: BreadcrumbItems = [
     href: "/cafes",
   },
   {
-    title: `${area.name}のこども食堂一覧`,
+    title: `${area.name}地区のこども食堂一覧`,
   },
 ];
 
@@ -72,7 +72,7 @@ const paginationItems: PaginationItems = generatePaginationItems(
 
 const { areas } = await getAllAreas();
 const cafeNavItems: CafeNavItems = [
-  { title: "全ての地区", href: "/cafes", isActive: false, isCurrent: false },
+  { title: "すべて", href: "/cafes", isActive: false, isCurrent: false },
   ...areas.map(({ name, slug }) => ({
     title: name,
     href: `/cafes/areas/${slug}`,
@@ -83,13 +83,13 @@ const cafeNavItems: CafeNavItems = [
 ---
 
 <Document
-  title={`${area.name}のこども食堂一覧`}
+  title={`${area.name}地区のこども食堂一覧`}
   desc={`掲載許可の取れた尼崎市${area.name}のこども食堂一覧を掲載したページです。`}
 >
   <Layout breadcrumb={breadcrumb}>
     <CafesPage>
       <PageTitle slot="title" page={1}>
-        {`${area.name}のこども食堂一覧`}
+        {`${area.name}地区のこども食堂一覧`}
       </PageTitle>
       <CafeNav slot="nav" items={cafeNavItems} />
       <CafeList slot="cafes" cafes={cafes} />

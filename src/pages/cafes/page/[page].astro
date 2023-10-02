@@ -63,7 +63,7 @@ const paginationItems: PaginationItems = generatePaginationItems(
 const { areas } = await getAllAreas();
 
 const cafeNavItems: CafeNavItems = [
-  { title: "全ての地区", href: "/cafes", isActive: true, isCurrent: false },
+  { title: "すべて", href: "/cafes", isActive: true, isCurrent: false },
   ...areas.map((area) => ({
     title: area.name,
     href: `/cafes/areas/${area.slug}`,
