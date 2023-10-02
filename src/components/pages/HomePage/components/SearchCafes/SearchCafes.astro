@@ -1,31 +1,15 @@
 ---
+import styles from "./SearchCafes.css";
 import ButtonLink from "@/components/common/ButtonLink/ButtonLink.astro";
 import Heading from "@/components/common/Heading/Heading.astro";
 ---
 
-<section class="section">
+<section class={styles.search}>
   <div>
     <Heading>尼崎のこども食堂を探す</Heading>
   </div>
-  <div class="descs">
+  <div class={styles.descs}>
     <p>尼崎市内のこども食堂は一覧ページから探すことができます。</p>
   </div>
   <p><ButtonLink href="/cafes">尼崎のこども食堂一覧</ButtonLink></p>
 </section>
-
-<style>
-  .section {
-    display: grid;
-    gap: 1.5rem;
-  }
-
-  .descs {
-    display: grid;
-    gap: 0.5rem;
-  }
-
-  .descs > p {
-    max-inline-size: 40rem;
-    line-height: 1.75;
-  }
-</style>

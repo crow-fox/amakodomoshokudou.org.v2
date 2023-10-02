@@ -1,17 +1,20 @@
 ---
+import styles from "./Charity.css";
 import ButtonLink from "@/components/common/ButtonLink/ButtonLink.astro";
 import Heading from "@/components/common/Heading/Heading.astro";
 ---
 
-<section class="section">
-  <Heading>尼崎のこども食堂を支援する</Heading>
-  <div class="descs">
+<section class={styles.charity}>
+  <div>
+    <Heading>尼崎のこども食堂を支援する</Heading>
+  </div>
+  <div class={styles.descs}>
     <p>尼崎市内のこども食堂を支援するには２つの方法があります。</p>
     <p>
       多くの食堂が地域のこどもたちにとっての「身近な地域の居場所」であり続けられるために、応援よろしくお願いします。
     </p>
   </div>
-  <ul class="links">
+  <ul class={styles.links}>
     <li>
       <ButtonLink href="/charity#with-items">物品で支援する</ButtonLink>
     </li>
@@ -20,28 +23,3 @@ import Heading from "@/components/common/Heading/Heading.astro";
     </li>
   </ul>
 </section>
-
-<style>
-  .section {
-    display: grid;
-    gap: 1.5rem;
-  }
-
-  .descs {
-    display: grid;
-    gap: 0.5rem;
-  }
-
-  .descs > p {
-    max-inline-size: 40rem;
-    line-height: 1.75;
-  }
-
-  .links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    align-items: center;
-    list-style: none;
-  }
-</style>

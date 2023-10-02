@@ -1,11 +1,14 @@
 ---
+import styles from "./Activities.css";
 import ActiveCards from "@/components/common/ActiveCards/ActiveCards.astro";
 import ButtonLink from "@/components/common/ButtonLink/ButtonLink.astro";
 import Heading from "@/components/common/Heading/Heading.astro";
 ---
 
-<section class="section">
-  <Heading>活動内容</Heading>
+<section class={styles.activities}>
+  <div>
+    <Heading>活動内容</Heading>
+  </div>
   <div>
     <ActiveCards />
   </div>
@@ -13,10 +16,3 @@ import Heading from "@/components/common/Heading/Heading.astro";
     <ButtonLink href="/about">私たちについて</ButtonLink>
   </p>
 </section>
-
-<style>
-  .section {
-    display: grid;
-    row-gap: 1.5rem;
-  }
-</style>
