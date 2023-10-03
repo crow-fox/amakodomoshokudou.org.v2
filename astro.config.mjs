@@ -13,7 +13,6 @@ export default defineConfig({
   },
   build: {
     assets: "assets",
-    inlineStylesheets: "never",
   },
   vite: {
     plugins: [vanillaExtractPlugin()],
