@@ -1,8 +1,9 @@
 ---
+import styles from "./MapPDFCallout.css";
 import DownloadLink from "@/components/common/DownloadLink/DownloadLink.astro";
 ---
 
-<aside class="callout">
+<aside class={styles.callout}>
   <p>最新のPDFの資料が必要な場合は下記のリンクからダウンロードしてください。</p>
   <p>
     <DownloadLink
@@ -16,19 +17,3 @@ import DownloadLink from "@/components/common/DownloadLink/DownloadLink.astro";
     </DownloadLink>
   </p>
 </aside>
-
-<style>
-  .callout {
-    display: grid;
-    row-gap: 0.5rem;
-    padding: 1rem;
-    background-color: var(--c-gray-light);
-    border-radius: 2px;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .callout {
-      background-color: var(--c-black-dark);
-    }
-  }
-</style>
