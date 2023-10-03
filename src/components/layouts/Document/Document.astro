@@ -32,17 +32,14 @@ const title =
 
     <meta name="theme-color" content="#FFCC67" />
     <meta name="generator" content={Astro.generator} />
-    <!-- 連続した数字があると誤認識してしまうので、電話番号の自動リンク機能は停止 -->
     <meta name="format-detection" content="telephone=no" />
 
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
 
-    <!-- icon -->
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-    <!-- OGP -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={desc} />
     <meta
@@ -61,7 +58,6 @@ const title =
     <meta property="og:locale" content="ja_JP" />
     <meta property="og:site_name" content={site.title} />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
     <meta
       name="twitter:url"
