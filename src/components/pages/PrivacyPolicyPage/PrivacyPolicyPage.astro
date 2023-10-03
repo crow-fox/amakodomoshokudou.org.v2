@@ -1,9 +1,9 @@
 ---
-import styles from "./PrivacyPolicyPage.css";
-import LetterContent from "@/components/common/LetterContent/LetterContent.astro";
+import LetterContents from "@/components/common/LetterContents/LetterContents.astro";
 import PageTitle from "@/components/common/PageTitle/PageTitle.astro";
 import TOC from "@/components/common/TOC/TOC.astro";
 import type { TOCItem } from "@/components/common/TOC/types";
+import styles from "./PrivacyPolicyPage.css";
 
 const toc: TOCItem[] = [
   {
@@ -33,7 +33,7 @@ const toc: TOCItem[] = [
   </div>
   <div class={styles.contents}>
     <div class={styles.content}>
-      <LetterContent>
+      <LetterContents>
         <h2 id={toc[0].id}>{toc[0].title}</h2>
         <p>
           当ネットワークは、収集した個人情報（名前、メールアドレス）を次の目的の範囲内で利用します。
@@ -67,17 +67,17 @@ const toc: TOCItem[] = [
         <p>
           当ネットワークは、個人情報を保護するために適切な管理体制を講じるとともに、スタッフの個人情報保護に関する意識啓発に努めます。
         </p>
-      </LetterContent>
+      </LetterContents>
     </div>
 
     <div class={styles.content}>
-      <LetterContent>
+      <LetterContents>
         <h2 id={toc[1].id}>{toc[1].title}</h2>
         <p>
           当ネットワークでは、個人情報の保護を図るため、又は法令等の変更に対応するため、プライバシーポリシーを改定する場合があります。
         </p>
         <p>改定があった場合は、ホームページにおいてお知らせします。</p>
-      </LetterContent>
+      </LetterContents>
     </div>
   </div>
 </div>

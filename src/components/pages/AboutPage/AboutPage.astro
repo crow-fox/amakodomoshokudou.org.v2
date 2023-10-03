@@ -1,15 +1,15 @@
 ---
-import styles from "./AboutPage.css";
 import ActiveCards from "@/components/common/ActiveCards/ActiveCards.astro";
 import DownloadLink from "@/components/common/DownloadLink/DownloadLink.astro";
 import Heading from "@/components/common/Heading/Heading.astro";
-import LetterContent from "@/components/common/LetterContent/LetterContent.astro";
+import LetterContents from "@/components/common/LetterContents/LetterContents.astro";
 import PageTitle from "@/components/common/PageTitle/PageTitle.astro";
 import TOC from "@/components/common/TOC/TOC.astro";
 import type { TOCItem } from "@/components/common/TOC/types";
 import Comments from "@/components/pages/AboutPage/components/Comments/Comments.astro";
 import Histories from "@/components/pages/AboutPage/components/Histories/Histories.astro";
 import Overview from "@/components/pages/AboutPage/components/Overview/Overview.astro";
+import styles from "./AboutPage.css";
 
 const toc: TOCItem[] = [
   {
@@ -56,19 +56,21 @@ const toc: TOCItem[] = [
   </div>
 
   <div class={styles.withBg}>
-    <LetterContent>
-      <h2 id={toc[0].id}>{toc[0].title}</h2>
-      <h3>アマのこども食堂が身近な地域の居場所であり続けられるように</h3>
-      <p>
-        尼崎市では2015年に、「こども食堂」第1号が立ち上がり、その後、多くの地域住民がそれぞれの地域で、「こどもたちのために何かしたい」という思いで、活動を始めていきました。
-      </p>
-      <p>
-        身近な「地域のこどもの居場所」として、自慢の料理をふるまったり、いっしょに遊んだり騒いだり、時には保護者やこどものグチやお話を聞いたり、それぞれの思いを大切に、活動しています。
-      </p>
-      <p>
-        「尼崎こども食堂ネットワーク」は、アマのこども食堂が、アマのこどもたちにとって「身近な地域の居場所」であり続けられるように、中間支援的な役割を担う団体として活動しています。
-      </p>
-    </LetterContent>
+    <div class={styles.philosophy}>
+      <LetterContents>
+        <h2 id={toc[0].id}>{toc[0].title}</h2>
+        <h3>アマのこども食堂が身近な地域の居場所であり続けられるように</h3>
+        <p>
+          尼崎市では2015年に、「こども食堂」第1号が立ち上がり、その後、多くの地域住民がそれぞれの地域で、「こどもたちのために何かしたい」という思いで、活動を始めていきました。
+        </p>
+        <p>
+          身近な「地域のこどもの居場所」として、自慢の料理をふるまったり、いっしょに遊んだり騒いだり、時には保護者やこどものグチやお話を聞いたり、それぞれの思いを大切に、活動しています。
+        </p>
+        <p>
+          「尼崎こども食堂ネットワーク」は、アマのこども食堂が、アマのこどもたちにとって「身近な地域の居場所」であり続けられるように、中間支援的な役割を担う団体として活動しています。
+        </p>
+      </LetterContents>
+    </div>
   </div>
 
   <div class={styles.body}>

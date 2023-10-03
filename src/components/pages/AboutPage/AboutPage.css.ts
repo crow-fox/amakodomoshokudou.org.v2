@@ -67,19 +67,26 @@ const callout = style([
 
 const toc = style([contentLayoutInner]);
 
-// philosophy内のスタイル
-// LetterContentのスタイルを変更後、下記のスタイルを適応する
-// const philosophy = style([
-//   contentLayoutInner,
-//   {
-//     display: "grid",
-//     rowGap: "1rem",
-//     paddingBlock: "1.5rem",
-//     paddingInline: "1rem",
-//     backgroundColor: cssVars.color.white,
-//     borderInlineStart: `4px solid ${cssVars.color.orange}`,
-//   },
-// ]);
+const philosophy = style([
+  contentLayoutInner,
+  {
+    display: "grid",
+    paddingBlock: "1.5rem",
+    paddingInline: "1rem",
+    backgroundColor: cssVars.color.white,
+    borderInlineStart: `4px solid ${cssVars.color.orange}`,
+    "@media": {
+      "screen and (min-width: 64em)": {
+        paddingBlock: "3rem",
+        paddingInline: "2rem",
+      },
+      "(prefers-color-scheme: dark)": {
+        backgroundColor: cssVars.color.black,
+        borderInlineStartColor: cssVars.color.orangeDark,
+      },
+    },
+  },
+]);
 
 const body = style([
   contentLayout,
@@ -129,6 +136,7 @@ const comments = style([
 export default {
   page,
   withBg,
+  philosophy,
   contentLayout,
   header,
   title,

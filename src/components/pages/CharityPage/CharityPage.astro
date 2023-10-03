@@ -1,13 +1,14 @@
 ---
-import styles from "./CharityPage.css";
-import BankAccount from "@/components/pages/CharityPage/components/BankAccount/BankAccount.astro";
 import AlertHighlight from "@/components/common/AlertHighlight/AlertHighlight.astro";
 import ContactArea from "@/components/common/ContactArea/ContactArea.astro";
-import LetterContent from "@/components/common/LetterContent/LetterContent.astro";
+import LetterContents from "@/components/common/LetterContents/LetterContents.astro";
 import PageTitle from "@/components/common/PageTitle/PageTitle.astro";
 import TOC from "@/components/common/TOC/TOC.astro";
 import type { TOCItem } from "@/components/common/TOC/types";
 import TextLink from "@/components/common/TextLink/TextLink.astro";
+import BankAccount from "@/components/pages/CharityPage/components/BankAccount/BankAccount.astro";
+import styles from "./CharityPage.css";
+import Highlight from "@/components/common/Highlight/Highlight.astro";
 
 const toc: TOCItem[] = [
   {
@@ -32,7 +33,7 @@ const toc: TOCItem[] = [
   </div>
   <div class={styles.contents}>
     <div class={styles.content}>
-      <LetterContent>
+      <LetterContents>
         <h2 id={toc[0].id}>{toc[0].title}</h2>
         <p>
           フードパントリーで使うレトルト食品や日持ちのする食料品、会食や弁当づくりに使う缶詰やお米等を寄付頂ける方は、こちらの手順にそって、ご支援をよろしくお願いします。
@@ -63,20 +64,22 @@ const toc: TOCItem[] = [
         <div>
           <ContactArea />
         </div>
-      </LetterContent>
+      </LetterContents>
     </div>
 
     <div class={styles.content}>
-      <LetterContent>
+      <LetterContents>
         <h2 id={toc[1].id}>{toc[1].title}</h2>
         <p>
           「アマのこども食堂を応援したい！」という思いで寄付金をお寄せ頂ける方は、以下の口座よりお願いいたします。
         </p>
-        <div class="highlight">
-          <p>
-            お寄せ頂いた寄付金は<em>こども食堂の運営にかかる経費助成等</em
-            >に使わせて頂きます。
-          </p>
+        <div>
+          <Highlight>
+            <p>
+              お寄せ頂いた寄付金は<em>こども食堂の運営にかかる経費助成等</em
+              >に使わせて頂きます。
+            </p>
+          </Highlight>
         </div>
         <h3>1. 指定の口座までご振込ください</h3>
         <div>
@@ -89,7 +92,7 @@ const toc: TOCItem[] = [
         <div>
           <ContactArea />
         </div>
-      </LetterContent>
+      </LetterContents>
     </div>
   </div>
 </div>

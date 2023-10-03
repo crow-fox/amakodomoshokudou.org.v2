@@ -66,7 +66,26 @@ const contents = style([
   },
 ]);
 
-const content = style([contentLayoutInner]);
+const content = style([
+  contentLayoutInner,
+  {
+    display: "grid",
+    paddingBlock: "1.5rem",
+    paddingInline: "1rem",
+    backgroundColor: cssVars.color.white,
+    borderInlineStart: `4px solid ${cssVars.color.orange}`,
+    "@media": {
+      "screen and (min-width: 64em)": {
+        paddingBlock: "3rem",
+        paddingInline: "2rem",
+      },
+      "(prefers-color-scheme: dark)": {
+        backgroundColor: cssVars.color.black,
+        borderInlineStartColor: cssVars.color.orangeDark,
+      },
+    },
+  },
+]);
 
 export default {
   page,
