@@ -1,26 +1,6 @@
 import { createGlobalTheme, globalStyle } from "@vanilla-extract/css";
 
 export const cssVars = createGlobalTheme(":root", {
-  colorRGB: {
-    white: "255, 255, 255",
-    orangeLight: "252, 238, 199",
-    orange: "255, 204, 103",
-    orangeDark: "96, 72, 21",
-    orangeDarkest: "56, 54, 51",
-    blueLight: "0, 153, 255",
-    blue: "6, 91, 169",
-    blueDark: "28, 49, 68",
-    green: "159, 228, 169",
-    greenDark: "40, 83, 46",
-    red: "255, 124, 124",
-    redDark: "169, 96, 96",
-    grayLight: "241, 241, 241",
-    gray: "232, 232, 232",
-    grayDark: "209, 209, 209",
-    blackLight: "107, 107, 107",
-    black: "34, 34, 34",
-    blackDark: "16, 16, 16",
-  },
   color: {
     white: "rgb(255, 255, 255)",
     orangeLight: "rgb(252, 238, 199)",
@@ -74,6 +54,35 @@ globalStyle("body", {
     "(prefers-color-scheme: dark)": {
       color: cssVars.color.gray,
       backgroundColor: cssVars.color.black,
+    },
+  },
+});
+
+globalStyle("*:focus", {
+  outline: "none",
+  boxShadow: "0 0 1px 1px rgb(0 0 0 / 20%)",
+  "@media": {
+    "(prefers-color-scheme: dark)": {
+      boxShadow: "0 0 1px 1px rgb(255 255 255 / 20%)",
+    },
+  },
+});
+
+globalStyle("*:focus-visible", {
+  outline: "none",
+  boxShadow: `0 0 0 2px ${cssVars.color.white}, 0 0 0 4px ${cssVars.color.blue}`,
+  "@media": {
+    "(prefers-color-scheme: dark)": {
+      boxShadow: `0 0 0 2px ${cssVars.color.black}, 0 0 0 4px ${cssVars.color.blue}`,
+    },
+  },
+});
+
+globalStyle(":target", {
+  scrollMarginBlockStart: "6rem",
+  "@media": {
+    "screen and (min-width: 64em)": {
+      scrollMarginBlockStart: "1rem",
     },
   },
 });

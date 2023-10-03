@@ -1,7 +1,7 @@
 ---
-import { site } from "@/consts/site";
-import "@/styles/global.css";
 import "@/styles/reset.css";
+import "@/styles/app.css";
+import { site } from "@/consts/site";
 import { ViewTransitions } from "astro:transitions";
 
 export type Props = {
@@ -60,9 +60,6 @@ const title =
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ja_JP" />
     <meta property="og:site_name" content={site.title} />
-
-    <!-- Facebook -->
-    <!-- <meta property="fb:app_id" content="" /> -->
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
