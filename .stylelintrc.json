@@ -1,11 +1,6 @@
 {
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-recess-order",
-    "stylelint-config-html/astro"
-  ],
+  "extends": ["stylelint-config-standard", "stylelint-config-recess-order"],
   "rules": {
-    "selector-class-pattern": "^[a-z0-9-]+(__[a-z0-9]+)?(--[a-z0-9]+)?$",
     "declaration-block-no-redundant-longhand-properties": [
       true,
       {
