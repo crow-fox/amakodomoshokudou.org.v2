@@ -49,7 +49,7 @@ const toc = style([contentLayoutInner]);
 const contents = style([
   contentLayout,
   {
-    rowGap: "4rem",
+    rowGap: "2rem",
     paddingBlock: "2rem",
     paddingInline: "1rem",
     backgroundColor: cssVars.color.orangeLight,
@@ -57,7 +57,7 @@ const contents = style([
       "screen and (min-width: 64em)": {
         paddingBlock: "3rem",
         paddingInline: "1.5rem",
-        rowGap: "6em",
+        rowGap: "3rem",
       },
       "(prefers-color-scheme: dark)": {
         backgroundColor: cssVars.color.orangeDarkest,
@@ -70,13 +70,13 @@ const content = style([
   contentLayoutInner,
   {
     display: "grid",
-    paddingBlock: "1.5rem",
+    paddingBlock: "1rem",
     paddingInline: "1rem",
     backgroundColor: cssVars.color.white,
     borderInlineStart: `4px solid ${cssVars.color.orange}`,
     "@media": {
       "screen and (min-width: 64em)": {
-        paddingBlock: "3rem",
+        paddingBlock: "2rem",
         paddingInline: "2rem",
       },
       "(prefers-color-scheme: dark)": {

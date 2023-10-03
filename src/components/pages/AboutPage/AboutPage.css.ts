@@ -71,13 +71,13 @@ const philosophy = style([
   contentLayoutInner,
   {
     display: "grid",
-    paddingBlock: "1.5rem",
+    paddingBlock: "1rem",
     paddingInline: "1rem",
     backgroundColor: cssVars.color.white,
     borderInlineStart: `4px solid ${cssVars.color.orange}`,
     "@media": {
       "screen and (min-width: 64em)": {
-        paddingBlock: "3rem",
+        paddingBlock: "2rem",
         paddingInline: "2rem",
       },
       "(prefers-color-scheme: dark)": {
