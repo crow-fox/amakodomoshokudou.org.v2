@@ -4,7 +4,7 @@
 
 - フレームワーク：Astro
 - 言語：TypeScript
-- CSS：Astroテンプレート内のstyleタグ
+- CSS：Vanilla-extract
 - HeadlessCMS：Newt
 
 ## ディレクトリ構成
@@ -40,3 +40,16 @@ root/
     │
     └── utils/              # 汎用関数    
 ```
+
+## コンポーネント構成
+Astroファイル名をindex.astroにすると、コンポーネントを使用する時に、vscodeで補完が効かないのでComponent.astroにする
+```
+Component/
+│
+├── Component.astro         # JSとHTMLを記述するAstroコンポーネント
+│
+└── Component.css.ts        # CSSはVanilla-extractを使用して定義
+```
+
+
+
