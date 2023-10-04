@@ -44,7 +44,7 @@ const toc: TOCItem[] = [
     </div>
   </div>
   <div class={styles.contents}>
-    <div class={styles.content}>
+    <section class={styles.content}>
       <LetterContents>
         <h2 id={toc[0].id}>{toc[0].title}</h2>
         <h3>1. まずは気持ちを整理！</h3>
@@ -89,9 +89,9 @@ const toc: TOCItem[] = [
           当日のスケジュールや、今後の運営のおおまかな段取りなどが分かり、また、地域のみなさんに活動を知ってもらう機会にもなります。
         </p>
       </LetterContents>
-    </div>
+    </section>
 
-    <div class={styles.content}>
+    <section class={styles.content}>
       <LetterContents>
         <h2 id={toc[1].id}>{toc[1].title}</h2>
         <p>
@@ -104,6 +104,6 @@ const toc: TOCItem[] = [
           <ContactArea />
         </div>
       </LetterContents>
-    </div>
+    </section>
   </div>
 </div>

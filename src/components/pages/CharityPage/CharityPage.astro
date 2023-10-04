@@ -32,7 +32,7 @@ const toc: TOCItem[] = [
     </div>
   </div>
   <div class={styles.contents}>
-    <div class={styles.content}>
+    <section class={styles.content}>
       <LetterContents>
         <h2 id={toc[0].id}>{toc[0].title}</h2>
         <p>
@@ -65,9 +65,9 @@ const toc: TOCItem[] = [
           <ContactArea />
         </div>
       </LetterContents>
-    </div>
+    </section>
 
-    <div class={styles.content}>
+    <section class={styles.content}>
       <LetterContents>
         <h2 id={toc[1].id}>{toc[1].title}</h2>
         <p>
@@ -93,6 +93,6 @@ const toc: TOCItem[] = [
           <ContactArea />
         </div>
       </LetterContents>
-    </div>
+    </section>
   </div>
 </div>
