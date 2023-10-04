@@ -7,8 +7,8 @@
   },
   "pretenders": [
     {
-      "selector": "Head",
-      "as": "head"
+      "selector": "Image",
+      "as": "img"
     }
   ],
   "rules": {
