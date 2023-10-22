@@ -13,5 +13,13 @@
   ],
   "rules": {
     "character-reference": false
-  }
+  },
+  "nodeRules": [
+    {
+      "selector": "img",
+      "rules": {
+        "required-attr": false
+      }
+    }
+  ]
 }
