@@ -1,5 +1,24 @@
 # 尼崎こども食堂ネットワーク サイト
 
+## 開発環境
+
+### ローカルサーバー起動
+
+`pnpm dev`
+
+### ビルド
+
+`pnpm build`
+
+### プレビュー
+
+`pnpm start`
+
+### デプロイ
+
+- [x] 手動でデプロイ
+- [ ] GitHub Actionsで自動デプロイ
+
 ## 使用技術
 
 - フレームワーク：Astro
@@ -13,36 +32,38 @@
 root/
 │
 ├── public/                 # ルートディレクトリに出力される静的ファイル
-│   │                   
+│   │
 │   ├── images/             # 画像
-│   │       
+│   │
 │   └── documents/          # PDFなどのファイル
 │
 └── src/                    # Viteでバンドルされる
-    │   
+    │
     ├── components/         # 全コンポーネント
-    │   │ 
-    │   ├── common/         # 汎用コンポーネント    
-    │   │       
-    │   ├── layouts/        # 共通レイアウトコンポーネント     
-    │   │       
-    │   └── pages/          # ページごとの固有コンポーネント    
+    │   │
+    │   ├── common/         # 汎用コンポーネント
+    │   │
+    │   ├── layouts/        # 共通レイアウトコンポーネント
+    │   │
+    │   └── pages/          # ページごとの固有コンポーネント
     │
-    ├── consts/             # 共通の変数    
+    ├── consts/             # 共通の変数
     │
-    ├── pages/              # ページのルーティングとデータロード    
+    ├── pages/              # ページのルーティングとデータロード
     │
-    ├── service/            # 外部APIと連携    
+    ├── service/            # 外部APIと連携
     │
-    ├── styles/             # 共通のCSSファイル    
+    ├── styles/             # 共通のCSSファイル
     │
-    ├── types/              # 共通の型定義   
+    ├── types/              # 共通の型定義
     │
-    └── utils/              # 汎用関数    
+    └── utils/              # 汎用関数
 ```
 
 ## コンポーネント構成
+
 Astroファイル名をindex.astroにすると、コンポーネントを使用する時に、vscodeで補完が効かないのでComponent.astroにする
+
 ```
 Component/
 │
@@ -50,6 +71,3 @@ Component/
 │
 └── Component.css.ts        # CSSはVanilla-extractを使用して定義
 ```
-
-
-
