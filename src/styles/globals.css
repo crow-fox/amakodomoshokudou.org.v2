@@ -28,4 +28,8 @@
       --tertiary-background: rgb(16, 16, 16);
     }
   }
+
+  body {
+    @apply break-words break-all bg-primary-background text-primary-text;
+  }
 }
