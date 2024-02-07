@@ -3,8 +3,21 @@ export default {
   content: ["./src/**/*.{js,jsx,ts,tsx,astro,html}"],
   theme: {
     colors: {
-      // カラーテーマを登録（ダークモード対応を加味）
-      // pluginでbodyにstyleを追加することを検討
+      accent: "var(--accent)",
+      danger: "var(--danger)",
+      link: "var(--link)",
+      primary: {
+        background: "var(--primary-background)",
+        text: "var(--primary-text)",
+        border: "var(--primary-border)",
+      },
+      secondary: {
+        background: "var(--secondary-background)",
+        border: "var(--secondary-border)",
+      },
+      tertiary: {
+        background: "var(--tertiary-background)",
+      },
     },
     spacing: {
       // スペースを登録

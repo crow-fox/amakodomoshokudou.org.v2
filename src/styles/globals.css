@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --accent: rgb(255, 204, 103);
+    --danger: rgb(255, 124, 124);
+    --link: rgb(6, 91, 169);
+    --primary-background: rgb(255, 255, 255);
+    --primary-text: rgb(28, 49, 68);
+    --primary-border: rgb(28, 49, 68);
+    --secondary-background: rgb(252, 238, 199);
+    --secondary-border: rgb(209, 209, 209);
+    --tertiary-background: rgb(241, 241, 241);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --accent: rgb(96, 72, 21);
+      --danger: rgb(169, 96, 96);
+      --link: rgb(0, 153, 255);
+      --primary-background: rgb(34, 34, 34);
+      --primary-text: rgb(232, 232, 232);
+      --primary-border: rgb(232, 232, 232);
+      --secondary-background: rgb(56, 54, 51);
+      --secondary-border: rgb(107, 107, 107);
+      --tertiary-background: rgb(16, 16, 16);
+    }
+  }
+}
