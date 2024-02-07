@@ -14,5 +14,5 @@
       }
     ]
   },
-  "ignoreFiles": "./src/styles/globals.css"
+  "ignoreFiles": ["./src/styles/globals.css", "./src/**/*.astro"]
 }
