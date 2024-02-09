@@ -53,6 +53,11 @@ export default {
       relaxed: "1.75",
       loose: "2",
     },
+    maxWidth: {
+      container: "63.5rem",
+      prose: "40rem",
+      sidebar: "16rem",
+    },
     extend: {},
   },
   plugins: [
@@ -84,6 +89,26 @@ export default {
         },
         {
           values: theme("padding"),
+        },
+      );
+      matchUtilities(
+        {
+          "max-inline": (value) => ({
+            maxInlineSize: value,
+          }),
+        },
+        {
+          values: theme("maxWidth"),
+        },
+      );
+      matchUtilities(
+        {
+          "inline-size": (value) => ({
+            inlineSize: value,
+          }),
+        },
+        {
+          values: theme("width"),
         },
       );
     }),
