@@ -1,3 +1,5 @@
+import plugin from "tailwindcss/plugin";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx,astro,html}"],
@@ -53,5 +55,37 @@ export default {
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    plugin(({ matchUtilities, theme }) => {
+      matchUtilities(
+        // margin-inline-start, margin-inline-endは、デフォルトで ms-[] me-[] でサポートされているのでここでは追加しない
+        {
+          mbs: (value) => ({
+            marginBlockStart: value,
+          }),
+          mbe: (value) => ({
+            marginBlockEnd: value,
+          }),
+        },
+        {
+          values: theme("margin"),
+          supportsNegativeValues: true,
+        },
+      );
+      matchUtilities(
+        // padding-inline-start, padding-inline-endは、デフォルトで ps-[] pe-[] でサポートされているのでここでは追加しない
+        {
+          pbs: (value) => ({
+            paddingBlockStart: value,
+          }),
+          pbe: (value) => ({
+            paddingBlockEnd: value,
+          }),
+        },
+        {
+          values: theme("padding"),
+        },
+      );
+    }),
+  ],
 };
