@@ -37,8 +37,19 @@ export default {
       // 元のフォントを継承した上で、一番優先のフォントをGoogleフォントにする
     },
     fontSize: {
-      // フォントサイズとline-heightを登録
-      // 本文のサイズのみline-heightを広めも指定できるようにしたい。
+      sm: ["0.75rem", "1.5"],
+      base: ["1rem", "1.5"],
+      lg: ["1.25rem", "1.5"],
+      xl: ["1.5rem", "1.5"],
+      "2xl": ["2rem", "1.25"],
+      "3xl": ["2.75rem", "1.25"],
+    },
+    lineHeight: {
+      none: "1",
+      tight: "1.25",
+      base: "1.5",
+      relaxed: "1.75",
+      loose: "2",
     },
     extend: {},
   },
