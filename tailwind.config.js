@@ -59,6 +59,8 @@ export default {
       sidebar: "16rem",
     },
     screens: {
+      sm: "40rem",
+      md: "48rem",
       lg: "64rem",
     },
     extend: {},
