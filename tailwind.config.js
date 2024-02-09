@@ -58,6 +58,9 @@ export default {
       prose: "40rem",
       sidebar: "16rem",
     },
+    screens: {
+      lg: "64rem",
+    },
     extend: {},
   },
   plugins: [
