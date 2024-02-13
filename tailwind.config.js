@@ -2,6 +2,14 @@ import plugin from "tailwindcss/plugin";
 
 /** @type {import('tailwindcss').Config} */
 export default {
+  corePlugins: {
+    margin: false,
+    padding: false,
+    width: false,
+    maxWidth: false,
+    height: false,
+    maxHeight: false,
+  },
   content: ["./src/**/*.{js,jsx,ts,tsx,astro,html}"],
   theme: {
     colors: {
@@ -70,11 +78,23 @@ export default {
       matchUtilities(
         // margin-inline-start, margin-inline-endは、デフォルトで ms-[] me-[] でサポートされているのでここでは追加しない
         {
-          mbs: (value) => ({
+          mt: (value) => ({
             marginBlockStart: value,
           }),
-          mbe: (value) => ({
+          mb: (value) => ({
             marginBlockEnd: value,
+          }),
+          ml: (value) => ({
+            marginInlineStart: value,
+          }),
+          mr: (value) => ({
+            marginInlineEnd: value,
+          }),
+          mx: (value) => ({
+            marginInline: value,
+          }),
+          my: (value) => ({
+            marginBlock: value,
           }),
         },
         {
@@ -85,11 +105,23 @@ export default {
       matchUtilities(
         // padding-inline-start, padding-inline-endは、デフォルトで ps-[] pe-[] でサポートされているのでここでは追加しない
         {
-          pbs: (value) => ({
+          pt: (value) => ({
             paddingBlockStart: value,
           }),
-          pbe: (value) => ({
+          pb: (value) => ({
             paddingBlockEnd: value,
+          }),
+          pl: (value) => ({
+            paddingInlineStart: value,
+          }),
+          pr: (value) => ({
+            paddingInlineEnd: value,
+          }),
+          px: (value) => ({
+            paddingInline: value,
+          }),
+          py: (value) => ({
+            paddingBlock: value,
           }),
         },
         {
@@ -98,7 +130,7 @@ export default {
       );
       matchUtilities(
         {
-          "max-inline": (value) => ({
+          "max-w": (value) => ({
             maxInlineSize: value,
           }),
         },
@@ -108,12 +140,32 @@ export default {
       );
       matchUtilities(
         {
-          "inline-size": (value) => ({
+          w: (value) => ({
             inlineSize: value,
           }),
         },
         {
           values: theme("width"),
+        },
+      );
+      matchUtilities(
+        {
+          h: (value) => ({
+            blockSize: value,
+          }),
+        },
+        {
+          values: theme("height"),
+        },
+      );
+      matchUtilities(
+        {
+          "max-h": (value) => ({
+            maxBlockSize: value,
+          }),
+        },
+        {
+          values: theme("maxHeight"),
         },
       );
     }),
