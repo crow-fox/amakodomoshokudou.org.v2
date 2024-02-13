@@ -1,4 +1,5 @@
 import plugin from "tailwindcss/plugin";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -42,9 +43,8 @@ export default {
       104: "6.5rem",
     },
     fontFamily: {
-      // フォントを登録
-      // システムフォントとGoogleフォントを基準にする
       // 元のフォントを継承した上で、一番優先のフォントをGoogleフォントにする
+      sans: ["Noto Sans JP Variable", ...defaultTheme.fontFamily.sans],
     },
     fontSize: {
       sm: ["0.75rem", "1.5"],

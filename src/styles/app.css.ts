@@ -45,7 +45,7 @@ export const cssVars = createGlobalTheme(":root", {
 });
 
 globalStyle("body", {
-  fontFamily: `"Noto Sans JP", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif`,
+  // fontFamily: `"Noto Sans JP Variable", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif`,
   fontSize: cssVars.fontSize.md,
   lineHeight: cssVars.lineHeight.normal,
   color: cssVars.color.blueDark,
