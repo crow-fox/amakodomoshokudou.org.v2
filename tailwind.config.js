@@ -79,8 +79,9 @@ export default {
   },
   plugins: [
     plugin(({ matchUtilities, theme }) => {
+      // デフォルトのユーティリティを論理プロパティで上書き
+      // もし不都合な場合は、この部分とcorePluginsの設定をコメントアウトすればデフォルトの状態に戻る
       matchUtilities(
-        // margin-inline-start, margin-inline-endは、デフォルトで ms-[] me-[] でサポートされているのでここでは追加しない
         {
           mt: (value) => ({
             marginBlockStart: value,
@@ -107,7 +108,6 @@ export default {
         },
       );
       matchUtilities(
-        // padding-inline-start, padding-inline-endは、デフォルトで ps-[] pe-[] でサポートされているのでここでは追加しない
         {
           pt: (value) => ({
             paddingBlockStart: value,
