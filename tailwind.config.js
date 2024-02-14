@@ -58,7 +58,7 @@ export default {
       sm: ["calc(1rem * 8 / 9)", "1.25rem"],
       md: ["1rem", "1.5rem"],
       lg: ["calc(1rem * 8 / 7)", "1.5rem"],
-      xl: ["calc(1rem * 8 / 6)", "2rem"],
+      xl: ["calc(1rem * 8 / 6)", "1.75rem"],
       "2xl": ["calc(1rem * 8 / 5)", "2rem"],
       "3xl": ["calc(1rem * 8 / 4)", "2.5rem"],
       "4xl": ["calc(1rem * 8 / 3)", "3.25rem"],
