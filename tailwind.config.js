@@ -63,6 +63,10 @@ export default {
       "3xl": ["calc(1rem * 8 / 4)", "2.5rem"],
       "4xl": ["calc(1rem * 8 / 3)", "3.25rem"],
     },
+    fontWeight: {
+      normal: "400",
+      bold: "600",
+    },
     lineHeight: {
       none: "1",
       tight: "1.25",
