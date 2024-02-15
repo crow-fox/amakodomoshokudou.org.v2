@@ -75,9 +75,16 @@ export default {
       loose: "2",
     },
     screens: {
-      sm: "40rem",
-      md: "48rem",
-      lg: "64rem",
+      sm: "40em",
+      // => @media (min-width: 640px) { ... }
+      md: "48em",
+      // => @media (min-width: 768px) { ... }
+      lg: "64em",
+      // => @media (min-width: 1024px) { ... }
+      xl: "80em",
+      // => @media (min-width: 1280px) { ... }
+      "2xl": "96em",
+      // => @media (min-width: 1536px) { ... }
     },
     extend: {},
   },
