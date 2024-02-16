@@ -4,15 +4,15 @@
 
 @layer base {
   :root {
-    --accent: rgb(255, 204, 103);
-    --danger: rgb(255, 124, 124);
-    --link: rgb(6, 91, 169);
-    --primary-background: rgb(255, 255, 255);
-    --primary-text: rgb(28, 49, 68);
-    --primary-border: rgb(28, 49, 68);
-    --secondary-background: rgb(252, 238, 199);
-    --secondary-border: rgb(209, 209, 209);
-    --tertiary-background: rgb(241, 241, 241);
+    --accent: #ffcc66;
+    --danger: #cc0f0f;
+    --link: #0f72cc;
+    --primary-background: #ffffff;
+    --primary-text: #38352e;
+    --primary-border: #c28100;
+    --secondary-background: #fff5e0;
+    --secondary-border: #d1d1d1;
+    --tertiary-background: #efefef;
   }
 
   @media (prefers-color-scheme: dark) {
