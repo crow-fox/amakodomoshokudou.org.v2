@@ -112,6 +112,9 @@ export default {
           my: (value) => ({
             marginBlock: value,
           }),
+          m: (value) => ({
+            margin: value,
+          }),
         },
         {
           values: theme("margin"),
@@ -137,6 +140,9 @@ export default {
           }),
           py: (value) => ({
             paddingBlock: value,
+          }),
+          p: (value) => ({
+            padding: value,
           }),
         },
         {
