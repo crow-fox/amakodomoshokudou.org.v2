@@ -30,6 +30,10 @@
   }
 
   body {
-    @apply break-words break-all bg-primary-background font-sans text-primary-text;
+    @apply break-words bg-primary-background font-sans text-md text-primary-text;
+  }
+
+  small {
+    font-size: inherit;
   }
 }
