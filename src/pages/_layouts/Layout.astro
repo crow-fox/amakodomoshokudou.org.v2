@@ -19,6 +19,16 @@ const { breadcrumb } = Astro.props;
     <slot />
   </main>
   {breadcrumb && <nav class="[grid-area:breadcrumb]" />}
-  <footer class="border-t border-t-secondary-border [grid-area:footer]">
+  <footer class="border-t border-t-secondary-border p-20 [grid-area:footer]">
+    <div
+      class="flex flex-wrap justify-between gap-x-20 gap-y-12 mx-auto max-w-932"
+    >
+      <p class="text-sm">
+        <a href="/privacy-policy" class="">プライバシーポリシー</a>
+      </p>
+      <p class="text-sm">
+        <small>@2024 尼崎こども食堂ネットワーク</small>
+      </p>
+    </div>
   </footer>
 </div>
