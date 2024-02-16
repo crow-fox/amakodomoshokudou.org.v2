@@ -1,0 +1,24 @@
+---
+import type { BreadcrumbItems } from "@/components/common/Breadcrumb/types";
+
+export type Props = {
+  breadcrumb?: BreadcrumbItems;
+};
+
+const { breadcrumb } = Astro.props;
+---
+
+<div
+  class="grid grid-rows-[auto,1fr,auto,auto] h-svh [grid-template-areas:'header'_'main'_'breadcrumb'_'footer'] lg:grid-cols-[theme(spacing[220]),1fr] lg:grid-rows-[1fr,auto,auto] lg:[grid-template-areas:'header_main'_'header_breadcrumb'_'header_footer']"
+>
+  <header
+    class="sticky top-0 border-b border-b-secondary-border bg-primary-background [grid-area:header] lg:static lg:size-full lg:overflow-y-auto lg:border-b-0 lg:border-r lg:border-r-secondary-border"
+  >
+  </header>
+  <main class="[grid-area:main]">
+    <slot />
+  </main>
+  {breadcrumb && <nav class="[grid-area:breadcrumb]" />}
+  <footer class="border-t border-t-secondary-border [grid-area:footer]">
+  </footer>
+</div>
