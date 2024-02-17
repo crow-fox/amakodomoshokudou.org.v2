@@ -1,8 +1,13 @@
 ---
-import AboutPage from "@/components/pages/AboutPage/AboutPage.astro";
 import type { BreadcrumbItems } from "@/components/common/Breadcrumb/types";
-import Document from "@/components/layouts/Document/Document.astro";
-import Layout from "@/components/layouts/Layout/Layout.astro";
+import Activities from "@/pages/_components/Activities/Activities.astro";
+import DownloadLink from "@/pages/_components/DownloadLink/DownloadLink.astro";
+import Heading from "@/pages/_components/Heading/Heading.astro";
+import ToSectionLink from "@/pages/_components/ToSectionLink/ToSectionLink.astro";
+import Document from "@/pages/_layouts/Document.astro";
+import Layout from "@/pages/_layouts/Layout.astro";
+import Histories from "@/pages/about/_components/Histories/Histories.astro";
+import Overview from "@/pages/about/_components/Overview/Overview.astro";
 
 const breadcrumb: BreadcrumbItems = [
   {
@@ -20,6 +25,80 @@ const breadcrumb: BreadcrumbItems = [
   desc="尼崎こども食堂ネットワークは尼崎市内のこども食堂が、これからもアマのこどもたちにとっての「身近な地域の居場所」であり続けられるように活動している団体です。"
 >
   <Layout breadcrumb={breadcrumb}>
-    <AboutPage />
+    <div class="border-t-8 border-t-accent px-20 py-32 lg:px-32 lg:py-52">
+      <div class="grid gap-y-20 mx-auto max-w-932 lg:gap-y-32">
+        <h1 class="text-2xl font-bold lg:text-3xl">私たちについて</h1>
+        <aside
+          class="grid gap-y-12 rounded-xl border border-secondary-border p-20"
+        >
+          <p class="font-bold">PDF版の資料</p>
+          <p>
+            <DownloadLink
+              href="/media/documents/amakodomoshokudou-pamphlet.pdf"
+              filename="amakodomoshokudou-pamphlet"
+            >
+              尼崎こども食堂ネットワーク・パンフレット
+            </DownloadLink>
+          </p>
+        </aside>
+        <ol class="flex flex-wrap gap-x-20 gap-y-12">
+          <li>
+            <ToSectionLink target="philosophy">理念</ToSectionLink>
+          </li>
+          <li>
+            <ToSectionLink target="activities">活動内容</ToSectionLink>
+          </li>
+          <li>
+            <ToSectionLink target="histories">発足の経緯</ToSectionLink>
+          </li>
+          <li>
+            <ToSectionLink target="overview">団体概要</ToSectionLink>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="bg-secondary-background px-20 py-32 lg:px-32 lg:py-52">
+      <div class="grid gap-y-52 mx-auto max-w-932 lg:gap-y-84">
+        <section class="grid gap-y-32">
+          <Heading id="philosophy">理念</Heading>
+          <div class="grid gap-y-20 [&>p]:text-md/loose [&>p]:max-w-640">
+            <h3 class="text-balance text-lg font-bold lg:text-xl">
+              アマのこども食堂が身近な地域の居場所であり続けられるように
+            </h3>
+            <p>
+              尼崎市では2015年、「こども食堂」第1号が立ち上がり、その後、多くの地域住民がそれぞれの地域で、「こどもたちのために何かしたい」という思いで、活動を始めていきました。
+            </p>
+            <p>
+              身近な「地域のこどもの居場所」として、自慢の料理をふるまったり、いっしょに遊んだり騒いだり、時には保護者やこどものグチやお話を聞いたり、それぞれの思いを大切に、活動しています。
+            </p>
+            <p>
+              「尼崎こども食堂ネットワーク」は、アマのこども食堂が、アマのこどもたちにとって「身近な地域の居場所」であり続けられるように、中間支援的な役割を担う団体として活動しています。
+            </p>
+          </div>
+        </section>
+        <section class="grid gap-y-32">
+          <Heading id="activities">活動内容</Heading>
+          <Activities />
+        </section>
+        <section class="grid gap-y-32">
+          <Heading id="histories">発足の経緯</Heading>
+          <Histories />
+        </section>
+        <section class="grid gap-y-32">
+          <Heading id="overview">団体概要</Heading>
+          <Overview />
+        </section>
+        <aside
+          class="grid gap-y-12 rounded-xl border border-secondary-border bg-primary-background p-20"
+        >
+          <p class="font-bold">ロゴ作成者（夢遊病）</p>
+          <p class="text-md/loose max-w-640">
+            今回、子供食堂のロゴを担当させて頂きました、夢遊病です。<br
+            />僕は個人で起業して自分と同じ境遇の方に寄り添うことがしたいと日々活動しているので、子供食堂に関わることができて、すごくうれしいです。
+          </p>
+        </aside>
+      </div>
+    </div>
   </Layout>
 </Document>
