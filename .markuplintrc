@@ -17,6 +17,10 @@
     {
       "selector": "ToSectionLink",
       "as": "a"
+    },
+    {
+      "selector": "TextLink",
+      "as": "a"
     }
   ],
   "rules": {
