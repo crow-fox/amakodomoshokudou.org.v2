@@ -1,0 +1,18 @@
+---
+import { Image } from "astro:assets";
+import icon from "./assets/icon.svg";
+
+export type Props = {
+  href: string;
+};
+
+const props = Astro.props;
+---
+
+<a
+  href={props.href}
+  class="inline-grid grid-cols-[1fr,1em] items-center gap-x-8 rounded-full border border-primary-border bg-primary-background px-20 py-8"
+>
+  <slot />
+  <Image src={icon} alt="" class="" />
+</a>

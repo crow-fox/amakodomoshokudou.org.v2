@@ -29,6 +29,10 @@
     {
       "selector": "CopyButton",
       "as": "button"
+    },
+    {
+      "selector": "ButtonLink",
+      "as": "a"
     }
   ],
   "rules": {
