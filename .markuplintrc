@@ -21,6 +21,10 @@
     {
       "selector": "TextLink",
       "as": "a"
+    },
+    {
+      "selector": "Heading",
+      "as": "h2"
     }
   ],
   "rules": {
