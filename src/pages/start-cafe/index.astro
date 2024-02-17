@@ -1,8 +1,15 @@
 ---
-import StartCafePage from "@/components/pages/StartCafePage/StartCafePage.astro";
 import type { BreadcrumbItems } from "@/components/common/Breadcrumb/types";
-import Document from "@/components/layouts/Document/Document.astro";
-import Layout from "@/components/layouts/Layout/Layout.astro";
+import CopyButton from "@/pages/_components/CopyButton/CopyButton.astro";
+import DownloadLink from "@/pages/_components/DownloadLink/DownloadLink.astro";
+import Heading from "@/pages/_components/Heading/Heading.astro";
+import TextLink from "@/pages/_components/TextLink/TextLink.astro";
+import ToSectionLink from "@/pages/_components/ToSectionLink/ToSectionLink.astro";
+import { summary } from "@/pages/_consts/summary";
+import Document from "@/pages/_layouts/Document.astro";
+import Layout from "@/pages/_layouts/Layout.astro";
+import FlowItem from "@/pages/start-cafe/_components/FlowItem/FlowItem.astro";
+import NextStep from "@/pages/start-cafe/_components/NextStep/NextStep.astro";
 
 const breadcrumb: BreadcrumbItems = [
   {
@@ -20,6 +27,126 @@ const breadcrumb: BreadcrumbItems = [
   desc="尼崎市でこども食堂を立ち上げる際の手順について解説しています。"
 >
   <Layout breadcrumb={breadcrumb}>
-    <StartCafePage />
+    <div class="border-t-8 border-t-accent px-20 py-32 lg:px-32 lg:py-52">
+      <div class="grid gap-y-20 mx-auto max-w-932 lg:gap-y-32">
+        <h1 class="text-2xl font-bold lg:text-3xl">こども食堂の立ち上げ</h1>
+        <aside
+          class="grid gap-y-12 rounded-xl border border-secondary-border p-12 lg:p-20"
+        >
+          <p class="font-bold">PDF版の資料</p>
+          <p>
+            <DownloadLink
+              href="/media/documents/amakodomoshokudou-pamphlet.pdf"
+              filename="amakodomoshokudou-pamphlet"
+            >
+              こども食堂の立ち上げについて
+            </DownloadLink>
+          </p>
+        </aside>
+        <ol class="flex flex-wrap gap-x-20 gap-y-12">
+          <li>
+            <ToSectionLink target="flow">立ち上げの流れ</ToSectionLink>
+          </li>
+          <li>
+            <ToSectionLink target="mailing-list">
+              メーリングリスト
+            </ToSectionLink>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="bg-secondary-background px-20 py-32 lg:px-32 lg:py-52">
+      <div class="grid gap-y-52 mx-auto max-w-932 lg:gap-y-84">
+        <section class="grid gap-y-32">
+          <Heading id="flow">立ち上げの流れ</Heading>
+          <div class="grid gap-y-20 lg:gap-y-32">
+            <FlowItem step={1} title="まずは気持ちを整理！">
+              <p>
+                なぜ活動しようと思ったのか、どんな食堂にしたいのか、気持ちを整理してみましょう。
+              </p>
+              <p>
+                活動を続けていくためにも、仲間は大事です。<br />
+                目的や方向性を共有しながら進めていきましょう。
+              </p>
+            </FlowItem>
+            <NextStep />
+            <FlowItem step={2} title="社協むすぶグループへ相談">
+              <p>
+                活動する地区の「
+                <TextLink
+                  href="http://amasyakyo.jp/syakyo_index/access/"
+                  target="_blank"
+                >
+                  むすぶグループ(尼崎市社会福祉協議会の支部)
+                </TextLink>
+                」に相談しましょう。
+              </p>
+              <p>
+                地域とのつながり作りや、イベント保険の案内、他のこども食堂の見学など、立ち上げるまで、立ち上げてからのお手伝いをしてくれます。
+              </p>
+            </FlowItem>
+            <NextStep />
+            <FlowItem step={3} title="他のこども食堂を見学してみよう！">
+              <p>
+                実際に活動している現場を見学することで、より具体的な計画が立てやすくなります。
+              </p>
+              <p>
+                会食やお弁当配布、フードパントリーなど、実施形態はさまざまです。
+                <br />
+                自分たちに合った方法を見つけましょう。
+              </p>
+            </FlowItem>
+            <NextStep />
+            <FlowItem step={4} title="保健所に相談しよう！">
+              <p>
+                食品衛生法上の手続きについて、保健所に相談しましょう。
+                <br />
+                詳細は
+                <TextLink
+                  href="https://www.city.amagasaki.hyogo.jp/sangyo/zigyousya/insyokuten/1025137.html"
+                  target="_blank"
+                >
+                  尼崎市のホームページ
+                </TextLink>
+                をご覧ください。
+              </p>
+            </FlowItem>
+            <NextStep />
+            <FlowItem step={5} title="まずは1回やってみよう！">
+              <p>
+                当日のスケジュールや、今後の運営のおおまかな段取りなどが分かり、また、地域のみなさんに活動を知ってもらう機会にもなります。
+              </p>
+            </FlowItem>
+          </div>
+        </section>
+        <section class="grid gap-y-32">
+          <Heading id="mailing-list">
+            メーリングリストに登録することができます
+          </Heading>
+          <div
+            class="grid gap-y-12 lg:gap-y-20 [&>p]:text-md/loose [&>p]:max-w-640"
+          >
+            <p>
+              寄付食材や、研修会の情報等、活動を続けていくために役立つ情報をお届けします。
+            </p>
+            <p>
+              尼崎こども食堂ネットワーク事務局まで、登録希望のご連絡をお願いします。
+            </p>
+            <div
+              class="grid gap-y-12 rounded-xl border border-secondary-border bg-primary-background p-12 lg:p-20"
+            >
+              <p class="font-bold">連絡先のメールアドレス</p>
+              <p>{summary.mail.value}</p>
+              <p>
+                <CopyButton copyText={summary.mail.value}>
+                  メールアドレスをコピー
+                </CopyButton>
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
   </Layout>
 </Document>

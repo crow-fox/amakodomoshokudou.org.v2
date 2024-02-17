@@ -1,0 +1,23 @@
+---
+export type Props = {
+  title: string;
+  step: number;
+};
+
+const props = Astro.props;
+---
+
+<section
+  class="grid gap-y-12 rounded-xl bg-primary-background p-20 lg:gap-y-20 lg:p-32"
+>
+  <h3 class="grid justify-items-start gap-y-20">
+    <span
+      class="inline-block rounded-sm bg-secondary-background text-sm px-8 py-4"
+      >手順{props.step}</span
+    >
+    <span class="text-lg font-bold lg:text-xl">{props.title}</span>
+  </h3>
+  <div class="grid gap-y-12 lg:gap-y-20 [&>p]:text-md/loose [&>p]:max-w-640">
+    <slot />
+  </div>
+</section>
