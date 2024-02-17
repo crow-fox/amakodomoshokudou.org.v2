@@ -1,0 +1,16 @@
+---
+import { Image } from "astro:assets";
+import icon from "./assets/icon.svg";
+
+export type Props = {
+  target: string;
+};
+
+const props = Astro.props;
+---
+
+<a
+  href={`#${props.target}`}
+  class="inline-grid grid-cols-[auto,1em] items-center gap-x-8 border-b border-b-primary-border text-md pb-8"
+  ><slot /><Image src={icon} alt="へ移動" /></a
+>

@@ -13,6 +13,10 @@
     {
       "selector": "DownloadLink",
       "as": "a"
+    },
+    {
+      "selector": "ToSectionLink",
+      "as": "a"
     }
   ],
   "rules": {
