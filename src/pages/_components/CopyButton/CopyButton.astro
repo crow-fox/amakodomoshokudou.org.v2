@@ -1,0 +1,85 @@
+---
+import { Image } from "astro:assets";
+import icon from "./assets/icon.svg";
+
+export type Props = {
+  copyText: string;
+  successText?: string;
+};
+
+const { copyText, successText = "コピーしました" } = Astro.props;
+---
+
+<clipboard-copy data-copy-text={copyText} data-success-text={successText}>
+  <span class="inline-grid">
+    <button
+      class="inline-grid grid-cols-[1fr,1em] items-center gap-x-8 rounded-full border border-primary-border px-20 py-8 [grid-area:1/1]"
+    >
+      <slot />
+      <Image src={icon} alt="コピー" />
+    </button>
+    <span
+      aria-live="assertive"
+      data-open="false"
+      class="self-start justify-self-end rounded-sm border-secondary-border bg-tertiary-background text-xs [grid-area:1/1] data-[open=true]:border data-[open=true]:p-4"
+    ></span>
+  </span>
+</clipboard-copy>
+
+<script>
+  class ClipboardCopy extends HTMLElement {
+    private button: HTMLButtonElement;
+    private notify: HTMLSpanElement;
+    private onClickCopy: EventListener;
+
+    constructor() {
+      super();
+
+      const button = this.querySelector("button");
+      const notify = this.querySelector('span[aria-live="assertive"]');
+
+      if (button instanceof HTMLButtonElement) {
+        this.button = button;
+      } else {
+        throw new Error("button is not found");
+      }
+
+      if (notify instanceof HTMLSpanElement) {
+        this.notify = notify;
+      } else {
+        throw new Error("notify is not found");
+      }
+
+      this.onClickCopy = async () => this.copyToClipboard();
+      this.button.addEventListener("click", this.onClickCopy);
+    }
+
+    async copyToClipboard() {
+      const copyText = this.dataset.copyText;
+      const successText = this.dataset.successText;
+
+      if (!copyText || !successText)
+        throw new Error("copyText or successText is not defined");
+
+      try {
+        await navigator.clipboard.writeText(copyText);
+        this.notify.textContent = successText;
+        this.notify.dataset.open = "true";
+      } catch {
+        this.notify.textContent = "コピーに失敗しました";
+        this.notify.dataset.open = "true";
+      } finally {
+        setTimeout(() => {
+          this.notify.textContent = "";
+          this.notify.dataset.open = "false";
+        }, 3000);
+      }
+    }
+
+    disconnectedCallback() {
+      this.button.removeEventListener("click", this.onClickCopy);
+    }
+  }
+
+  customElements.define("clipboard-copy", ClipboardCopy);
+</script>

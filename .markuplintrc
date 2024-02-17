@@ -25,6 +25,10 @@
     {
       "selector": "Heading",
       "as": "h2"
+    },
+    {
+      "selector": "CopyButton",
+      "as": "button"
     }
   ],
   "rules": {
