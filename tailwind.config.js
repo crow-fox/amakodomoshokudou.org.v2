@@ -1,5 +1,6 @@
 import plugin from "tailwindcss/plugin";
 import defaultTheme from "tailwindcss/defaultTheme";
+import containerQuery from "@tailwindcss/container-queries";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -65,7 +66,7 @@ export default {
     },
     fontWeight: {
       normal: "400",
-      bold: "600",
+      bold: "500",
     },
     lineHeight: {
       none: "1",
@@ -86,9 +87,14 @@ export default {
       "2xl": "96em",
       // => @media (min-width: 1536px) { ... }
     },
-    extend: {},
+    extend: {
+      containers: (theme) => ({
+        ...theme("spacing"),
+      }),
+    },
   },
   plugins: [
+    containerQuery,
     plugin(({ matchUtilities, theme }) => {
       // デフォルトのユーティリティを論理プロパティで上書き
       // もし不都合な場合は、この部分とcorePluginsの設定をコメントアウトすればデフォルトの状態に戻る
