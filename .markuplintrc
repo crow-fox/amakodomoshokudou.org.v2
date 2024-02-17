@@ -9,6 +9,10 @@
     {
       "selector": "Image",
       "as": "img"
+    },
+    {
+      "selector": "DownloadLink",
+      "as": "a"
     }
   ],
   "rules": {

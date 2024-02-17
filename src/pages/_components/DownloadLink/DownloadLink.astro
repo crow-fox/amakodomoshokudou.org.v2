@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+import icon from "./assets/icon.svg";
+
+export type Props = {
+  href: string;
+  filename: string;
+};
+
+const props = Astro.props;
+---
+
+<a
+  href={props.href}
+  download={props.filename}
+  class="inline-grid grid-cols-[1fr,1em] items-center gap-x-8 rounded-full border border-primary-border px-20 py-8"
+>
+  <slot />
+  <Image src={icon} alt="ダウンロード" />
+</a>
