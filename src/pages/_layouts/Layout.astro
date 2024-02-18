@@ -1,19 +1,118 @@
 ---
 import type { BreadcrumbItems } from "@/components/common/Breadcrumb/types";
+import icon from "./assets/icon.svg";
+import name from "./assets/name.svg";
+import { Image } from "astro:assets";
+import { site } from "@/pages/_consts/site";
+import { summary } from "@/pages/_consts/summary";
+import CopyButton from "@/pages/_components/CopyButton/CopyButton.astro";
+import Menu from "@/pages/_layouts/Menu/Menu.astro";
 
 export type Props = {
   breadcrumb?: BreadcrumbItems;
 };
 
 const { breadcrumb } = Astro.props;
+
+const pathname = Astro.url.pathname;
+const navItems = [
+  { href: "/", text: "ホーム", isCurrent: pathname === "/" },
+  { href: "/about", text: "私たちについて", isCurrent: pathname === "/about" },
+  {
+    href: "/cafes",
+    text: "尼崎市のこども食堂",
+    isCurrent: pathname === "/cafes",
+  },
+  {
+    href: "/charity",
+    text: "こども食堂への支援",
+    isCurrent: pathname === "/charity",
+  },
+  {
+    href: "/start-cafe",
+    text: "こども食堂の立ち上げ",
+    isCurrent: pathname === "/start-cafe",
+  },
+  { href: summary.facebook.value, text: "お知らせ（Facebook）" },
+];
 ---
 
 <div
-  class="grid grid-rows-[auto,1fr,auto,auto] h-svh [grid-template-areas:'header'_'main'_'breadcrumb'_'footer'] lg:grid-cols-[theme(spacing[220]),1fr] lg:grid-rows-[1fr,auto,auto] lg:[grid-template-areas:'header_main'_'header_breadcrumb'_'header_footer']"
+  class="grid min-h-svh grid-rows-[auto,1fr,auto,auto] [grid-template-areas:'header'_'main'_'breadcrumb'_'footer'] lg:grid-rows-[1fr,auto,auto] lg:pl-220 lg:[grid-template-areas:'main'_'breadcrumb'_'footer']"
 >
   <header
-    class="sticky top-0 border-b border-b-secondary-border bg-primary-background [grid-area:header] lg:static lg:size-full lg:overflow-y-auto lg:border-b-0 lg:border-r lg:border-r-secondary-border"
+    class="sticky top-0 z-10 flex flex-wrap items-center justify-between gap-12 border-b border-b-secondary-border bg-primary-background px-20 py-8 h-full lg:fixed lg:left-0 lg:top-0 lg:flex lg:flex-col lg:flex-nowrap lg:items-stretch lg:justify-stretch lg:gap-0 lg:overflow-y-auto lg:border-b-0 lg:border-r lg:border-r-secondary-border lg:px-12 lg:py-20 lg:w-220 lg:h-full"
   >
+    <p
+      class="flex flex-wrap place-items-center gap-x-4 lg:flex-col lg:flex-nowrap"
+    >
+      <Image src={icon} alt="" class="max-w-52 w-full lg:max-w-84" />
+      <Image src={name} alt={site.title} class="max-w-84 w-full lg:max-w-136" />
+    </p>
+    <Menu>
+      <div class="grid gap-y-20">
+        <nav class="">
+          <ul class="grid gap-y-8">
+            {
+              navItems.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    class={[
+                      "grid rounded-xl font-bold px-12 py-8",
+                      item.isCurrent && "bg-secondary-background",
+                    ].join(" ")}
+                  >
+                    {item.text}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+        <div
+          class="grid gap-y-12 rounded-xl border border-secondary-border p-12"
+        >
+          <p class="font-bold">お問い合わせはこちら</p>
+          <p class="">
+            {summary.mail.value}
+          </p>
+          <CopyButton copyText={summary.mail.value}>メールアドレス</CopyButton>
+        </div>
+      </div>
+    </Menu>
+    <nav class="hidden lg:block lg:mt-20">
+      <ul class="grid gap-y-4">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                class={[
+                  "grid rounded-xl text-sm font-bold px-12 py-8",
+                  item.isCurrent && "bg-secondary-background",
+                ].join(" ")}
+              >
+                {item.text}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div
+      class="hidden gap-y-12 rounded-xl border border-secondary-border p-12 lg:grid lg:mt-20"
+    >
+      <p class="text-sm font-bold">お問い合わせはこちら</p>
+      <p class="text-xs">
+        {summary.mail.value}
+      </p>
+      <CopyButton size="sm" copyText={summary.mail.value}>
+        メールアドレス
+      </CopyButton>
+    </div>
   </header>
   <main class="[grid-area:main]">
     <slot />
