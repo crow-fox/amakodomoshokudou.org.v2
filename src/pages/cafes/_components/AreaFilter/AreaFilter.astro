@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import icon from "./assets/icon.svg";
+
+const areas = [
+  {
+    slug: "",
+    name: "すべて",
+  },
+  {
+    slug: "muko",
+    name: "武庫",
+  },
+  {
+    slug: "tachibana",
+    name: "立花",
+  },
+  {
+    slug: "sonoda",
+    name: "園田",
+  },
+  {
+    slug: "osho",
+    name: "大庄",
+  },
+  {
+    slug: "chuo",
+    name: "中央",
+  },
+  {
+    slug: "oda",
+    name: "小田",
+  },
+];
+---
+
+<details
+  class="group rounded-full border border-primary-border bg-tertiary-background open:rounded-xl"
+>
+  <summary
+    class="grid cursor-pointer grid-cols-[1fr,1.5em] items-center rounded-full bg-primary-background px-20 py-8 group-open:rounded-b-none group-open:rounded-t-xl"
+  >
+    <span class="font-bold">地区で絞る</span>
+    <Image src={icon} alt="" class="w-full group-open:rotate-180" />
+  </summary>
+  <nav class="border-t border-t-secondary-border px-20 py-12">
+    <ol
+      class="grid grid-cols-[repeat(auto-fill,min(theme(spacing[84]),100%))] gap-12"
+    >
+      {
+        areas.map((area) => (
+          <li>
+            <a
+              href={`/cafes/${area.slug}`}
+              class="grid justify-center rounded-full border border-primary-border bg-primary-background px-12 py-8"
+            >
+              {area.name}
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </nav>
+</details>
