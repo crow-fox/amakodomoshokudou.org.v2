@@ -1,0 +1,33 @@
+---
+export type Props = {
+  total: number;
+  current: number;
+  baseUrl: string;
+};
+
+const props = Astro.props;
+---
+
+<nav>
+  <ol class="flex flex-wrap gap-12">
+    {
+      Array.from({ length: props.total }).map((_, i) => {
+        const page = i + 1;
+        const href = page === 1 ? props.baseUrl : `${props.baseUrl}/${page}`;
+        const isCurrent = page === props.current;
+
+        return (
+          <li>
+            <a
+              href={href}
+              aria-current={isCurrent ? "page" : undefined}
+              class=" inline-grid size-52 place-content-center rounded-full border border-primary-border bg-primary-background font-bold aria-[current]:bg-secondary-background"
+            >
+              {page}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ol>
+</nav>
