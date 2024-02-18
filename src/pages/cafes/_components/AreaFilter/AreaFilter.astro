@@ -1,37 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import icon from "./assets/icon.svg";
+import { getAllAreas } from "@/service/service";
 
-const areas = [
-  {
-    slug: "",
-    name: "すべて",
-  },
-  {
-    slug: "muko",
-    name: "武庫",
-  },
-  {
-    slug: "tachibana",
-    name: "立花",
-  },
-  {
-    slug: "sonoda",
-    name: "園田",
-  },
-  {
-    slug: "osho",
-    name: "大庄",
-  },
-  {
-    slug: "chuo",
-    name: "中央",
-  },
-  {
-    slug: "oda",
-    name: "小田",
-  },
-];
+const { areas } = await getAllAreas();
+const pathname = Astro.url.pathname;
 ---
 
 <details
@@ -47,12 +20,35 @@ const areas = [
     <ol
       class="grid grid-cols-[repeat(auto-fill,min(theme(spacing[84]),100%))] gap-12"
     >
+      <li>
+        <a
+          href="/cafes"
+          aria-current={pathname === "/cafes" ? "page" : undefined}
+          class={[
+            "grid justify-center rounded-full border border-primary-border px-12 py-8",
+            pathname.startsWith("/cafes") &&
+            !pathname.startsWith("/cafes/areas")
+              ? "bg-secondary-background"
+              : "bg-primary-background",
+          ].join(" ")}
+        >
+          すべて
+        </a>
+      </li>
       {
         areas.map((area) => (
           <li>
             <a
-              href={`/cafes/${area.slug}`}
-              class="grid justify-center rounded-full border border-primary-border bg-primary-background px-12 py-8"
+              href={`/cafes/areas/${area.slug}`}
+              aria-current={
+                pathname === `/cafes/areas/${area.slug}` ? "page" : undefined
+              }
+              class={[
+                "grid justify-center rounded-full border border-primary-border px-12 py-8",
+                pathname.startsWith(`/cafes/areas/${area.slug}`)
+                  ? "bg-secondary-background"
+                  : "bg-primary-background",
+              ].join(" ")}
             >
               {area.name}
             </a>
