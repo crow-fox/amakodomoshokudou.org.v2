@@ -1,6 +1,5 @@
 ---
 import type { GetStaticPaths } from "astro";
-import type { BreadcrumbItems } from "@/components/common/Breadcrumb/types";
 import DownloadLink from "@/pages/_components/DownloadLink/DownloadLink.astro";
 import Document from "@/pages/_layouts/Document.astro";
 import AreaFilter from "@/pages/cafes/_components/AreaFilter/AreaFilter.astro";
@@ -9,6 +8,7 @@ import { getCafes } from "@/service/service";
 import Pagination from "@/pages/cafes/_components/Pagination/Pagination.astro";
 import { site } from "@/pages/_consts/site";
 import Layout from "@/pages/_layouts/Layout.astro";
+import type { BreadcrumbItems } from "@/pages/_layouts/Breadcrumb/type";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const { cafes } = await getCafes();

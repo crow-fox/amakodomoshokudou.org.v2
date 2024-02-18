@@ -1,5 +1,4 @@
 ---
-import type { BreadcrumbItems } from "@/components/common/Breadcrumb/types";
 import icon from "./assets/icon.svg";
 import name from "./assets/name.svg";
 import { Image } from "astro:assets";
@@ -7,6 +6,8 @@ import { site } from "@/pages/_consts/site";
 import { summary } from "@/pages/_consts/summary";
 import CopyButton from "@/pages/_components/CopyButton/CopyButton.astro";
 import Menu from "@/pages/_layouts/Menu/Menu.astro";
+import Breadcrumb from "@/pages/_layouts/Breadcrumb/Breadcrumb.astro";
+import type { BreadcrumbItems } from "@/pages/_layouts/Breadcrumb/type";
 
 export type Props = {
   breadcrumb?: BreadcrumbItems;
@@ -117,7 +118,7 @@ const navItems = [
   <main class="[grid-area:main]">
     <slot />
   </main>
-  {breadcrumb && <nav class="[grid-area:breadcrumb]" />}
+  {breadcrumb && <Breadcrumb items={breadcrumb} />}
   <footer class="border-t border-t-secondary-border p-20 [grid-area:footer]">
     <div
       class="flex flex-wrap justify-between gap-x-20 gap-y-12 mx-auto max-w-932"
