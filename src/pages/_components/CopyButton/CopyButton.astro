@@ -5,10 +5,16 @@ import img from "./assets/icon.svg";
 export type Props = {
   copyText: string;
   successText?: string;
+  label?: boolean;
   size?: "sm" | "md";
 };
 
-const { copyText, successText = "コピーしました", size = "md" } = Astro.props;
+const {
+  copyText,
+  successText = "コピーしました",
+  size = "md",
+  label = false,
+} = Astro.props;
 const icon = await getImage({ src: img });
 ---
 
@@ -24,7 +30,7 @@ const icon = await getImage({ src: img });
       <slot />
       <span
         role="img"
-        aria-label="をコピー"
+        aria-label={label ? "をコピー" : undefined}
         style={{
           maskImage: `url(${icon.src})`,
           WebkitMaskImage: `url(${icon.src})`,

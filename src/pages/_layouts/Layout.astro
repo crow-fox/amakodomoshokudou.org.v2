@@ -96,7 +96,9 @@ const navItems = [
           <p class="">
             {summary.mail.value}
           </p>
-          <CopyButton copyText={summary.mail.value}>メールアドレス</CopyButton>
+          <CopyButton copyText={summary.mail.value}>
+            メールアドレスをコピー
+          </CopyButton>
         </div>
       </div>
     </Menu>
@@ -140,7 +142,7 @@ const navItems = [
       <p class="text-xs">
         {summary.mail.value}
       </p>
-      <CopyButton size="sm" copyText={summary.mail.value}>
+      <CopyButton size="sm" copyText={summary.mail.value} label>
         メールアドレス
       </CopyButton>
     </div>
