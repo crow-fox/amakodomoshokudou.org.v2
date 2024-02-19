@@ -1,16 +1,28 @@
 ---
-import { Image } from "astro:assets";
-import closeIcon from "./assets/cancel.svg";
-import menuIcon from "./assets/menu.svg";
+import { getImage } from "astro:assets";
+import closeImg from "./assets/close.svg";
+import menuImg from "./assets/menu.svg";
+
+const [closeIcon, menuIcon] = await Promise.all([
+  getImage({ src: closeImg }),
+  getImage({ src: menuImg }),
+]);
 ---
 
 <menu-dialog>
   <button
     id="menu-open"
     aria-expanded="false"
-    class="inline-grid grid-cols-[1.25rem,1fr] items-center gap-x-4 rounded-full border border-primary-border text-sm font-bold px-12 py-4 lg:hidden"
+    class="inline-grid grid-cols-[auto,1fr] items-center gap-x-8 rounded-full border border-primary-border text-sm font-bold px-12 py-4 lg:hidden"
   >
-    <Image src={menuIcon} alt="" />メニュー
+    <span
+      role="img"
+      style={{
+        maskImage: `url(${menuIcon.src})`,
+        WebkitMaskImage: `url(${menuIcon.src})`,
+      }}
+      class="size-[1.25em] bg-[currentColor] [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover]"
+    ></span>メニュー
   </button>
   <dialog
     aria-label="メニュー"
@@ -22,7 +34,14 @@ import menuIcon from "./assets/menu.svg";
           id="menu-close"
           class="flex items-center justify-center gap-x-8 rounded-full border border-primary-border bg-primary-background font-bold px-12 py-8"
         >
-          <Image src={closeIcon} alt="" class="w-20" />閉じる
+          <span
+            role="img"
+            style={{
+              maskImage: `url(${closeIcon.src})`,
+              WebkitMaskImage: `url(${closeIcon.src})`,
+            }}
+            class="size-[1.25em] bg-[currentColor] [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover]"
+          ></span>閉じる
         </button>
         <slot />
       </div>

@@ -1,18 +1,27 @@
 ---
-import { Image } from "astro:assets";
-import icon from "./assets/icon.svg";
+import { getImage } from "astro:assets";
+import img from "./assets/icon.svg";
 
 export type Props = {
   href: string;
 };
 
 const props = Astro.props;
+
+const icon = await getImage({ src: img });
 ---
 
 <a
   href={props.href}
-  class="inline-grid grid-cols-[1fr,1em] items-center gap-x-8 rounded-full border border-primary-border bg-primary-background px-20 py-8"
+  class="inline-grid grid-cols-[1fr,auto] items-center gap-x-8 rounded-full border border-primary-border bg-primary-background px-20 py-8"
 >
   <slot />
-  <Image src={icon} alt="" class="" />
+  <span
+    role="img"
+    style={{
+      maskImage: `url(${icon.src})`,
+      WebkitMaskImage: `url(${icon.src})`,
+    }}
+    class="size-[1em] bg-[currentColor] [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover]"
+  ></span>
 </a>
