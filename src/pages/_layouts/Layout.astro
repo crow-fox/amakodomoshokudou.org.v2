@@ -17,7 +17,7 @@ const { breadcrumb } = Astro.props;
 
 const pathname = Astro.url.pathname;
 const navItems = [
-  { href: "/", text: "ホーム", isCurrent: pathname === "/" },
+  { href: "/", text: "トップページ", isCurrent: pathname === "/" },
   { href: "/about", text: "私たちについて", isCurrent: pathname === "/about" },
   {
     href: "/cafes",
@@ -34,7 +34,11 @@ const navItems = [
     text: "こども食堂の立ち上げ",
     isCurrent: pathname === "/start-cafe",
   },
-  { href: summary.facebook.value, text: "お知らせ（Facebook）" },
+  {
+    href: summary.facebook.value,
+    text: "お知らせ（Facebook）",
+    isExternal: true,
+  },
 ];
 ---
 
@@ -63,9 +67,22 @@ const navItems = [
                     class={[
                       "grid rounded-xl font-bold px-12 py-8",
                       item.isCurrent && "bg-secondary-background",
+                      item.isExternal && "grid-cols-[auto,1fr] items-center",
                     ].join(" ")}
                   >
                     {item.text}
+                    {item.isExternal && (
+                      <svg
+                        role="img"
+                        aria-label="外部リンク"
+                        height="1em"
+                        viewBox="0 -960 960 960"
+                        width="1em"
+                        class="fill-[currentColor]"
+                      >
+                        <path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h279v60H180v600h600v-279h60v279q0 24-18 42t-42 18H180Zm202-219-42-43 398-398H519v-60h321v321h-60v-218L382-339Z" />
+                      </svg>
+                    )}
                   </a>
                 </li>
               ))
@@ -92,11 +109,24 @@ const navItems = [
                 href={item.href}
                 target={item.href.startsWith("http") ? "_blank" : undefined}
                 class={[
-                  "grid rounded-xl text-sm font-bold px-12 py-8",
+                  "grid  rounded-xl text-sm font-bold px-12 py-8",
                   item.isCurrent && "bg-secondary-background",
+                  item.isExternal && "grid-cols-[auto,1fr] items-center",
                 ].join(" ")}
               >
                 {item.text}
+                {item.isExternal && (
+                  <svg
+                    role="img"
+                    aria-label="外部リンク"
+                    height="1em"
+                    viewBox="0 -960 960 960"
+                    width="1em"
+                    class="fill-[currentColor]"
+                  >
+                    <path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h279v60H180v600h600v-279h60v279q0 24-18 42t-42 18H180Zm202-219-42-43 398-398H519v-60h321v321h-60v-218L382-339Z" />
+                  </svg>
+                )}
               </a>
             </li>
           ))
