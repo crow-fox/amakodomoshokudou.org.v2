@@ -34,18 +34,16 @@ import ButtonLink from "@/pages/_components/ButtonLink/ButtonLink.astro";
         <section class="grid gap-y-20">
           <Heading>活動内容</Heading>
           <Activities />
-          <p class="grid max-w-356">
+          <p class="grid mx-auto w-[min(theme(spacing[220]),100%)]">
             <ButtonLink href="/about">私たちについて</ButtonLink>
           </p>
-          <!-- <div class="grid gap-y-20"> -->
-          <!-- </div> -->
         </section>
         <section
           class="grid gap-y-20 [&>p:not([class])]:text-md/loose [&>p:not([class])]:max-w-640"
         >
           <Heading>尼崎市のこども食堂</Heading>
           <p>尼崎市内の子ども食堂は一覧ページから探すことができます。</p>
-          <p class="grid max-w-356">
+          <p class="grid max-w-220">
             <ButtonLink href="/cafes">尼崎市のこども食堂</ButtonLink>
           </p>
         </section>
@@ -56,7 +54,7 @@ import ButtonLink from "@/pages/_components/ButtonLink/ButtonLink.astro";
             多くの食堂が地域のこどもたちにとっての「身近な地域の居場所」であり続けられるために、応援よろしくお願いします。
           </p>
           <ul
-            class="grid grid-cols-[repeat(auto-fill,min(theme(spacing[356]),100%))] gap-20"
+            class="grid grid-cols-[repeat(auto-fill,min(theme(spacing[220]),100%))] gap-20"
           >
             <li class="grid">
               <ButtonLink href="/charity/#with-items">物品で支援</ButtonLink>
@@ -75,7 +73,7 @@ import ButtonLink from "@/pages/_components/ButtonLink/ButtonLink.astro";
           <p>
             尼崎市でこども食堂を始めたい場合は、立ち上げの流れを解説したページを参考にしてください。
           </p>
-          <p class="grid max-w-356">
+          <p class="grid max-w-220">
             <ButtonLink href="/start-cafe">こども食堂の立ち上げ</ButtonLink>
           </p>
         </section>
