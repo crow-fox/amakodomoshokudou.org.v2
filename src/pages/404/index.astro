@@ -1,8 +1,8 @@
 ---
-import NotFoundPage from "@/components/pages/NotFoundPage/NotFoundPage.astro";
-import type { BreadcrumbItems } from "@/components/common/Breadcrumb/types";
-import Document from "@/components/layouts/Document/Document.astro";
-import Layout from "@/components/layouts/Layout/Layout.astro";
+import TextLink from "@/pages/_components/TextLink/TextLink.astro";
+import type { BreadcrumbItems } from "@/pages/_layouts/Breadcrumb/type";
+import Document from "@/pages/_layouts/Document.astro";
+import Layout from "@/pages/_layouts/Layout.astro";
 
 const breadcrumb: BreadcrumbItems = [
   {
@@ -10,13 +10,29 @@ const breadcrumb: BreadcrumbItems = [
     href: "/",
   },
   {
-    title: "お探しのページは見つかりませんでした",
+    title: "指定されたページは見つかりませんでした",
   },
 ];
 ---
 
 <Document title="お探しのページは見つかりませんでした">
   <Layout breadcrumb={breadcrumb}>
-    <NotFoundPage />
+    <div class="border-t-8 border-t-accent px-20 py-32 lg:px-32 lg:py-52">
+      <div class="grid gap-y-20 mx-auto max-w-932 lg:gap-y-32">
+        <h1 class="text-2xl font-bold lg:text-3xl">
+          指定されたページは見つかりませんでした
+        </h1>
+        <div class="grid gap-y-20 [&>p]:text-md/loose [&>p]:max-w-640">
+          <p>
+            指定されたページはすでに削除もしくはURLが変更された可能性があります。
+          </p>
+          <p>
+            大変お手数ですが、URLをご確認の上、再度お試しいただくか、
+            <TextLink href="/">トップページ</TextLink>
+            からお探しください。
+          </p>
+        </div>
+      </div>
+    </div>
   </Layout>
 </Document>
