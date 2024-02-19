@@ -18,6 +18,7 @@ export default {
       accent: "var(--accent)",
       danger: "var(--danger)",
       link: "var(--link)",
+      outline: "var(--outline)",
       primary: {
         background: "var(--primary-background)",
         text: "var(--primary-text)",
