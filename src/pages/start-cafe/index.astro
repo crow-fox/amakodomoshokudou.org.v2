@@ -58,9 +58,9 @@ const breadcrumb: BreadcrumbItems = [
 
     <div class="bg-secondary-background px-20 py-32 lg:px-32 lg:py-52">
       <div class="grid gap-y-52 mx-auto max-w-932 lg:gap-y-84">
-        <section class="grid gap-y-32">
+        <section class="grid gap-y-20">
           <Heading id="flow">立ち上げの流れ</Heading>
-          <div class="grid gap-y-20 lg:gap-y-32">
+          <div class="grid gap-y-20">
             <FlowItem step={1} title="まずは気持ちを整理！">
               <p>
                 なぜ活動しようと思ったのか、どんな食堂にしたいのか、気持ちを整理してみましょう。
@@ -120,30 +120,26 @@ const breadcrumb: BreadcrumbItems = [
             </FlowItem>
           </div>
         </section>
-        <section class="grid gap-y-32">
+        <section class="grid gap-y-20 [&>p]:text-md/loose [&>p]:max-w-640">
           <Heading id="mailing-list">
             メーリングリストに登録することができます
           </Heading>
+          <p>
+            寄付食材や、研修会の情報等、活動を続けていくために役立つ情報をお届けします。
+          </p>
+          <p>
+            尼崎こども食堂ネットワーク事務局まで、登録希望のご連絡をお願いします。
+          </p>
           <div
-            class="grid gap-y-12 lg:gap-y-20 [&>p]:text-md/loose [&>p]:max-w-640"
+            class="grid gap-y-12 rounded-xl border border-secondary-border bg-primary-background p-12 lg:p-20"
           >
+            <p class="font-bold">連絡先のメールアドレス</p>
+            <p class="text-sm">{summary.mail.value}</p>
             <p>
-              寄付食材や、研修会の情報等、活動を続けていくために役立つ情報をお届けします。
+              <CopyButton copyText={summary.mail.value}>
+                メールアドレスをコピー
+              </CopyButton>
             </p>
-            <p>
-              尼崎こども食堂ネットワーク事務局まで、登録希望のご連絡をお願いします。
-            </p>
-            <div
-              class="grid gap-y-12 rounded-xl border border-secondary-border bg-primary-background p-12 lg:p-20"
-            >
-              <p class="font-bold">連絡先のメールアドレス</p>
-              <p class="text-sm">{summary.mail.value}</p>
-              <p>
-                <CopyButton copyText={summary.mail.value}>
-                  メールアドレスをコピー
-                </CopyButton>
-              </p>
-            </div>
           </div>
         </section>
       </div>
