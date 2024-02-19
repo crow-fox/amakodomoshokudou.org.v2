@@ -17,12 +17,12 @@
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --accent: #665229;
-      --danger: rgb(169, 96, 96);
-      --link: rgb(0, 153, 255);
+      --accent: #b28f47;
+      --danger: #f25a5a;
+      --link: #3e96e5;
       --primary-background: #0d0d0d;
       --primary-text: #d1cdc2;
-      --primary-border: #734c00;
+      --primary-border: #996600;
       --secondary-background: #262522;
       --secondary-border: #5c5c5c;
       --tertiary-background: #262626;
