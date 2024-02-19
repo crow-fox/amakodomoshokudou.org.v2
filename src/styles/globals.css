@@ -17,15 +17,15 @@
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --accent: rgb(96, 72, 21);
+      --accent: #665229;
       --danger: rgb(169, 96, 96);
       --link: rgb(0, 153, 255);
-      --primary-background: rgb(34, 34, 34);
-      --primary-text: rgb(232, 232, 232);
-      --primary-border: rgb(232, 232, 232);
-      --secondary-background: rgb(56, 54, 51);
-      --secondary-border: rgb(107, 107, 107);
-      --tertiary-background: rgb(16, 16, 16);
+      --primary-background: #0d0d0d;
+      --primary-text: #d1cdc2;
+      --primary-border: #734c00;
+      --secondary-background: #262522;
+      --secondary-border: #5c5c5c;
+      --tertiary-background: #262626;
     }
   }
 
@@ -35,5 +35,10 @@
 
   small {
     font-size: inherit;
+  }
+
+  dialog {
+    color: inherit;
+    margin: 0;
   }
 }
