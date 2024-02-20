@@ -11,11 +11,11 @@
     "lint:es": "eslint 'src/**/*.{astro,ts,tsx}'",
     "lint:html": "markuplint 'src/**/*.{astro,html}'",
     "prettier": "exec prettier --write 'src/**/*.{astro,ts,tsx,css,html}'",
-    "lint": "pnpm run lint:es && pnpm run lint:html && pnpm run prettier",
-    "prepare": "pnpx simple-git-hooks"
+    "lint": "bun run lint:es && bun run lint:html && bun run prettier",
+    "prepare": "bunx simple-git-hooks"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpx lint-staged"
+    "pre-commit": "bunx lint-staged"
   },
   "lint-staged": {
     "*.{astro,ts,tsx}": [
