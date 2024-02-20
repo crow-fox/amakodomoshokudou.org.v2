@@ -1,7 +1,5 @@
-import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
-
+import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
@@ -20,8 +18,5 @@ export default defineConfig({
   trailingSlash: "never",
   build: {
     assets: "assets",
-  },
-  vite: {
-    plugins: [vanillaExtractPlugin()],
   },
 });
