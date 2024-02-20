@@ -8,11 +8,10 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint:css": "stylelint 'src/**/*.css'",
     "lint:es": "eslint 'src/**/*.{astro,ts,tsx}'",
     "lint:html": "markuplint 'src/**/*.{astro,html}'",
     "prettier": "exec prettier --write 'src/**/*.{astro,ts,tsx,css,html}'",
-    "lint": "pnpm run lint:css && pnpm run lint:es && pnpm run lint:html && pnpm run prettier",
+    "lint": "pnpm run lint:es && pnpm run lint:html && pnpm run prettier",
     "prepare": "pnpx simple-git-hooks"
   },
   "simple-git-hooks": {
@@ -27,7 +26,6 @@
       "markuplint"
     ],
     "*.css": [
-      "stylelint --fix",
       "prettier --write"
     ]
   },
@@ -55,9 +53,6 @@
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.12.3",
     "prettier-plugin-tailwindcss": "^0.5.11",
-    "stylelint": "^15.11.0",
-    "stylelint-config-recess-order": "^4.4.0",
-    "stylelint-config-standard": "^34.0.0",
     "tailwindcss": "^3.4.1"
   }
 }
