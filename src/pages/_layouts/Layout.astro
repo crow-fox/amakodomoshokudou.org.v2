@@ -63,10 +63,10 @@ const navItems = [
                 <li>
                   <a
                     href={item.href}
-                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    target={item.isExternal ? "_blank" : undefined}
+                    aria-current={item.isCurrent ? "page" : undefined}
                     class={[
-                      "grid rounded-xl font-bold px-12 py-8",
-                      item.isCurrent && "bg-secondary-background",
+                      "grid rounded-xl font-bold px-12 py-8 aria-[current=page]:bg-secondary-background",
                       item.isExternal && "grid-cols-[auto,1fr] items-center",
                     ].join(" ")}
                   >
@@ -109,10 +109,10 @@ const navItems = [
             <li>
               <a
                 href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
+                target={item.isExternal ? "_blank" : undefined}
+                aria-current={item.isCurrent ? "page" : undefined}
                 class={[
-                  "grid  rounded-xl text-sm font-bold px-12 py-8",
-                  item.isCurrent && "bg-secondary-background",
+                  "grid rounded-xl text-sm font-bold px-12 py-8 aria-[current=page]:bg-secondary-background",
                   item.isExternal && "grid-cols-[auto,1fr] items-center",
                 ].join(" ")}
               >
