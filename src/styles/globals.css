@@ -43,6 +43,10 @@
     @apply outline-2 outline-offset-2 outline-outline;
   }
 
+  :target {
+    @apply scroll-mt-84 scroll-p-0 lg:scroll-mt-20;
+  }
+
   small {
     font-size: inherit;
   }
