@@ -7,15 +7,16 @@ import Layout from "@/pages/_layouts/Layout.astro";
 import AreaFilter from "@/pages/cafes/_components/AreaFilter/AreaFilter.astro";
 import CafeList from "@/pages/cafes/_components/CafeList/CafeList.astro";
 import Pagination from "@/pages/cafes/_components/Pagination/Pagination.astro";
-import { getAllAreas, getCafesByArea } from "@/service/service";
+import { fetchAreas } from "@/pages/cafes/_utils/area";
+import { fetchCafesByAreaId } from "@/pages/cafes/_utils/cafe";
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const { areas } = await getAllAreas();
+  const areas = await fetchAreas();
 
   const cafesByArea = await Promise.all(
     areas.map(async (area) => {
-      const { cafes } = await getCafesByArea(area._id);
+      const cafes = await fetchCafesByAreaId(area._id);
 
       return {
         area,

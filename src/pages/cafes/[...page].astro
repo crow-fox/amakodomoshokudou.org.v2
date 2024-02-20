@@ -1,17 +1,17 @@
 ---
-import type { GetStaticPaths } from "astro";
 import DownloadLink from "@/pages/_components/DownloadLink/DownloadLink.astro";
+import { site } from "@/pages/_consts/site";
+import type { BreadcrumbItems } from "@/pages/_layouts/Breadcrumb/type";
 import Document from "@/pages/_layouts/Document.astro";
+import Layout from "@/pages/_layouts/Layout.astro";
 import AreaFilter from "@/pages/cafes/_components/AreaFilter/AreaFilter.astro";
 import CafeList from "@/pages/cafes/_components/CafeList/CafeList.astro";
-import { getCafes } from "@/service/service";
 import Pagination from "@/pages/cafes/_components/Pagination/Pagination.astro";
-import { site } from "@/pages/_consts/site";
-import Layout from "@/pages/_layouts/Layout.astro";
-import type { BreadcrumbItems } from "@/pages/_layouts/Breadcrumb/type";
+import { fetchCafes } from "@/pages/cafes/_utils/cafe";
+import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const { cafes } = await getCafes();
+  const cafes = await fetchCafes();
 
   return paginate(cafes, {
     pageSize: site.cafesPerPage,
