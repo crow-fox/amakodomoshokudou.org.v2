@@ -108,10 +108,7 @@ const breadcrumb: BreadcrumbItems = isFirstPage
           <p class="font-bold">PDF版の資料</p>
           <p>
             <DownloadLink
-              href={new URL(
-                "/media/documents/amakodomoshokudou-map.pdf",
-                Astro.site,
-              ).toString()}
+              href="/media/documents/amakodomoshokudou-map.pdf"
               filename="amacodomoshokudou-map"
             >
               尼崎こども食堂マップ
