@@ -4,15 +4,15 @@
 
 ### ローカルサーバー起動
 
-`pnpm dev`
+`bun run dev`
 
 ### ビルド
 
-`pnpm build`
+`bun run build`
 
 ### プレビュー
 
-`pnpm start`
+`bun run start`
 
 ### デプロイ
 
@@ -23,10 +23,12 @@
 
 - フレームワーク：Astro
 - 言語：TypeScript
-- CSS：Vanilla-extract
+- CSS：TailwindCSS
 - HeadlessCMS：Newt
 
 ## ディレクトリ構成
+
+\_で始まるディレクトリはpages配下で使用してもページとして出力されないため、必要な関数やコンポーネントはページのディレクトリに配置する
 
 ```
 root/
@@ -37,37 +39,35 @@ root/
 │   │
 │   └── documents/          # PDFなどのファイル
 │
-└── src/                    # Viteでバンドルされる
+|__ src/
+    |
+    ├── pages/             # webサイトを構成する基本的に全ての要素
+    |   |
+    │   ├── _assets        # 共通アセット
+    │   |
+    │   ├── _components    # 共通コンポーネント
+    |   |
+    │   ├── _consts        # 共通定数
+    |   |
+    │   ├── _layouts       # 共通レイアウト
+    |   |
+    │   ├── _libs          # 共通関数
+    |   |
+    │   ├── _schemas       # 型定義など
+    |   |
+    │   ├── 404            # エラーページ
+    │   |
+    │   ├── about          # 尼崎こども食堂ネットワークについて
+    │   |
+    │   ├── cafes          # 尼崎市のこども食堂（地区ごとの一覧も含む）
+    │   |
+    │   ├── charity        # 尼崎のこども食堂への寄付
+    │   |
+    │   ├── privacy-policy # プライバシーポリシー
+    │   |
+    │   ├── start-cafe     # こども食堂の立ち上げ
+    │   |
+    │   ├── index.astro    # トップページ
     │
-    ├── components/         # 全コンポーネント
-    │   │
-    │   ├── common/         # 汎用コンポーネント
-    │   │
-    │   ├── layouts/        # 共通レイアウトコンポーネント
-    │   │
-    │   └── pages/          # ページごとの固有コンポーネント
-    │
-    ├── consts/             # 共通の変数
-    │
-    ├── pages/              # ページのルーティングとデータロード
-    │
-    ├── service/            # 外部APIと連携
-    │
-    ├── styles/             # 共通のCSSファイル
-    │
-    ├── types/              # 共通の型定義
-    │
-    └── utils/              # 汎用関数
-```
-
-## コンポーネント構成
-
-Astroファイル名をindex.astroにすると、コンポーネントを使用する時に、vscodeで補完が効かないのでComponent.astroにする
-
-```
-Component/
-│
-├── Component.astro         # JSとHTMLを記述するAstroコンポーネント
-│
-└── Component.css.ts        # CSSはVanilla-extractを使用して定義
+    ├── styles/            # 共通スタイル
 ```
