@@ -96,7 +96,8 @@ export default {
   },
   plugins: [
     containerQuery,
-    plugin(({ matchUtilities, theme }) => {
+    plugin(({ matchUtilities, theme, addComponents }) => {
+      console.log(theme("spacing"));
       // デフォルトのユーティリティを論理プロパティで上書き
       // もし不都合な場合は、この部分とcorePluginsの設定をコメントアウトすればデフォルトの状態に戻る
       matchUtilities(
@@ -196,6 +197,15 @@ export default {
           values: theme("maxHeight"),
         },
       );
+      addComponents({
+        ".prose": {
+          "&>p:not([class])": {
+            maxInlineSize: theme("spacing")[640],
+            fontSize: theme("fontSize").md[0],
+            lineHeight: theme("lineHeight").loose,
+          },
+        },
+      });
     }),
   ],
 };
