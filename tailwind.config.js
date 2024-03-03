@@ -97,7 +97,6 @@ export default {
   plugins: [
     containerQuery,
     plugin(({ matchUtilities, theme, addComponents }) => {
-      console.log(theme("spacing"));
       // デフォルトのユーティリティを論理プロパティで上書き
       // もし不都合な場合は、この部分とcorePluginsの設定をコメントアウトすればデフォルトの状態に戻る
       matchUtilities(
