@@ -27,8 +27,12 @@ const breadcrumb: BreadcrumbItems = [
   desc="尼崎のこども食堂を支援するための方法を記載しています。多くの食堂が地域のこどもたちにとっての「身近な地域の居場所」であり続けられるために、応援よろしくお願いします。"
 >
   <Layout breadcrumb={breadcrumb}>
-    <div class="border-t-8 border-t-accent px-20 py-32 lg:px-32 lg:py-52">
-      <div class="grid gap-y-20 mx-auto max-w-932 lg:gap-y-32">
+    <div
+      class="grid grid-cols-[minmax(theme(spacing[20]),1fr)_minmax(0,theme(spacing[932]))_minmax(theme(spacing[20]),1fr)] lg:grid-cols-[minmax(theme(spacing[32]),1fr)_minmax(0,theme(spacing[932]))_minmax(theme(spacing[32]),1fr)]"
+    >
+      <div
+        class="grid grid-cols-subgrid gap-y-20 border-t-8 border-t-accent py-32 [grid-column:1/-1] lg:gap-y-32 lg:py-52 [&>*]:[grid-column:2]"
+      >
         <h1 class="text-2xl font-bold lg:text-3xl">尼崎のこども食堂への支援</h1>
         <ol class="flex flex-wrap gap-x-20 gap-y-12">
           <li>
@@ -41,14 +45,11 @@ const breadcrumb: BreadcrumbItems = [
           </li>
         </ol>
       </div>
-    </div>
-
-    <div class="bg-secondary-background px-20 py-32 lg:px-32 lg:py-52">
-      <div class="grid gap-y-52 mx-auto max-w-932 lg:gap-y-84">
+      <div
+        class="grid grid-cols-subgrid gap-y-52 bg-secondary-background py-32 [grid-column:1/-1] lg:gap-y-84 lg:py-52 [&>*]:[grid-column:2]"
+      >
         <section class="grid gap-y-32">
-          <div
-            class="grid gap-y-12 lg:gap-y-20 [&>p]:text-md/loose [&>p]:max-w-640"
-          >
+          <div class="prose grid gap-y-20">
             <Heading id="with-items">物品で支援する</Heading>
             <p>
               フードパントリーで使うレトルト食品や日持ちのする食料品、会食や弁当づくりに使う缶詰やお米等を寄付頂ける方は、こちらの手順にそって、ご支援をよろしくお願いします。
@@ -96,9 +97,7 @@ const breadcrumb: BreadcrumbItems = [
           </div>
         </section>
         <section class="grid gap-y-32">
-          <div
-            class="grid gap-y-12 lg:gap-y-20 [&>p]:text-md/loose [&>p]:max-w-640"
-          >
+          <div class="prose grid gap-y-20">
             <Heading id="with-donations">寄付金で支援する</Heading>
             <p>
               「アマのこども食堂を応援したい！」という思いで寄付金をお寄せ頂ける方は、以下の口座よりお願いいたします。
