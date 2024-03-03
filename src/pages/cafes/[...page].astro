@@ -55,14 +55,18 @@ const breadcrumb: BreadcrumbItems = isFirstPage
   desc="掲載許可の取れた尼崎市内のこども食堂の一覧を掲載したページです。"
 >
   <Layout breadcrumb={breadcrumb}>
-    <div class="border-t-8 border-t-accent px-20 py-32 lg:px-32 lg:py-52">
-      <div class="grid gap-y-20 mx-auto max-w-932 lg:gap-y-32">
-        <div class="grid gap-y-12 lg:gap-y-20">
-          <h1 class="grid gap-y-8 font-bold lg:gap-y-12">
+    <div
+      class="grid grid-cols-[minmax(theme(spacing[20]),1fr)_minmax(0,theme(spacing[932]))_minmax(theme(spacing[20]),1fr)] lg:grid-cols-[minmax(theme(spacing[32]),1fr)_minmax(0,theme(spacing[932]))_minmax(theme(spacing[32]),1fr)]"
+    >
+      <div
+        class="grid grid-cols-subgrid gap-y-20 border-t-8 border-t-accent py-32 [grid-column:1/-1] lg:gap-y-32 lg:py-52 [&>*]:[grid-column:2]"
+      >
+        <div class="grid gap-y-20">
+          <h1 class="grid justify-items-start gap-y-12 font-bold">
             <span class="text-2xl lg:text-3xl">尼崎のこども食堂</span>
             {
               !isFirstPage && (
-                <span class="rounded-sm bg-secondary-background text-xs px-8 py-4 w-fit">
+                <span class="rounded-sm bg-secondary-background text-xs px-8 py-4 ">
                   {currentPage}ページ目
                 </span>
               )
@@ -84,10 +88,9 @@ const breadcrumb: BreadcrumbItems = isFirstPage
           </p>
         </aside>
       </div>
-    </div>
-
-    <div class="bg-secondary-background px-20 py-32 lg:px-32 lg:py-52">
-      <div class="grid gap-y-32 mx-auto max-w-932 lg:gap-y-52">
+      <div
+        class="grid grid-cols-subgrid gap-y-32 bg-secondary-background py-32 [grid-column:1/-1] lg:gap-y-52 lg:py-52 [&>*]:[grid-column:2]"
+      >
         <AreaFilter />
         <CafeList cafes={cafes} />
         {
