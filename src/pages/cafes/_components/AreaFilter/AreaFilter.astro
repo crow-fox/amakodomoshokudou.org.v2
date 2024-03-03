@@ -11,7 +11,7 @@ const pathname = Astro.url.pathname;
   class="group rounded-xl border border-primary-border bg-tertiary-background"
 >
   <summary
-    class="grid cursor-pointer grid-cols-[1fr,1.5em] items-center rounded-xl bg-primary-background px-12 py-8 group-open:rounded-b-none"
+    class="grid cursor-pointer grid-cols-[1fr,1.5em] items-center rounded-xl bg-primary-background px-12 py-8 group-open:rounded-b-none [&::-webkit-details-marker]:hidden"
   >
     <span class="font-bold">地区で絞る</span>
     <Image src={icon} alt="" class="w-full group-open:rotate-180" />
