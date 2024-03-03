@@ -197,11 +197,20 @@ export default {
         },
       );
       addComponents({
+        // tailwind-typographyプラグインの導入を検討
         ".prose": {
+          fontSize: theme("fontSize").md[0],
           "&>p:not([class])": {
             maxInlineSize: theme("spacing")[640],
-            fontSize: theme("fontSize").md[0],
             lineHeight: theme("lineHeight").loose,
+          },
+          "&>ul:not([class])": {
+            listStyleType: "disc",
+            display: "grid",
+            rowGap: theme("spacing")[12],
+            maxInlineSize: theme("spacing")[640],
+            lineHeight: theme("lineHeight").loose,
+            paddingInlineStart: theme("spacing")[20],
           },
         },
       });
