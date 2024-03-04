@@ -8,7 +8,6 @@ export const summary = {
     value: [
       "社会福祉法人尼崎市社会福祉協議会",
       "認定NPO法人子どものみらい尼崎",
-      "NPO法人スマイルひろば",
     ],
   },
   establish: {

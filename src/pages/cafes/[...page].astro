@@ -30,7 +30,7 @@ const breadcrumb: BreadcrumbItems = isFirstPage
         href: "/",
       },
       {
-        title: "尼崎市のこども食堂",
+        title: "尼崎のこども食堂",
       },
     ]
   : [
@@ -39,7 +39,7 @@ const breadcrumb: BreadcrumbItems = isFirstPage
         href: "/",
       },
       {
-        title: "尼崎市のこども食堂",
+        title: "尼崎のこども食堂",
         href: "/cafes",
       },
       {
@@ -50,16 +50,16 @@ const breadcrumb: BreadcrumbItems = isFirstPage
 
 <Document
   title={isFirstPage
-    ? "尼崎市のこども食堂"
-    : `尼崎市のこども食堂 ${currentPage}ページ目`}
-  desc="掲載許可の取れた尼崎市のこども食堂の一覧を掲載したページです。"
+    ? "尼崎のこども食堂"
+    : `尼崎のこども食堂 ${currentPage}ページ目`}
+  desc="掲載許可の取れた尼崎市内のこども食堂の一覧を掲載したページです。"
 >
   <Layout breadcrumb={breadcrumb}>
     <div class="border-t-8 border-t-accent px-20 py-32 lg:px-32 lg:py-52">
       <div class="grid gap-y-20 mx-auto max-w-932 lg:gap-y-32">
         <div class="grid gap-y-12 lg:gap-y-20">
           <h1 class="grid gap-y-8 font-bold lg:gap-y-12">
-            <span class="text-2xl lg:text-3xl">尼崎市のこども食堂</span>
+            <span class="text-2xl lg:text-3xl">尼崎のこども食堂</span>
             {
               !isFirstPage && (
                 <span class="rounded-sm bg-secondary-background text-xs px-8 py-4 w-fit">
@@ -68,7 +68,7 @@ const breadcrumb: BreadcrumbItems = isFirstPage
               )
             }
           </h1>
-          <p class="text-sm">掲載許可の取れたページのみ掲載しています。</p>
+          <p class="text-sm">掲載許可の取れたこども食堂のみ掲載しています。</p>
         </div>
         <aside
           class="grid gap-y-12 rounded-xl border border-secondary-border p-12 lg:p-20"
