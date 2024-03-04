@@ -64,7 +64,7 @@ const navItems = [
       </p>
       <Menu>
         <div class="grid gap-y-20">
-          <nav class="">
+          <nav aria-label="グローバルナビゲーション">
             <ul class="grid gap-y-8">
               {
                 navItems.map((item) => (
@@ -110,7 +110,10 @@ const navItems = [
           </div>
         </div>
       </Menu>
-      <nav class="hidden lg:block lg:mt-20">
+      <nav
+        class="hidden lg:block lg:mt-20"
+        aria-label="グローバルナビゲーション"
+      >
         <ul class="grid gap-y-4">
           {
             navItems.map((item) => (
