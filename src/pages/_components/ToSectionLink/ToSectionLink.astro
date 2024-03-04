@@ -18,6 +18,7 @@ const icon = await getImage({ src: img });
   <slot />
   <span
     role="img"
+    aria-label="hidden"
     style={{
       maskImage: `url(${icon.src})`,
       WebkitMaskImage: `url(${icon.src})`,
