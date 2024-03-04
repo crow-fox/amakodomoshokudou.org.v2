@@ -17,6 +17,7 @@ const icon = await getImage({ src: img });
 >
   <slot />
   <span
+    aria-hidden="true"
     role="img"
     style={{
       maskImage: `url(${icon.src})`,
