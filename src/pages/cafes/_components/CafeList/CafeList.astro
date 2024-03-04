@@ -1,10 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import defaultImg from "./assets/default-cafe.png";
-import type { Cafe } from "@/types/Cafe";
+import type { NewtCafe } from "@/pages/_schemas/cafe";
 
 export type Props = {
-  cafes: Cafe[];
+  cafes: NewtCafe[];
 };
 
 const { cafes } = Astro.props;
