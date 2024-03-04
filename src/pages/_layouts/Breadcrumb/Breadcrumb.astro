@@ -12,8 +12,8 @@ const props = Astro.props;
 const icon = await getImage({ src: img });
 ---
 
-<nav aria-label="現在位置" class="p-20">
-  <ol class="mx-auto max-w-932">
+<nav aria-label="現在位置">
+  <ol>
     {
       props.items.map((item) => {
         if ("href" in item) {
