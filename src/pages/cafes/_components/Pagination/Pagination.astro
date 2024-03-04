@@ -8,7 +8,7 @@ export type Props = {
 const props = Astro.props;
 ---
 
-<nav>
+<nav aria-label="ページ送り">
   <ol class="flex flex-wrap gap-12">
     {
       Array.from({ length: props.total }).map((_, i) => {
