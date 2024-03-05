@@ -2,7 +2,7 @@
 export type Props = {
   total: number;
   current: number;
-  baseUrl: string;
+  baseUrl: `${string}/`;
 };
 
 const props = Astro.props;
@@ -13,7 +13,8 @@ const props = Astro.props;
     {
       Array.from({ length: props.total }).map((_, i) => {
         const page = i + 1;
-        const href = page === 1 ? props.baseUrl : `${props.baseUrl}/${page}`;
+        // propsとして渡されるbaseUrlは末尾にスラッシュがある
+        const href = page === 1 ? props.baseUrl : `${props.baseUrl}${page}/`;
         const isCurrent = page === props.current;
 
         return (

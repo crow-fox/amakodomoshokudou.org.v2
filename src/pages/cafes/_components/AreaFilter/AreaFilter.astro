@@ -22,7 +22,7 @@ const pathname = Astro.url.pathname;
     >
       <li>
         <a
-          href="/cafes"
+          href="/cafes/"
           aria-current={pathname === "/cafes" ? "page" : undefined}
           class={[
             "grid justify-center rounded-xl border border-primary-border px-12 py-8",
@@ -39,7 +39,7 @@ const pathname = Astro.url.pathname;
         areas.map((area) => (
           <li>
             <a
-              href={`/cafes/areas/${area.slug}`}
+              href={`/cafes/areas/${area.slug}/`}
               aria-current={
                 pathname === `/cafes/areas/${area.slug}` ? "page" : undefined
               }

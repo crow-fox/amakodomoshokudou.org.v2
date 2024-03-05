@@ -19,21 +19,25 @@ const pathname = Astro.url.pathname;
 
 const navItems = [
   { href: "/", text: "トップページ", isCurrent: pathname === "/" },
-  { href: "/about", text: "私たちについて", isCurrent: pathname === "/about" },
   {
-    href: "/cafes",
+    href: "/about/",
+    text: "私たちについて",
+    isCurrent: pathname === "/about/",
+  },
+  {
+    href: "/cafes/",
     text: "尼崎のこども食堂",
-    isCurrent: pathname === "/cafes",
+    isCurrent: pathname === "/cafes/",
   },
   {
-    href: "/charity",
+    href: "/charity/",
     text: "こども食堂への支援",
-    isCurrent: pathname === "/charity",
+    isCurrent: pathname === "/charity/",
   },
   {
-    href: "/start-cafe",
+    href: "/start-cafe/",
     text: "こども食堂の立ち上げ",
-    isCurrent: pathname === "/start-cafe",
+    isCurrent: pathname === "/start-cafe/",
   },
   {
     href: summary.facebook.value,
@@ -179,7 +183,7 @@ const navItems = [
         class="flex flex-wrap justify-between gap-x-20 gap-y-12 [grid-column:2]"
       >
         <p class="text-sm">
-          <a href="/privacy-policy" class="underline">プライバシーポリシー</a>
+          <a href="/privacy-policy/" class="underline">プライバシーポリシー</a>
         </p>
         <p class="text-sm">
           <small>@2024 尼崎こども食堂ネットワーク</small>
