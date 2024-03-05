@@ -8,15 +8,14 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint:css": "stylelint 'src/**/*.css'",
     "lint:es": "eslint 'src/**/*.{astro,ts,tsx}'",
     "lint:html": "markuplint 'src/**/*.{astro,html}'",
     "prettier": "exec prettier --write 'src/**/*.{astro,ts,tsx,css,html}'",
-    "lint": "pnpm run lint:css && pnpm run lint:es && pnpm run lint:html && pnpm run prettier",
-    "prepare": "pnpx simple-git-hooks"
+    "lint": "bun run lint:es && bun run lint:html && bun run prettier",
+    "prepare": "bunx simple-git-hooks"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpx lint-staged"
+    "pre-commit": "bunx lint-staged"
   },
   "lint-staged": {
     "*.{astro,ts,tsx}": [
@@ -27,31 +26,33 @@
       "markuplint"
     ],
     "*.css": [
-      "stylelint --fix",
       "prettier --write"
     ]
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.0.5",
-    "@vanilla-extract/css": "^1.14.1",
+    "@astrojs/tailwind": "^5.1.0",
+    "@fontsource-variable/noto-sans-jp": "^5.0.17",
     "astro": "^4.3.2",
     "newt-client-js": "^3.3.0",
-    "sharp": "^0.32.6"
+    "sharp": "^0.32.6",
+    "valibot": "^0.28.1"
   },
   "devDependencies": {
     "@markuplint/astro-parser": "^3.12.0",
+    "@tailwindcss/container-queries": "^0.1.1",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
-    "@vanilla-extract/vite-plugin": "^3.9.5",
     "autoprefixer": "^10.4.17",
     "eslint": "^8.56.0",
     "eslint-plugin-astro": "^0.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-tailwindcss": "^3.14.1",
     "markuplint": "^3.15.0",
+    "postcss": "^8.4.34",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.12.3",
-    "stylelint": "^15.11.0",
-    "stylelint-config-recess-order": "^4.4.0",
-    "stylelint-config-standard": "^34.0.0"
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "tailwindcss": "^3.4.1"
   }
 }

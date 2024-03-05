@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --accent: #ffcc66;
+    --danger: #cc0f0f;
+    --link: #0f72cc;
+    --outline: #ec3ba0;
+    --primary-background: #ffffff;
+    --primary-text: #38352e;
+    --primary-border: #c28100;
+    --secondary-background: #fff5e0;
+    --secondary-border: #d1d1d1;
+    --tertiary-background: #efefef;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --accent: #b28f47;
+      --danger: #f25a5a;
+      --link: #3e96e5;
+      --outline: #d4358f;
+      --primary-background: #0d0d0d;
+      --primary-text: #d1cdc2;
+      --primary-border: #996600;
+      --secondary-background: #262522;
+      --secondary-border: #5c5c5c;
+      --tertiary-background: #262626;
+    }
+  }
+
+  body {
+    @apply break-words break-all bg-primary-background font-sans text-md text-primary-text has-[dialog[open]]:overflow-hidden;
+  }
+
+  :focus {
+    @apply outline-none;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-outline;
+  }
+
+  :target {
+    @apply scroll-mt-84 scroll-p-0 lg:scroll-mt-20;
+  }
+
+  small {
+    font-size: inherit;
+  }
+
+  dialog {
+    color: inherit;
+    margin: 0;
+  }
+
+  button {
+    text-align: start;
+  }
+}

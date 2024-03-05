@@ -1,0 +1,190 @@
+---
+import icon from "./assets/icon.svg";
+import name from "./assets/name.svg";
+import { Image } from "astro:assets";
+import { site } from "@/pages/_consts/site";
+import { summary } from "@/pages/_consts/summary";
+import CopyButton from "@/pages/_components/CopyButton/CopyButton.astro";
+import Menu from "@/pages/_layouts/Menu/Menu.astro";
+import type { BreadcrumbItems } from "@/pages/_layouts/Breadcrumb/type";
+import Breadcrumb from "@/pages/_layouts/Breadcrumb/Breadcrumb.astro";
+
+export type Props = {
+  breadcrumb?: BreadcrumbItems;
+};
+
+const props = Astro.props;
+
+const pathname = Astro.url.pathname;
+
+const navItems = [
+  { href: "/", text: "トップページ", isCurrent: pathname === "/" },
+  { href: "/about", text: "私たちについて", isCurrent: pathname === "/about" },
+  {
+    href: "/cafes",
+    text: "尼崎のこども食堂",
+    isCurrent: pathname === "/cafes",
+  },
+  {
+    href: "/charity",
+    text: "こども食堂への支援",
+    isCurrent: pathname === "/charity",
+  },
+  {
+    href: "/start-cafe",
+    text: "こども食堂の立ち上げ",
+    isCurrent: pathname === "/start-cafe",
+  },
+  {
+    href: summary.facebook.value,
+    text: "お知らせ（Facebook）",
+    isExternal: true,
+  },
+];
+---
+
+<div
+  class="relative grid min-h-svh grid-cols-1 grid-rows-[auto_1fr] lg:grid-cols-[theme(spacing[220])_minmax(0,1fr)] lg:grid-rows-1 lg:h-svh"
+>
+  <header
+    class="sticky inset-x-0 top-0 z-10 grid grid-cols-[minmax(theme(spacing[20]),1fr)_minmax(0,theme(spacing[932]))_minmax(theme(spacing[20]),1fr)] border-b border-b-secondary-border bg-primary-background lg:grid-cols-1 lg:overflow-y-auto lg:border-b-0 lg:border-r lg:border-r-secondary-border lg:[grid-column:1]"
+  >
+    <div
+      class="flex flex-wrap items-center justify-between py-8 [grid-column:2] lg:grid lg:content-start lg:justify-start lg:px-12 lg:py-20 lg:[grid-column:1/-1]"
+    >
+      <p
+        class="flex flex-wrap place-items-center gap-x-4 lg:flex-col lg:flex-nowrap"
+      >
+        <Image src={icon} alt="" class="max-w-52 w-full lg:max-w-84" />
+        <Image
+          src={name}
+          alt={site.title}
+          class="max-w-84 w-full lg:max-w-136 dark:invert"
+        />
+      </p>
+      <Menu>
+        <div class="grid gap-y-20">
+          <nav aria-label="グローバルナビゲーション">
+            <ul class="grid gap-y-8">
+              {
+                navItems.map((item) => (
+                  <li>
+                    <a
+                      href={item.href}
+                      target={item.isExternal ? "_blank" : undefined}
+                      aria-current={item.isCurrent ? "page" : undefined}
+                      class={[
+                        "grid rounded-xl font-bold px-12 py-8 aria-[current=page]:bg-secondary-background",
+                        item.isExternal && "grid-cols-[auto,1fr] items-center",
+                      ].join(" ")}
+                    >
+                      {item.text}
+                      {item.isExternal && (
+                        <svg
+                          role="img"
+                          aria-label="外部リンク"
+                          height="1em"
+                          viewBox="0 -960 960 960"
+                          width="1em"
+                          class="fill-[currentColor]"
+                        >
+                          <path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h279v60H180v600h600v-279h60v279q0 24-18 42t-42 18H180Zm202-219-42-43 398-398H519v-60h321v321h-60v-218L382-339Z" />
+                        </svg>
+                      )}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+          <div
+            class="grid gap-y-12 rounded-xl border border-secondary-border p-12"
+          >
+            <p class="font-bold">お問い合わせはこちら</p>
+            <p class="">
+              {summary.mail.value}
+            </p>
+            <CopyButton copyText={summary.mail.value}>
+              メールアドレスをコピー
+            </CopyButton>
+          </div>
+        </div>
+      </Menu>
+      <nav
+        class="hidden lg:block lg:mt-20"
+        aria-label="グローバルナビゲーション"
+      >
+        <ul class="grid gap-y-4">
+          {
+            navItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  target={item.isExternal ? "_blank" : undefined}
+                  aria-current={item.isCurrent ? "page" : undefined}
+                  class={[
+                    "grid rounded-xl text-sm font-bold px-12 py-8 aria-[current=page]:bg-secondary-background",
+                    item.isExternal && "grid-cols-[auto,1fr] items-center",
+                  ].join(" ")}
+                >
+                  {item.text}
+                  {item.isExternal && (
+                    <svg
+                      role="img"
+                      aria-label="外部リンク"
+                      height="1em"
+                      viewBox="0 -960 960 960"
+                      width="1em"
+                      class="fill-[currentColor]"
+                    >
+                      <path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h279v60H180v600h600v-279h60v279q0 24-18 42t-42 18H180Zm202-219-42-43 398-398H519v-60h321v321h-60v-218L382-339Z" />
+                    </svg>
+                  )}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <div
+        class="hidden gap-y-12 rounded-xl border border-secondary-border p-12 lg:grid lg:mt-20"
+      >
+        <p class="text-sm font-bold">お問い合わせはこちら</p>
+        <p class="text-xs">
+          {summary.mail.value}
+        </p>
+        <CopyButton size="sm" copyText={summary.mail.value} label>
+          メールアドレス
+        </CopyButton>
+      </div>
+    </div>
+  </header>
+  <div
+    class="grid grid-cols-[minmax(theme(spacing[20]),1fr)_minmax(0,theme(spacing[932]))_minmax(theme(spacing[20]),1fr)] grid-rows-[1fr,auto] [grid-column:1/-1] lg:grid-cols-[minmax(theme(spacing[32]),1fr)_minmax(0,theme(spacing[932]))_minmax(theme(spacing[32]),1fr)] lg:overflow-y-auto lg:[grid-column:2]"
+  >
+    <main class="[grid-column:1/-1]">
+      <slot />
+    </main>
+    {
+      props.breadcrumb && (
+        <div class="grid grid-cols-subgrid py-20 [grid-column:1/-1] [&>*]:[grid-column:2]">
+          <Breadcrumb items={props.breadcrumb} />
+        </div>
+      )
+    }
+    <footer
+      class="grid grid-cols-subgrid border-t border-t-secondary-border py-20 [grid-column:1/-1]"
+    >
+      <div
+        class="flex flex-wrap justify-between gap-x-20 gap-y-12 [grid-column:2]"
+      >
+        <p class="text-sm">
+          <a href="/privacy-policy" class="underline">プライバシーポリシー</a>
+        </p>
+        <p class="text-sm">
+          <small>@2024 尼崎こども食堂ネットワーク</small>
+        </p>
+      </div>
+    </footer>
+  </div>
+</div>

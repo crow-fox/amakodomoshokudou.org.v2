@@ -1,11 +1,88 @@
 ---
-import HomePage from "@/components/pages/HomePage/HomePage.astro";
-import Document from "@/components/layouts/Document/Document.astro";
-import Layout from "@/components/layouts/Layout/Layout.astro";
+import Document from "@/pages/_layouts/Document.astro";
+import Layout from "@/pages/_layouts/Layout.astro";
+import key from "./_assets/key.jpg";
+import { Image } from "astro:assets";
+import Heading from "@/pages/_components/Heading/Heading.astro";
+import Activities from "@/pages/_components/Activities/Activities.astro";
+import ButtonLink from "@/pages/_components/ButtonLink/ButtonLink.astro";
 ---
 
 <Document>
   <Layout>
-    <HomePage />
+    <div
+      class="grid grid-cols-[minmax(theme(spacing[20]),1fr)_minmax(0,theme(spacing[932]))_minmax(theme(spacing[20]),1fr)] lg:grid-cols-[minmax(theme(spacing[32]),1fr)_minmax(0,theme(spacing[932]))_minmax(theme(spacing[32]),1fr)]"
+    >
+      <section
+        class="grid grid-cols-subgrid border-t-8 border-t-accent py-32 [grid-column:1/-1] lg:py-52"
+      >
+        <div
+          class="grid items-center gap-20 [grid-column:2] [grid-template-areas:'title'_'desc'_'img'] sm:grid-cols-2 sm:grid-rows-[1fr_auto_theme(spacing[20])_auto_1fr] sm:gap-y-0 sm:[grid-template-areas:'._img'_'title_img'_'._img'_'desc_img'_'._img'] lg:gap-x-32"
+        >
+          <h1
+            class="text-balance text-3xl font-bold [grid-area:title] lg:text-4xl"
+          >
+            尼崎こども食堂ネットワーク
+          </h1>
+          <p class="text-md/loose [grid-area:desc]">
+            私たちは尼崎市内のこども食堂が、これからもアマのこどもたちにとっての「身近な地域の居場所」であり続けられるように活動しています。
+          </p>
+          <Image
+            src={key}
+            alt="写真：スクリーンに写したスライドを見ながら、マイクを持った方の声に耳を傾ける椅子に座った方達"
+            class="aspect-video rounded-xl object-cover shadow-[theme(spacing[4])_theme(spacing[4])_0_0_theme(colors.accent)] [grid-area:img]"
+          />
+        </div>
+      </section>
+
+      <div
+        class="grid grid-cols-subgrid gap-y-52 bg-secondary-background py-32 [grid-column:1/-1] lg:gap-y-84 lg:py-52 [&>*]:[grid-column:2]"
+      >
+        <section class="grid gap-y-20">
+          <Heading>活動内容</Heading>
+          <Activities />
+          <p
+            class="grid grid-cols-[1fr_minmax(0,theme(spacing[220]))_1fr] [&>*]:[grid-column:2]"
+          >
+            <ButtonLink href="/about">私たちについて</ButtonLink>
+          </p>
+        </section>
+        <section class="prose grid gap-y-20">
+          <Heading>尼崎のこども食堂</Heading>
+          <p>尼崎市内のこども食堂は一覧ページから探すことができます。</p>
+          <p class="grid max-w-220">
+            <ButtonLink href="/cafes">尼崎のこども食堂</ButtonLink>
+          </p>
+        </section>
+        <section class="prose grid gap-y-20">
+          <Heading>尼崎のこども食堂を支援する</Heading>
+          <p>尼崎市内のこども食堂を支援するには２つの方法があります。</p>
+          <p>
+            多くの食堂が地域のこどもたちにとっての「身近な地域の居場所」であり続けられるために、応援よろしくお願いします。
+          </p>
+          <ul
+            class="grid grid-cols-[repeat(auto-fill,min(theme(spacing[220]),100%))] gap-20"
+          >
+            <li class="grid">
+              <ButtonLink href="/charity#with-items">物品で支援</ButtonLink>
+            </li>
+            <li class="grid">
+              <ButtonLink href="/charity#with-donations">
+                寄付金で支援
+              </ButtonLink>
+            </li>
+          </ul>
+        </section>
+        <section class="prose grid gap-y-20">
+          <Heading>こども食堂を立ち上げる</Heading>
+          <p>
+            尼崎市でこども食堂を始めたい場合は、立ち上げの流れを解説したページを参考にしてください。
+          </p>
+          <p class="grid max-w-220">
+            <ButtonLink href="/start-cafe">こども食堂の立ち上げ</ButtonLink>
+          </p>
+        </section>
+      </div>
+    </div>
   </Layout>
 </Document>

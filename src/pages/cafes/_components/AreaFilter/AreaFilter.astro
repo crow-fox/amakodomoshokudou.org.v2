@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+import icon from "./assets/icon.svg";
+import { fetchAreas } from "@/pages/cafes/_utils/area";
+
+const areas = await fetchAreas();
+const pathname = Astro.url.pathname;
+---
+
+<details
+  class="group rounded-xl border border-primary-border bg-tertiary-background"
+>
+  <summary
+    class="grid cursor-pointer grid-cols-[1fr,1.5em] items-center rounded-xl bg-primary-background px-12 py-8 group-open:rounded-b-none [&::-webkit-details-marker]:hidden"
+  >
+    <span class="font-bold">地区で絞る</span>
+    <Image src={icon} alt="" class="w-full group-open:rotate-180" />
+  </summary>
+  <nav class="border-t border-t-secondary-border p-12" aria-label="地区別">
+    <ol
+      class="grid grid-cols-[repeat(auto-fill,min(theme(spacing[84]),100%))] gap-12"
+    >
+      <li>
+        <a
+          href="/cafes"
+          aria-current={pathname === "/cafes" ? "page" : undefined}
+          class={[
+            "grid justify-center rounded-xl border border-primary-border px-12 py-8",
+            pathname.startsWith("/cafes") &&
+            !pathname.startsWith("/cafes/areas")
+              ? "bg-secondary-background"
+              : "bg-primary-background",
+          ].join(" ")}
+        >
+          すべて
+        </a>
+      </li>
+      {
+        areas.map((area) => (
+          <li>
+            <a
+              href={`/cafes/areas/${area.slug}`}
+              aria-current={
+                pathname === `/cafes/areas/${area.slug}` ? "page" : undefined
+              }
+              class={[
+                "grid justify-center rounded-xl border border-primary-border px-12 py-8",
+                pathname.startsWith(`/cafes/areas/${area.slug}`)
+                  ? "bg-secondary-background"
+                  : "bg-primary-background",
+              ].join(" ")}
+            >
+              {area.name}
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </nav>
+</details>

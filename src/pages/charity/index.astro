@@ -1,8 +1,15 @@
 ---
-import CharityPage from "@/components/pages/CharityPage/CharityPage.astro";
-import type { BreadcrumbItems } from "@/components/common/Breadcrumb/types";
-import Document from "@/components/layouts/Document/Document.astro";
-import Layout from "@/components/layouts/Layout/Layout.astro";
+import CopyButton from "@/pages/_components/CopyButton/CopyButton.astro";
+import FlowItem from "@/pages/_components/FlowItem/FlowItem.astro";
+import Heading from "@/pages/_components/Heading/Heading.astro";
+import NextStep from "@/pages/_components/NextStep/NextStep.astro";
+import TextLink from "@/pages/_components/TextLink/TextLink.astro";
+import ToSectionLink from "@/pages/_components/ToSectionLink/ToSectionLink.astro";
+import { bankAccount } from "@/pages/_consts/bankAccount";
+import { summary } from "@/pages/_consts/summary";
+import type { BreadcrumbItems } from "@/pages/_layouts/Breadcrumb/type";
+import Document from "@/pages/_layouts/Document.astro";
+import Layout from "@/pages/_layouts/Layout.astro";
 
 const breadcrumb: BreadcrumbItems = [
   {
@@ -20,6 +27,127 @@ const breadcrumb: BreadcrumbItems = [
   desc="尼崎のこども食堂を支援するための方法を記載しています。多くの食堂が地域のこどもたちにとっての「身近な地域の居場所」であり続けられるために、応援よろしくお願いします。"
 >
   <Layout breadcrumb={breadcrumb}>
-    <CharityPage />
+    <div
+      class="grid grid-cols-[minmax(theme(spacing[20]),1fr)_minmax(0,theme(spacing[932]))_minmax(theme(spacing[20]),1fr)] lg:grid-cols-[minmax(theme(spacing[32]),1fr)_minmax(0,theme(spacing[932]))_minmax(theme(spacing[32]),1fr)]"
+    >
+      <div
+        class="grid grid-cols-subgrid gap-y-20 border-t-8 border-t-accent py-32 [grid-column:1/-1] lg:gap-y-32 lg:py-52 [&>*]:[grid-column:2]"
+      >
+        <h1 class="text-2xl font-bold lg:text-3xl">尼崎のこども食堂への支援</h1>
+        <ol class="flex flex-wrap gap-x-20 gap-y-12">
+          <li>
+            <ToSectionLink target="with-items">物品で支援する</ToSectionLink>
+          </li>
+          <li>
+            <ToSectionLink target="with-donations">
+              寄付金で支援する
+            </ToSectionLink>
+          </li>
+        </ol>
+      </div>
+      <div
+        class="grid grid-cols-subgrid gap-y-52 bg-secondary-background py-32 [grid-column:1/-1] lg:gap-y-84 lg:py-52 [&>*]:[grid-column:2]"
+      >
+        <section class="grid gap-y-32">
+          <div class="prose grid gap-y-20">
+            <Heading id="with-items">物品で支援する</Heading>
+            <p>
+              フードパントリーで使うレトルト食品や日持ちのする食料品、会食や弁当づくりに使う缶詰やお米等を寄付頂ける方は、こちらの手順にそって、ご支援をよろしくお願いします。
+            </p>
+            <aside
+              class="grid gap-y-12 rounded-xl border border-danger bg-primary-background p-12 lg:p-20"
+            >
+              <p class="font-bold text-danger">重要なお知らせ</p>
+              <p class="text-md/loose">
+                現在、生鮮食品は保管場所の関係から、原則受付していません。<br />
+                ご理解のほど、よろしくお願いします。
+              </p>
+            </aside>
+          </div>
+          <div class="grid gap-y-20">
+            <FlowItem step={1} title="寄付頂けるものをお選びください">
+              <p>
+                <TextLink
+                  href="https://www.amazon.co.jp/hz/wishlist/ls/2H3AWSTZSQY2L?ref_=wl_share"
+                  target="_blank"
+                >
+                  Amazon「ほしいものリスト」
+                </TextLink> を公開しています。<br />
+                掲載している物品でなくても、類似のものでも有難いです。
+              </p>
+            </FlowItem>
+            <NextStep />
+            <FlowItem step={2} title="事務局まで事前のご連絡をお願いします">
+              <p>
+                寄付頂けるものがご準備できましたら、下記メールアドレスまで寄付頂ける物品等の情報を、事務局までご連絡ください。
+              </p>
+              <p>送付先の情報等、折り返しご連絡させていただきます。</p>
+              <div
+                class="grid gap-y-12 rounded-xl border border-secondary-border bg-primary-background p-12 lg:p-20"
+              >
+                <p class="font-bold">連絡先のメールアドレス</p>
+                <p class="text-sm">{summary.mail.value}</p>
+                <p>
+                  <CopyButton copyText={summary.mail.value}>
+                    メールアドレスをコピー
+                  </CopyButton>
+                </p>
+              </div>
+            </FlowItem>
+          </div>
+        </section>
+        <section class="grid gap-y-32">
+          <div class="prose grid gap-y-20">
+            <Heading id="with-donations">寄付金で支援する</Heading>
+            <p>
+              「アマのこども食堂を応援したい！」という思いで寄付金をお寄せ頂ける方は、以下の口座よりお願いいたします。
+            </p>
+            <p>
+              お寄せ頂いた寄付金はこども食堂の運営にかかる経費助成等に使わせて頂きます。
+            </p>
+          </div>
+          <div class="grid gap-y-20">
+            <FlowItem step={1} title="指定の口座までご振込ください">
+              <div
+                class="grid gap-y-12 rounded-xl border border-secondary-border bg-primary-background p-12 lg:p-20"
+              >
+                <p class="font-bold">口座情報</p>
+                <dl>
+                  {
+                    Object.values(bankAccount).map(({ title, value }) => (
+                      <div class=" flex flex-wrap gap-y-8 rounded-md py-8 odd:bg-tertiary-background">
+                        <dt class=" flex-[1_0_theme(spacing[136])] text-sm px-12">
+                          {title}
+                        </dt>
+                        <dd class=" min-w-[60%] flex-[9999_0_0] text-sm px-12">
+                          {value}
+                        </dd>
+                      </div>
+                    ))
+                  }
+                </dl>
+              </div>
+            </FlowItem>
+            <NextStep />
+            <FlowItem step={2} title="事務局までご連絡をお願いします">
+              <p>
+                ご寄付をお寄せ頂いた場合は、お手数ですが下記のメールアドレスまでご連絡ください。
+              </p>
+              <div
+                class="grid gap-y-12 rounded-xl border border-secondary-border bg-primary-background p-12 lg:p-20"
+              >
+                <p class="font-bold">連絡先のメールアドレス</p>
+                <p class="text-sm">{summary.mail.value}</p>
+                <p>
+                  <CopyButton copyText={summary.mail.value}>
+                    メールアドレスをコピー
+                  </CopyButton>
+                </p>
+              </div>
+            </FlowItem>
+          </div>
+        </section>
+      </div>
+    </div>
   </Layout>
 </Document>

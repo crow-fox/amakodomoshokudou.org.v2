@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets";
+import img1 from "./assets/training.png";
+import img2 from "./assets/food.png";
+import img3 from "./assets/information.png";
+
+const activities = [
+  {
+    title: "研修・学習会",
+    content: "こども食堂スタッフや食堂に関心のある人への研修・学習会",
+    image: {
+      metadata: img1,
+      alt: "写真：各テーブルに分かれて座った二十人程度の方達。壇上でマイクを持った方が話している。",
+    },
+  },
+  {
+    title: "食料配布",
+    content: "寄付頂いた食料品等をこども食堂等の運営団体へ配布",
+    image: {
+      metadata: img2,
+      alt: "写真：写真に収まりきらない数の紙袋にそれぞれ食べ物が分けられている",
+    },
+  },
+  {
+    title: "情報発信",
+    content: "こども食堂等の活動への理解を促進する情報発信",
+    image: {
+      metadata: img3,
+      alt: "写真：掲示板に貼られたチラシを読む方達",
+    },
+  },
+] as const;
+---
+
+<div class="grid gap-20 md:grid-cols-3">
+  {
+    activities.map(({ title, content, image }) => (
+      <section class=" rounded-xl bg-primary-background @container ">
+        <div class="grid gap-x-20 gap-y-12 p-20 [grid-template-areas:'title'_'img'_'desc'] @356:grid-cols-2  @356:grid-rows-[auto,1fr]  @356:[grid-template-areas:'img_title'_'img_desc']">
+          <h3 class="text-lg font-bold [grid-area:title] lg:text-xl">
+            {title}
+          </h3>
+          <Image
+            src={image.metadata}
+            alt={image.alt}
+            format="webp"
+            class="aspect-video rounded-md w-full [grid-area:img]"
+          />
+          <p class="[grid-area:desc]">{content}</p>
+        </div>
+      </section>
+    ))
+  }
+</div>

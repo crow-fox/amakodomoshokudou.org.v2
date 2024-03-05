@@ -1,0 +1,46 @@
+---
+import type { BreadcrumbItems } from "@/pages/_layouts/Breadcrumb/type";
+import img from "./assets/icon.svg";
+import { getImage } from "astro:assets";
+
+export type Props = {
+  items: BreadcrumbItems;
+};
+
+const props = Astro.props;
+
+const icon = await getImage({ src: img });
+---
+
+<nav aria-label="現在位置">
+  <ol>
+    {
+      props.items.map((item) => {
+        if ("href" in item) {
+          return (
+            <li class="inline text-sm">
+              <a href={item.href} class=" underline underline-offset-2">
+                {item.title}
+              </a>
+              <span
+                role="img"
+                aria-label="の中の"
+                style={{
+                  maskImage: `url(${icon.src})`,
+                  WebkitMaskImage: `url(${icon.src})`,
+                }}
+                class="inline-block size-[1em] bg-[currentColor] align-[-2px] ml-8 mr-4 [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover]"
+              />
+            </li>
+          );
+        }
+
+        return (
+          <li class=" inline text-sm " aria-current="page">
+            {item.title}
+          </li>
+        );
+      })
+    }
+  </ol>
+</nav>
