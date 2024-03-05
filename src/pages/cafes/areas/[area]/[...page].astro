@@ -53,7 +53,7 @@ const breadcrumb: BreadcrumbItems = isFirstPage
       },
       {
         title: "尼崎のこども食堂",
-        href: "/cafes",
+        href: "/cafes/",
       },
       {
         title: `${area.name}地区のこども食堂`,
@@ -66,11 +66,11 @@ const breadcrumb: BreadcrumbItems = isFirstPage
       },
       {
         title: "尼崎のこども食堂",
-        href: "/cafes",
+        href: "/cafes/",
       },
       {
         title: `${area.name}地区のこども食堂`,
-        href: `/cafes/areas/${area.slug}`,
+        href: `/cafes/areas/${area.slug}/`,
       },
       {
         title: `${currentPage}ページ目`,
@@ -130,7 +130,7 @@ const breadcrumb: BreadcrumbItems = isFirstPage
             <Pagination
               current={currentPage}
               total={lastPage}
-              baseUrl={`/cafes/areas/${area.slug}`}
+              baseUrl={`/cafes/areas/${area.slug}/`}
             />
           )
         }
