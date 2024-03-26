@@ -5,10 +5,7 @@ export const summary = {
   },
   constituent: {
     title: "構成団体",
-    value: [
-      "社会福祉法人尼崎市社会福祉協議会",
-      "認定NPO法人子どものみらい尼崎",
-    ],
+    value: ["社会福祉法人尼崎市社会福祉協議会", "NPO法人子どものみらい尼崎"],
   },
   establish: {
     title: "設立",
