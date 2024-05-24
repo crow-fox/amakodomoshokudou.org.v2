@@ -56,15 +56,19 @@ const navItems = [
     <div
       class="flex flex-wrap items-center justify-between py-8 [grid-column:2] lg:grid lg:content-start lg:justify-start lg:px-12 lg:py-20 lg:[grid-column:1/-1]"
     >
-      <p
-        class="flex flex-wrap place-items-center gap-x-4 lg:flex-col lg:flex-nowrap"
-      >
-        <Image src={icon} alt="" class="max-w-52 w-full lg:max-w-84" />
-        <Image
-          src={name}
-          alt={site.title}
-          class="max-w-84 w-full lg:max-w-136 dark:invert"
-        />
+      <p>
+        <a
+          href="/"
+          class="flex flex-wrap place-items-center gap-x-4 lg:flex-col lg:flex-nowrap"
+        >
+          <span class="sr-only">{site.title}</span>
+          <Image src={icon} alt="" class="max-w-52 w-full lg:max-w-84" />
+          <Image
+            src={name}
+            alt=""
+            class="max-w-84 w-full lg:max-w-136 dark:invert"
+          />
+        </a>
       </p>
       <Menu>
         <div class="grid gap-y-20">
