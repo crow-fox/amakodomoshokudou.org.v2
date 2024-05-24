@@ -33,7 +33,7 @@
     "@astrojs/sitemap": "^3.0.5",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/noto-sans-jp": "^5.0.17",
-    "astro": "^4.3.2",
+    "astro": "^4.9.1",
     "newt-client-js": "^3.3.0",
     "sharp": "^0.32.6",
     "valibot": "^0.28.1"
