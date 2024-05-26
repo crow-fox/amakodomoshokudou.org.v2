@@ -1,4 +1,4 @@
-import { object, string, type Input } from "valibot";
+import { object, string, type InferOutput } from "valibot";
 
 export const newtSysSchema = object({
   createdAt: string(),
@@ -11,4 +11,4 @@ export const newtSysSchema = object({
   }),
 });
 
-export type NewtSys = Input<typeof newtSysSchema>;
+export type NewtSys = InferOutput<typeof newtSysSchema>;
