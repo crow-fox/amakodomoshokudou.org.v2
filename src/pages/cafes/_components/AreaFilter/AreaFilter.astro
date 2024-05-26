@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import icon from "./assets/icon.svg";
 import { fetchAreas } from "@/pages/cafes/_utils/area";
 
@@ -14,7 +13,15 @@ const pathname = Astro.url.pathname;
     class="grid cursor-pointer grid-cols-[1fr,1.5em] items-center rounded-xl bg-primary-background px-12 py-8 group-open:rounded-b-none [&::-webkit-details-marker]:hidden"
   >
     <span class="font-bold">地区で絞る</span>
-    <Image src={icon} alt="" class="w-full group-open:rotate-180" />
+    <span
+      role="img"
+      aria-hidden="true"
+      style={{
+        maskImage: `url(${icon.src})`,
+        WebkitMaskImage: `url(${icon.src})`,
+      }}
+      class="size-[1.5rem] bg-[currentColor] [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover] group-open:rotate-180"
+    ></span>
   </summary>
   <nav class="border-t border-t-secondary-border p-12" aria-label="地区別">
     <ol
