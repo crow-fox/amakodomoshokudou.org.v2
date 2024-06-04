@@ -1,6 +1,13 @@
 import { newtAreaSchema } from "@/pages/_schemas/area";
 import { newtSysSchema } from "@/pages/_schemas/newt";
-import { number, object, string, type Input, nullable, parse } from "valibot";
+import {
+  number,
+  object,
+  string,
+  type InferOutput,
+  nullable,
+  parse,
+} from "valibot";
 
 export const newtCafeSchema = object({
   _id: string(),
@@ -22,7 +29,7 @@ export const newtCafeSchema = object({
   contact: string(),
 });
 
-export type NewtCafe = Input<typeof newtCafeSchema>;
+export type NewtCafe = InferOutput<typeof newtCafeSchema>;
 
 export function parseCafe(data: unknown) {
   try {

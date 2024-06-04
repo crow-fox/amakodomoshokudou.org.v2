@@ -1,5 +1,5 @@
 import { newtSysSchema } from "@/pages/_schemas/newt";
-import { number, object, string, type Input, parse } from "valibot";
+import { number, object, string, type InferOutput, parse } from "valibot";
 
 export const newtAreaSchema = object({
   _id: string(),
@@ -9,7 +9,7 @@ export const newtAreaSchema = object({
   priority: number(),
 });
 
-export type NewtArea = Input<typeof newtAreaSchema>;
+export type NewtArea = InferOutput<typeof newtAreaSchema>;
 
 export function parseArea(data: unknown) {
   try {
