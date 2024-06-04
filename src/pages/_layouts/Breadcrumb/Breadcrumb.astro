@@ -19,7 +19,7 @@ const icon = await getImage({ src: img });
         if ("href" in item) {
           return (
             <li class="inline text-sm">
-              <a href={item.href} class=" underline underline-offset-2">
+              <a href={item.href} class="underline underline-offset-2">
                 {item.title}
               </a>
               <span
@@ -36,7 +36,7 @@ const icon = await getImage({ src: img });
         }
 
         return (
-          <li class=" inline text-sm " aria-current="page">
+          <li class="inline text-sm" aria-current="page">
             {item.title}
           </li>
         );
