@@ -4,9 +4,8 @@
   "version": "1.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "start": "astro preview",
     "astro": "astro",
     "lint:es": "eslint 'src/**/*.{astro,ts,tsx}'",
     "lint:html": "markuplint 'src/**/*.{astro,html}'",
