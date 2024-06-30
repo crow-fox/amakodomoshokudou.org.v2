@@ -1,9 +1,7 @@
-import { newtSysSchema } from "@/pages/_schemas/newt";
-import { number, object, string, type InferOutput, parse } from "valibot";
+import { number, object, parse, string, type InferOutput } from "valibot";
 
 export const newtAreaSchema = object({
   _id: string(),
-  _sys: newtSysSchema,
   name: string(),
   slug: string(),
   priority: number(),
