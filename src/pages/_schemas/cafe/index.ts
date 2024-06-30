@@ -1,17 +1,15 @@
 import { newtAreaSchema } from "@/pages/_schemas/area";
-import { newtSysSchema } from "@/pages/_schemas/newt";
 import {
+  nullable,
   number,
   object,
+  parse,
   string,
   type InferOutput,
-  nullable,
-  parse,
 } from "valibot";
 
 export const newtCafeSchema = object({
   _id: string(),
-  _sys: newtSysSchema,
   name: string(),
   slug: string(),
   image: nullable(
