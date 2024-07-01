@@ -13,22 +13,43 @@ NEWT_SPACE_UID=xxxx
 NEWT_CDN_API_TOKEN=xxxx
 ```
 
+### 依存関係のインストール
+
+`pnpm i`
+
 ### ローカルサーバー起動
 
-`bun run dev`
+#### Mockなし
+
+`pnpm run dev`
+
+#### Mockあり
+
+`pnpm run dev:mock`
 
 ### ビルド
 
-`bun run build`
+#### Mockなし
+
+`pnpm run build`
+
+#### Mockあり
+
+`pnpm run build:mock`
 
 ### プレビュー
 
-`bun run start`
+`pnpm run start`
 
 ### デプロイ
 
 - [x] 手動でデプロイ
 - [ ] GitHub Actionsで自動デプロイ
+
+#### 手動でデプロイ
+
+1. `pnpm run build`
+2. /\_distディレクトリ以下のファイルを全てサーバーにアップロード
 
 ## 使用技術
 
