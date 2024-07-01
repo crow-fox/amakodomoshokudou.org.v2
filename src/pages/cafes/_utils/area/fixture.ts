@@ -72,3 +72,12 @@ export function areaFixtureFactory(areaId: MockAreaId): NewtArea {
     }
   }
 }
+
+export const areasFixture: NewtArea[] = [
+  areaFixtureFactory("1"),
+  areaFixtureFactory("2"),
+  areaFixtureFactory("3"),
+  areaFixtureFactory("4"),
+  areaFixtureFactory("5"),
+  areaFixtureFactory("6"),
+];
