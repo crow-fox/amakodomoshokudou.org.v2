@@ -19,11 +19,23 @@ NEWT_CDN_API_TOKEN=xxxx
 
 ### ローカルサーバー起動
 
+#### Mockなし
+
 `pnpm run dev`
+
+#### Mockあり
+
+`pnpm run dev:mock`
 
 ### ビルド
 
+#### Mockなし
+
 `pnpm run build`
+
+#### Mockあり
+
+`pnpm run build:mock`
 
 ### プレビュー
 
