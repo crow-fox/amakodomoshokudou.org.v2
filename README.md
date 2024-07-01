@@ -46,6 +46,11 @@ NEWT_CDN_API_TOKEN=xxxx
 - [x] 手動でデプロイ
 - [ ] GitHub Actionsで自動デプロイ
 
+#### 手動でデプロイ
+
+1. `pnpm run build`
+2. /\_distディレクトリ以下のファイルを全てサーバーにアップロード
+
 ## 使用技術
 
 - フレームワーク：Astro
