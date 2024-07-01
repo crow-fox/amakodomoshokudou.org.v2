@@ -15,15 +15,15 @@ NEWT_CDN_API_TOKEN=xxxx
 
 ### ローカルサーバー起動
 
-`bun run dev`
+`pnpm run dev`
 
 ### ビルド
 
-`bun run build`
+`pnpm run build`
 
 ### プレビュー
 
-`bun run start`
+`pnpm run start`
 
 ### デプロイ
 
