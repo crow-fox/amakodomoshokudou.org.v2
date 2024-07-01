@@ -1,6 +1,7 @@
 import type { NewtCafe } from "@/pages/_schemas/cafe";
 import {
   areaFixtureFactory,
+  isMockAreaId,
   type MockAreaId,
 } from "@/pages/cafes/_utils/area/fixture";
 
@@ -43,4 +44,31 @@ export function cafeFixtureFactory({
     host: "サンプル団体",
     contact: "000-0000-0000",
   };
+}
+
+export function cafesFixtureFactory(
+  count: number,
+  area: MockAreaId | "all",
+): NewtCafe[] {
+  let counter = 0;
+  const cafes: NewtCafe[] = [];
+
+  while (counter < count) {
+    cafes.push(
+      cafeFixtureFactory({
+        name:
+          area === "all"
+            ? `サンプル食堂${counter + 1}`
+            : `${areaFixtureFactory(area).name}サンプル食堂${counter + 1}`,
+        slug: `sample-cafe${counter + 1}`,
+        image: counter % 3 === 0 ? "none" : counter % 3 === 1 ? "1" : "2",
+        areaId:
+          area === "all" ? isMockAreaId(((counter % 6) + 1).toString()) : area,
+      }),
+    );
+
+    counter++;
+  }
+
+  return cafes;
 }
