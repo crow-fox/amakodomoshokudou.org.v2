@@ -1,5 +1,8 @@
+import { mockOrFetch } from "@/mock";
 import { newtClient } from "@/pages/_libs/newt";
 import { parseCafe } from "@/pages/_schemas/cafe";
+import { isMockAreaId } from "@/pages/cafes/_utils/area/fixture";
+import { cafesFixtureFactory } from "@/pages/cafes/_utils/cafe/fixture";
 
 function decodeSrcAttribute<T extends { src: string }>(image: T): T {
   return {
@@ -8,14 +11,13 @@ function decodeSrcAttribute<T extends { src: string }>(image: T): T {
   };
 }
 
-export async function fetchCafes() {
+export async function realFetchCafes() {
   const { items } = await newtClient.getContents({
     appUid: "cafes",
     modelUid: "cafe",
     query: {
       select: [
         "_id",
-        "_sys",
         "name",
         "slug",
         "image",
@@ -41,7 +43,18 @@ export async function fetchCafes() {
   return cafes;
 }
 
-export async function fetchCafesByAreaId(areaId: string) {
+async function mockFetchCafes(): ReturnType<typeof realFetchCafes> {
+  return cafesFixtureFactory(20, "all");
+}
+
+export async function fetchCafes() {
+  return await mockOrFetch({
+    fetcher: realFetchCafes,
+    mock: mockFetchCafes,
+  });
+}
+
+export async function realFetchCafesByAreaId(areaId: string) {
   const { items } = await newtClient.getContents({
     appUid: "cafes",
     modelUid: "cafe",
@@ -73,4 +86,17 @@ export async function fetchCafesByAreaId(areaId: string) {
   });
 
   return cafes;
+}
+
+function mockFetchCafesByAreaId(
+  areaId: string,
+): Awaited<ReturnType<typeof realFetchCafesByAreaId>> {
+  return cafesFixtureFactory(10, isMockAreaId(areaId));
+}
+
+export async function fetchCafesByAreaId(areaId: string) {
+  return await mockOrFetch({
+    fetcher: () => realFetchCafesByAreaId(areaId),
+    mock: () => mockFetchCafesByAreaId(areaId),
+  });
 }
