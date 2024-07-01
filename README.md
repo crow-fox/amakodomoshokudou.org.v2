@@ -13,6 +13,10 @@ NEWT_SPACE_UID=xxxx
 NEWT_CDN_API_TOKEN=xxxx
 ```
 
+### 依存関係のインストール
+
+`pnpm i`
+
 ### ローカルサーバー起動
 
 `pnpm run dev`
