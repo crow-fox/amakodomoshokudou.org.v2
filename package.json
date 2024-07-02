@@ -4,15 +4,16 @@
   "version": "1.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && rm -rf _dist/_mock",
+    "build": "astro check && astro build && rm -rf _dist/_mock",
     "dev:mock": "astro dev --mode mock",
-    "build:mock": "astro build --mode mock",
+    "build:mock": "astro check && astro build --mode mock",
     "start": "astro preview",
     "astro": "astro",
+    "check": "astro check",
     "lint:es": "eslint 'src/**/*.{astro,ts,tsx}'",
     "lint:html": "markuplint 'src/**/*.{astro,html}'",
     "prettier": "exec prettier --write 'src/**/*.{astro,ts,tsx,css,html}'",
-    "lint": "pnpm run lint:es && pnpm run lint:html && pnpm run prettier",
+    "lint": "pnpm run check && pnpm run lint:es && pnpm run lint:html && pnpm run prettier",
     "prepare": "pnpx simple-git-hooks"
   },
   "simple-git-hooks": {
@@ -40,6 +41,7 @@
     "valibot": "^0.35.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.7.0",
     "@markuplint/astro-parser": "^3.12.0",
     "@tailwindcss/container-queries": "^0.1.1",
     "@types/node": "^20.14.9",
@@ -56,6 +58,7 @@
     "prettier-plugin-astro": "^0.14.0",
     "prettier-plugin-tailwindcss": "^0.6.1",
     "simple-git-hooks": "^2.11.1",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.5.3"
   }
 }
