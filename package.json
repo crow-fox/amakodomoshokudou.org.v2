@@ -14,6 +14,7 @@
     "lint:html": "markuplint 'src/**/*.{astro,html}'",
     "prettier": "exec prettier --write 'src/**/*.{astro,ts,tsx,css,html}'",
     "lint": "pnpm run check && pnpm run lint:es && pnpm run lint:html && pnpm run prettier",
+    "vrt": "pnpm exec playwright test",
     "prepare": "pnpx simple-git-hooks"
   },
   "simple-git-hooks": {
