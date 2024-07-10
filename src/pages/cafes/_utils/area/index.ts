@@ -1,7 +1,7 @@
-import { mockOrFetch } from "@/mock";
-import { newtClient } from "@/libs/newt";
-import { parseArea } from "@/schemas/area";
-import { areasFixture } from "@/pages/cafes/_utils/area/fixture";
+import { newtClient } from "../../../../libs/newt";
+import { mockOrFetch } from "../../../../mock";
+import { parseArea } from "../../../../schemas/area";
+import { areasFixture } from "./fixture";
 
 async function realFetchAreas() {
   const { items } = await newtClient.getContents({

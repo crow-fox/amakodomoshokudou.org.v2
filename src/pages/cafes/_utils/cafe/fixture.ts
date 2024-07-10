@@ -1,9 +1,9 @@
-import type { NewtCafe } from "@/schemas/cafe";
+import type { NewtCafe } from "../../../../schemas/cafe";
 import {
   areaFixtureFactory,
   isMockAreaId,
   type MockAreaId,
-} from "@/pages/cafes/_utils/area/fixture";
+} from "../area/fixture";
 
 type CafeFixtureFactoryParams = {
   name: string;
