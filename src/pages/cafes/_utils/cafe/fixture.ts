@@ -1,4 +1,4 @@
-import type { NewtCafe } from "@/pages/_schemas/cafe";
+import type { NewtCafe } from "@/schemas/cafe";
 import {
   areaFixtureFactory,
   isMockAreaId,

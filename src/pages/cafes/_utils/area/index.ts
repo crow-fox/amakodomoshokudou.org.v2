@@ -1,6 +1,6 @@
 import { mockOrFetch } from "@/mock";
-import { newtClient } from "@/pages/_libs/newt";
-import { parseArea } from "@/pages/_schemas/area";
+import { newtClient } from "@/libs/newt";
+import { parseArea } from "@/schemas/area";
 import { areasFixture } from "@/pages/cafes/_utils/area/fixture";
 
 async function realFetchAreas() {

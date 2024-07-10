@@ -1,4 +1,4 @@
-import type { NewtArea } from "@/pages/_schemas/area";
+import type { NewtArea } from "@/schemas/area";
 import { literal, parse, union, type InferOutput } from "valibot";
 
 const mockAreaIdSchema = union([

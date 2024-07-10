@@ -1,4 +1,4 @@
-import { newtAreaSchema } from "@/pages/_schemas/area";
+import { newtAreaSchema } from "@/schemas/area";
 import {
   nullable,
   number,

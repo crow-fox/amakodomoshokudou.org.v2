@@ -1,6 +1,6 @@
 import { mockOrFetch } from "@/mock";
-import { newtClient } from "@/pages/_libs/newt";
-import { parseCafe } from "@/pages/_schemas/cafe";
+import { newtClient } from "@/libs/newt";
+import { parseCafe } from "@/schemas/cafe";
 import { isMockAreaId } from "@/pages/cafes/_utils/area/fixture";
 import { cafesFixtureFactory } from "@/pages/cafes/_utils/cafe/fixture";
 
