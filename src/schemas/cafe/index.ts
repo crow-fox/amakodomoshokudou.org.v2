@@ -1,4 +1,3 @@
-import { newtAreaSchema } from "@/schemas/area";
 import {
   nullable,
   number,
@@ -7,6 +6,7 @@ import {
   string,
   type InferOutput,
 } from "valibot";
+import { newtAreaSchema } from "../area";
 
 export const newtCafeSchema = object({
   _id: string(),

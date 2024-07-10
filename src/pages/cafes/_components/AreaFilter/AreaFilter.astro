@@ -1,6 +1,6 @@
 ---
+import { fetchAreas } from "../../_utils/area";
 import icon from "./assets/icon.svg";
-import { fetchAreas } from "@/pages/cafes/_utils/area";
 
 const areas = await fetchAreas();
 const pathname = Astro.url.pathname;

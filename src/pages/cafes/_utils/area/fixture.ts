@@ -1,5 +1,5 @@
-import type { NewtArea } from "@/schemas/area";
 import { literal, parse, union, type InferOutput } from "valibot";
+import type { NewtArea } from "../../../../schemas/area";
 
 const mockAreaIdSchema = union([
   literal("1"),
