@@ -1,10 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-function generateInternalSiteUrl(path: string) {
-  return new URL(path, "http://localhost:4321").toString();
-}
-
-const routes = [
+const paths = [
   "/",
   "/about/",
   "/cafes/",
@@ -18,9 +14,9 @@ const routes = [
   "/404/",
 ];
 
-for (const route of routes) {
-  test(`screenshot[${route}]`, async ({ page }) => {
-    await page.goto(generateInternalSiteUrl(route));
+for (const path of paths) {
+  test(`screenshot[${path}]`, async ({ page }) => {
+    await page.goto(path);
     await page.evaluate(() => {
       // サイドバーとメイン部分でそれぞれスクロールさせている関係で、fullPageでスクリーンショット撮ってもサイドバー分の高さしか撮れないので、
       // ラッパーの高さをautoにして、ページ全体を撮れるようにする（サイドバーの固定は解除されるが、スクリーンショットのためなので問題ない）
