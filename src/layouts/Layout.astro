@@ -5,9 +5,9 @@ import { Image } from "astro:assets";
 import { site } from "@/consts/site";
 import { summary } from "@/consts/summary";
 import CopyButton from "@/components/CopyButton/CopyButton.astro";
-import Menu from "@/pages/_layouts/Menu/Menu.astro";
-import type { BreadcrumbItems } from "@/pages/_layouts/Breadcrumb/type";
-import Breadcrumb from "@/pages/_layouts/Breadcrumb/Breadcrumb.astro";
+import Menu from "@/layouts/Menu/Menu.astro";
+import type { BreadcrumbItems } from "@/layouts/Breadcrumb/type";
+import Breadcrumb from "@/layouts/Breadcrumb/Breadcrumb.astro";
 
 export type Props = {
   breadcrumb?: BreadcrumbItems;
