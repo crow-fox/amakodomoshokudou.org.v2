@@ -38,7 +38,7 @@
     "@fontsource-variable/noto-sans-jp": "^5.0.17",
     "astro": "4.11.5",
     "newt-client-js": "^3.3.0",
-    "sharp": "^0.32.6",
+    "sharp": "^0.33.4",
     "valibot": "^0.36.0"
   },
   "devDependencies": {
