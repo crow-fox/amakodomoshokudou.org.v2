@@ -6,6 +6,9 @@ import globals from "globals";
 
 export default tseslint.config(
   {
+    ignores: ["postcss.config.cjs", "src/env.d.ts"],
+  },
+  {
     languageOptions: {
       globals: {
         ...globals.browser,
