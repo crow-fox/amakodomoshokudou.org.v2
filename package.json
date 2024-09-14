@@ -54,6 +54,7 @@
     "eslint-plugin-astro": "^1.2.4",
     "eslint-plugin-jsx-a11y": "^6.10.0",
     "eslint-plugin-tailwindcss": "^3.14.1",
+    "globals": "^15.9.0",
     "markuplint": "^4.9.3",
     "postcss": "^8.4.39",
     "prettier": "^3.3.3",

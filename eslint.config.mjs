@@ -2,8 +2,21 @@ import eslint from "@eslint/js";
 import astro from "eslint-plugin-astro";
 import tseslint from "typescript-eslint";
 import tailwind from "eslint-plugin-tailwindcss";
+import globals from "globals";
 
 export default tseslint.config(
+  {
+    ignores: ["postcss.config.cjs", "src/env.d.ts"],
+  },
+  {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.es2022,
+      },
+    },
+  },
   eslint.configs.recommended,
   ...tseslint.configs.strict,
   ...tseslint.configs.stylistic,
