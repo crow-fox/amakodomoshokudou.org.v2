@@ -15,8 +15,8 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0(astro@4.15.1(@types/node@20.14.10)(rollup@4.21.2)(typescript@5.5.3))(tailwindcss@3.4.5(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3)))(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))
       '@fontsource-variable/noto-sans-jp':
-        specifier: ^5.0.17
-        version: 5.0.19
+        specifier: ^5.1.0
+        version: 5.1.0
       astro:
         specifier: 4.15.1
         version: 4.15.1(@types/node@20.14.10)(rollup@4.21.2)(typescript@5.5.3)
@@ -454,8 +454,8 @@ packages:
     resolution: {integrity: sha512-autAXT203ixhqei9xt+qkYOvY8l6LAFIdT2UXc/RPNeUVfqRF1BV94GTJyVPFKT8nFM6MyVJhjLj9E8JWvf5zQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@fontsource-variable/noto-sans-jp@5.0.19':
-    resolution: {integrity: sha512-fAhvax6qyagBBf5x8WoIMxNsofgytN4e0cBn1eGgYHhbr4snWA+NxCHkaH+jlOv7nSv9ZzzsSusslkcsRJwGYg==}
+  '@fontsource-variable/noto-sans-jp@5.1.0':
+    resolution: {integrity: sha512-VmEW0dlHsC0tQOlZlzcrUj+9HL73pANKneMrsZD8X6Jg3XhysOYY6R2VRGO4cTYwp5iVznt1crzGUEWM+/xQuA==}
 
   '@humanwhocodes/module-importer@1.0.1':
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
@@ -3956,7 +3956,7 @@ snapshots:
     dependencies:
       levn: 0.4.1
 
-  '@fontsource-variable/noto-sans-jp@5.0.19': {}
+  '@fontsource-variable/noto-sans-jp@5.1.0': {}
 
   '@humanwhocodes/module-importer@1.0.1': {}
 
