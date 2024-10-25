@@ -33,16 +33,16 @@
     ]
   },
   "dependencies": {
-    "@astrojs/sitemap": "3.1.6",
-    "@astrojs/tailwind": "^5.1.1",
+    "@astrojs/sitemap": "3.2.1",
+    "@astrojs/tailwind": "^5.1.2",
     "@fontsource-variable/noto-sans-jp": "^5.1.0",
-    "astro": "4.15.9",
+    "astro": "4.16.7",
     "newt-client-js": "^3.3.0",
     "sharp": "^0.33.4",
     "valibot": "^0.41.0"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.3",
+    "@astrojs/check": "^0.9.4",
     "@eslint/js": "^9.10.0",
     "@markuplint/astro-parser": "^4.6.6",
     "@playwright/test": "^1.45.1",
