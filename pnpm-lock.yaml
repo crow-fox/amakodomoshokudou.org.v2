@@ -21,8 +21,8 @@ importers:
         specifier: 4.16.7
         version: 4.16.7(@types/node@20.14.10)(rollup@4.21.2)(typescript@5.5.3)
       newt-client-js:
-        specifier: ^3.3.0
-        version: 3.3.3
+        specifier: ^3.3.6
+        version: 3.3.6
       sharp:
         specifier: ^0.33.4
         version: 0.33.4
@@ -1139,8 +1139,8 @@ packages:
   axios-retry@3.9.1:
     resolution: {integrity: sha512-8PJDLJv7qTTMMwdnbMvrLYuvB47M81wRtxQmEdV5w4rgbTXTt+vtPkXwajOfOdSyv/wZICJOC+/UhXH4aQ/R+w==}
 
-  axios@1.7.2:
-    resolution: {integrity: sha512-2A8QhOMrbomlDuiLeK9XibIBzuHeRcqqNOHp0Cyp5EoJ1IFDh+XZH3A6BkXtv0K4gFGCI0Y4BM7B1wOEi0Rmgw==}
+  axios@1.7.7:
+    resolution: {integrity: sha512-S4kL7XrjgBmvdGut0sN3yJxqYzrDOnivkBiN0OFs6hLiUam3UPvswUo0kqGyhqUZGEOytHyumEdXsAkgCOUf3Q==}
 
   axobject-query@4.1.0:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
@@ -2534,8 +2534,8 @@ packages:
     resolution: {integrity: sha512-Z4SmBUweYa09+o6pG+eASabEpP6QkQ70yHj351pQoEXIs8uHbaU2DWVmzBANKgflPa47A50PtB2+NgRpQvr7vA==}
     engines: {node: '>= 10'}
 
-  newt-client-js@3.3.3:
-    resolution: {integrity: sha512-5em8Kw+AhhJuftpWDTzv432a8z95Qw20nTvvlYVo01pyWXplnPZ7pOQX4L4NoYvHaOULHz5wbpB4qQDN1pXimA==}
+  newt-client-js@3.3.6:
+    resolution: {integrity: sha512-SMeeAvjwAwsr7UzaYDsk+AmjiXjRxdF88ywoN1QFocB9PmCJ9OXLAkeVIW7n1J6OCgwAnb6PtVxWtFO7iE/U4A==}
     engines: {node: '>=14'}
 
   next-tick@1.1.0:
@@ -4940,7 +4940,7 @@ snapshots:
       '@babel/runtime': 7.24.7
       is-retry-allowed: 2.2.0
 
-  axios@1.7.2:
+  axios@1.7.7:
     dependencies:
       follow-redirects: 1.15.6
       form-data: 4.0.0
@@ -6681,9 +6681,9 @@ snapshots:
 
   neotraverse@0.6.18: {}
 
-  newt-client-js@3.3.3:
+  newt-client-js@3.3.6:
     dependencies:
-      axios: 1.7.2
+      axios: 1.7.7
       axios-retry: 3.9.1
       qs: 6.12.1
     transitivePeerDependencies:
