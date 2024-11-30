@@ -37,7 +37,7 @@
     "@astrojs/tailwind": "^5.1.2",
     "@fontsource-variable/noto-sans-jp": "^5.1.0",
     "astro": "4.16.7",
-    "newt-client-js": "^3.3.6",
+    "newt-client-js": "^3.3.7",
     "sharp": "^0.33.4",
     "valibot": "^0.41.0"
   },
