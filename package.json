@@ -39,7 +39,7 @@
     "astro": "4.16.7",
     "newt-client-js": "^3.3.7",
     "sharp": "^0.33.4",
-    "valibot": "^0.41.0"
+    "valibot": "1.0.0-beta.9"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
