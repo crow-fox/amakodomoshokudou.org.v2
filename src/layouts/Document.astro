@@ -2,7 +2,7 @@
 import "../styles/globals.css";
 import { site } from "../consts/site";
 import "@fontsource-variable/noto-sans-jp";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 export type Props = {
   title?: string;
@@ -74,7 +74,7 @@ const title =
       content="太陽と新芽を意識した尼崎こども食堂ネットワークのロゴ"
     />
 
-    <ViewTransitions />
+    <ClientRouter />
   </head>
 
   <body>
