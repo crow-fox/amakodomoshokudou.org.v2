@@ -25,9 +25,6 @@
       "eslint --fix",
       "prettier --write"
     ],
-    "*.{astro,html}": [
-      "markuplint"
-    ],
     "*.css": [
       "prettier --write"
     ]
