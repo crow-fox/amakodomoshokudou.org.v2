@@ -4,10 +4,11 @@ const paths = [
   "/",
   "/about/",
   "/cafes/",
-  "/cafes/2/",
-  ...["muko", "tachibana", "sonoda", "osho", "chuo", "oda"].map(
-    (slug) => `/cafes/areas/${slug}/`,
-  ),
+  "/cafes/2/", // ページ分割されているものは2ページ目まではスクリーンショットを撮る // 3ページ以降は同じなので省略
+  ...["muko", "tachibana", "sonoda", "osho", "chuo", "oda"].flatMap((slug) => [
+    `/cafes/areas/${slug}/`,
+    `/cafes/areas/${slug}/2/`,
+  ]),
   "/charity/",
   "/privacy-policy/",
   "/start-cafe/",
