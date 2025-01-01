@@ -1,9 +1,7 @@
 import { newtClient } from "../../../../libs/newt";
-import { mockOrFetch } from "../../../../mock";
-import { parseArea } from "../../../../schemas/area";
-import { areasFixture } from "./fixture";
+import { parseArea, type NewtArea } from "../../../../schemas/area";
 
-async function realFetchAreas() {
+export async function fetchAreas(): Promise<NewtArea[]> {
   const { items } = await newtClient.getContents({
     appUid: "cafes",
     modelUid: "area",
@@ -15,15 +13,4 @@ async function realFetchAreas() {
 
   const areas = items.map((item) => parseArea(item));
   return areas;
-}
-
-function mockFetchAreas(): Awaited<ReturnType<typeof realFetchAreas>> {
-  return areasFixture;
-}
-
-export async function fetchAreas() {
-  return await mockOrFetch({
-    fetcher: realFetchAreas,
-    mock: mockFetchAreas,
-  });
 }
