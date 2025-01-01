@@ -13,7 +13,7 @@
     "lint:es": "eslint 'src/**/*.{astro,ts,tsx}'",
     "lint:html": "markuplint 'src/**/*.{astro,html}'",
     "prettier": "exec prettier --write 'src/**/*.{astro,ts,tsx,css,html}'",
-    "lint": "pnpm run check && pnpm run lint:es && pnpm run lint:html && pnpm run prettier",
+    "lint": "pnpm run check && pnpm biome lint && pnpm run lint:html && pnpm run prettier",
     "vrt": "pnpm exec playwright test",
     "prepare": "pnpx simple-git-hooks"
   },
@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@biomejs/biome": "1.9.4",
     "@eslint/js": "^9.17.0",
     "@markuplint/astro-parser": "^4.6.14",
     "@playwright/test": "^1.45.2",
