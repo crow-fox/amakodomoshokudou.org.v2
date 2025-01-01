@@ -32,6 +32,7 @@
     "@tailwindcss/container-queries": "^0.1.1",
     "@types/node": "^22.10.2",
     "autoprefixer": "^10.4.20",
+    "dotenv": "^16.4.7",
     "markuplint": "^4.11.4",
     "msw": "^2.7.0",
     "postcss": "^8.4.49",
