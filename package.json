@@ -15,7 +15,6 @@
     "lint": "pnpm run check && pnpm biome lint && pnpm run lint:html",
     "vrt": "pnpm exec playwright test"
   },
-  "simple-git-hooks": {},
   "dependencies": {
     "@astrojs/sitemap": "3.2.1",
     "@astrojs/tailwind": "^5.1.4",
