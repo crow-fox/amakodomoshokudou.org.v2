@@ -13,20 +13,9 @@
     "lint:html": "markuplint 'src/**/*.{astro,html}'",
     "format": "pnpm prettier --write 'src/**/*.{astro,ts,tsx,css,html}'",
     "lint": "pnpm run check && pnpm biome lint && pnpm run lint:html",
-    "vrt": "pnpm exec playwright test",
-    "prepare": "pnpx simple-git-hooks"
+    "vrt": "pnpm exec playwright test"
   },
-  "simple-git-hooks": {
-    "pre-commit": "pnpx lint-staged"
-  },
-  "lint-staged": {
-    "*.{astro,ts,tsx}": [
-      "prettier --write"
-    ],
-    "*.css": [
-      "prettier --write"
-    ]
-  },
+  "simple-git-hooks": {},
   "dependencies": {
     "@astrojs/sitemap": "3.2.1",
     "@astrojs/tailwind": "^5.1.4",
@@ -49,7 +38,6 @@
     "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.9",
-    "simple-git-hooks": "^2.11.1",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.2"
   }
