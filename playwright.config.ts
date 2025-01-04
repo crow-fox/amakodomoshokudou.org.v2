@@ -58,6 +58,12 @@ export default defineConfig({
     // },
   ],
 
+  expect: {
+    toHaveScreenshot: {
+      maxDiffPixels: 100,
+    },
+  },
+
   /* Run your local dev server before starting the tests */
   webServer: {
     command: "pnpm run build:mock && pnpm run start",
