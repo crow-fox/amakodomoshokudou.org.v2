@@ -1,6 +1,7 @@
 ---
 import { getImage } from "astro:assets";
 import img from "./assets/icon.svg";
+import { uniqueId } from "../../libs/unique-id";
 
 export type Props = {
   copyText: string;
@@ -16,90 +17,90 @@ const {
   label = false,
 } = Astro.props;
 const icon = await getImage({ src: img });
+
+const uid = uniqueId();
+
+const buttonId = `button-${uid}`;
+const notifyId = `notify-${uid}`;
 ---
 
-<clipboard-copy data-copy-text={copyText} data-success-text={successText}>
-  <span class="inline-grid">
-    <button
-      class={[
-        "inline-grid grid-cols-[1fr,auto] items-center rounded-xl border border-primary-border [grid-area:1/1]",
-        size === "sm" && " gap-x-4 px-8 py-4 text-sm",
-        size === "md" && " gap-x-8 px-12 py-8 text-md",
-      ].join(" ")}
-    >
-      <slot />
-      <span
-        role="img"
-        aria-label={label ? "をコピー" : undefined}
-        style={{
-          maskImage: `url(${icon.src})`,
-          WebkitMaskImage: `url(${icon.src})`,
-        }}
-        class="size-[1em] bg-[currentColor] [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover]"
-      ></span>
-    </button>
+<span class="inline-grid">
+  <button
+    id={buttonId}
+    type="button"
+    class={[
+      "inline-grid grid-cols-[1fr,auto] items-center rounded-xl border border-primary-border [grid-area:1/1]",
+      size === "sm" && " gap-x-4 px-8 py-4 text-sm",
+      size === "md" && " gap-x-8 px-12 py-8 text-md",
+    ].join(" ")}
+  >
+    <slot />
     <span
-      aria-live="assertive"
-      data-open="false"
-      class="isolate self-start justify-self-end rounded-sm border-secondary-border bg-tertiary-background text-xs [grid-area:1/1] data-[open=true]:border data-[open=true]:p-4"
+      role="img"
+      aria-label={label ? "をコピー" : undefined}
+      style={{
+        maskImage: `url(${icon.src})`,
+        WebkitMaskImage: `url(${icon.src})`,
+      }}
+      class="size-[1em] bg-[currentColor] [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover]"
     ></span>
-  </span>
-</clipboard-copy>
+  </button>
+  <span
+    id={notifyId}
+    aria-live="assertive"
+    data-open="false"
+    class="isolate self-start justify-self-end rounded-sm border-secondary-border bg-tertiary-background text-xs [grid-area:1/1] data-[open=true]:border data-[open=true]:p-4"
+  ></span>
+</span>
 
-<script>
-  class ClipboardCopy extends HTMLElement {
-    private button: HTMLButtonElement;
-    private notify: HTMLSpanElement;
-    private onClickCopy: EventListener;
+<script
+  is:inline
+  define:vars={{
+    __copyText: copyText,
+    __successText: successText,
+    __buttonId: buttonId,
+    __notifyId: notifyId,
+  }}
+>
+  /**
+   * @typedef {Object} Vars
+   * @property {string} copyText - コピーするテキスト
+   * @property {string} successText - 成功時に表示するテキスト
+   * @property {string} buttonId - ボタンのID
+   * @property {string} notifyId - 通知エレメントのID
+   */
 
-    constructor() {
-      super();
+  /** @type {Vars} */
+  const VARS = {
+    copyText: __copyText,
+    successText: __successText,
+    buttonId: __buttonId,
+    notifyId: __notifyId,
+  };
 
-      const button = this.querySelector("button");
-      const notify = this.querySelector('span[aria-live="assertive"]');
+  const button = document.getElementById(VARS.buttonId);
+  const notify = document.getElementById(VARS.notifyId);
 
-      if (button instanceof HTMLButtonElement) {
-        this.button = button;
-      } else {
-        throw new Error("button is not found");
-      }
-
-      if (notify instanceof HTMLSpanElement) {
-        this.notify = notify;
-      } else {
-        throw new Error("notify is not found");
-      }
-
-      this.onClickCopy = async () => this.copyToClipboard();
-      this.button.addEventListener("click", this.onClickCopy);
-    }
-
-    async copyToClipboard() {
-      const copyText = this.dataset.copyText;
-      const successText = this.dataset.successText;
-
-      if (!copyText || !successText)
-        throw new Error("copyText or successText is not defined");
-
-      try {
-        await navigator.clipboard.writeText(copyText);
-        this.notify.textContent = successText;
-        this.notify.dataset.open = "true";
-      } catch {
-        this.notify.textContent = "コピーに失敗しました";
-        this.notify.dataset.open = "true";
-      } finally {
-        setTimeout(() => {
-          this.notify.textContent = "";
-          this.notify.dataset.open = "false";
-        }, 3000);
-      }
-    }
-
-    disconnectedCallback() {
-      this.button.removeEventListener("click", this.onClickCopy);
-    }
+  if ((!button) instanceof HTMLButtonElement) {
+    throw new Error("button is not found");
+  }
+  if ((!notify) instanceof HTMLSpanElement) {
+    throw new Error("notify is not found");
   }
 
-  customElements.define("clipboard-copy", ClipboardCopy);
+  button.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(VARS.copyText);
+      notify.textContent = VARS.successText;
+      notify.dataset.open = "true";
+    } catch {
+      notify.textContent = "コピーに失敗しました";
+      notify.dataset.open = "true";
+    } finally {
+      setTimeout(() => {
+        notify.textContent = "";
+        notify.dataset.open = "false";
+      }, 3000);
+    }
+  });
 </script>
