@@ -2,102 +2,106 @@
 import { getImage } from "astro:assets";
 import closeImg from "./assets/close.svg";
 import menuImg from "./assets/menu.svg";
+import { uniqueId } from "../../libs/unique-id";
 
 const [closeIcon, menuIcon] = await Promise.all([
   getImage({ src: closeImg }),
   getImage({ src: menuImg }),
 ]);
+
+const id = uniqueId();
+const menuOpenButtonId = `menu-open-button-${id}`;
+const menuCloseButtonId = `menu-close-button-${id}`;
+const menuDialogId = `menu-dialog-${id}`;
 ---
 
-<menu-dialog>
-  <button
-    id="menu-open"
-    aria-expanded="false"
-    class="inline-grid grid-cols-[auto,1fr] items-center gap-x-8 rounded-xl border border-primary-border text-sm font-bold px-12 py-8 lg:hidden"
-  >
-    <span
-      role="img"
-      style={{
-        maskImage: `url(${menuIcon.src})`,
-        WebkitMaskImage: `url(${menuIcon.src})`,
-      }}
-      class="size-[1.25em] bg-[currentColor] [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover]"
-    ></span>メニュー
-  </button>
-  <dialog
-    aria-label="メニュー"
-    class="size-full bg-[rgb(0_0_0/0.8)] max-w-full max-h-full"
-  >
-    <div class="border-b border-b-secondary-border bg-primary-background p-20">
-      <div class="grid gap-y-20 mx-auto max-w-576">
-        <button
-          id="menu-close"
-          class="flex items-center justify-center gap-x-8 rounded-xl border border-primary-border bg-primary-background font-bold px-12 py-8"
-        >
-          <span
-            role="img"
-            style={{
-              maskImage: `url(${closeIcon.src})`,
-              WebkitMaskImage: `url(${closeIcon.src})`,
-            }}
-            class="size-[1.25em] bg-[currentColor] [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover]"
-          ></span>閉じる
-        </button>
-        <slot />
-      </div>
+<button
+  id={menuOpenButtonId}
+  aria-expanded="false"
+  class="inline-grid grid-cols-[auto,1fr] items-center gap-x-8 rounded-xl border border-primary-border text-sm font-bold px-12 py-8 lg:hidden"
+>
+  <span
+    role="img"
+    style={{
+      maskImage: `url(${menuIcon.src})`,
+      WebkitMaskImage: `url(${menuIcon.src})`,
+    }}
+    class="size-[1.25em] bg-[currentColor] [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover]"
+  ></span>メニュー
+</button>
+<dialog
+  id={menuDialogId}
+  aria-label="メニュー"
+  class="size-full bg-[rgb(0_0_0/0.8)] max-w-full max-h-full"
+>
+  <div class="border-b border-b-secondary-border bg-primary-background p-20">
+    <div class="grid gap-y-20 mx-auto max-w-576">
+      <button
+        id={menuCloseButtonId}
+        class="flex items-center justify-center gap-x-8 rounded-xl border border-primary-border bg-primary-background font-bold px-12 py-8"
+      >
+        <span
+          role="img"
+          style={{
+            maskImage: `url(${closeIcon.src})`,
+            WebkitMaskImage: `url(${closeIcon.src})`,
+          }}
+          class="size-[1.25em] bg-[currentColor] [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover]"
+        ></span>閉じる
+      </button>
+      <slot />
     </div>
-  </dialog>
-</menu-dialog>
+  </div>
+</dialog>
 
-<script>
-  class MenuDialog extends HTMLElement {
-    private dialog: HTMLDialogElement | null = null;
-    private openButton: HTMLButtonElement | null = null;
-    private closeButton: HTMLButtonElement | null = null;
-    private openListener: EventListener = () => {};
-    private closeListener: EventListener = () => {};
+<script
+  is:inline
+  define:vars={{
+    // ariasをつけることで、そんな変数は存在しないという tsのエラーが出なくなる
+    closeId: menuCloseButtonId,
+    openId: menuOpenButtonId,
+    dialogId: menuDialogId,
+  }}
+>
+  const VARS = { closeId, openId, dialogId };
 
-    constructor() {
-      super();
-    }
+  const menuDialog = document.getElementById(VARS.dialogId);
+  const menuOpenButton = document.getElementById(VARS.openId);
+  const menuCloseButton = document.getElementById(VARS.closeId);
 
-    connectedCallback() {
-      this.dialog = this.querySelector("dialog");
-      this.openButton = this.querySelector("button#menu-open");
-      this.closeButton = this.querySelector("button#menu-close");
-      this.openListener = this.openDialog.bind(this);
-      this.closeListener = this.closeDialog.bind(this);
-
-      if (
-        this.dialog === null ||
-        this.openButton === null ||
-        this.closeButton === null
-      ) {
-        throw new Error("DOMが正しく設定されていません。");
-      }
-
-      this.openButton.addEventListener("click", this.openListener);
-      this.closeButton.addEventListener("click", this.closeListener);
-      this.dialog.addEventListener("click", (event) => {
-        if (event.target === this.dialog) {
-          this.closeDialog();
-        }
-      });
-    }
-
-    openDialog() {
-      this.dialog?.showModal();
-    }
-
-    closeDialog() {
-      this.dialog?.close();
-    }
-
-    disconnectedCallback() {
-      this.openButton?.removeEventListener("click", this.openListener);
-      this.closeButton?.removeEventListener("click", this.closeListener);
-    }
+  if (
+    menuDialog instanceof HTMLDialogElement === false ||
+    menuOpenButton instanceof HTMLButtonElement === false ||
+    menuCloseButton instanceof HTMLButtonElement === false
+  ) {
+    throw new Error("DOMが正しく設定されていません。");
   }
 
-  customElements.define("menu-dialog", MenuDialog);
+  const abortController = new AbortController();
+
+  menuOpenButton.addEventListener(
+    "click",
+    () => {
+      menuDialog.showModal();
+    },
+    { signal: abortController.signal },
+  );
+
+  menuCloseButton.addEventListener(
+    "click",
+    () => {
+      menuDialog.close();
+    },
+    { signal: abortController.signal },
+  );
+
+  menuDialog.addEventListener(
+    "click",
+    (event) => {
+      if (event.target === menuDialog) {
+        menuDialog.close();
+      }
+    },
+    { signal: abortController.signal },
+  );
 </script>
