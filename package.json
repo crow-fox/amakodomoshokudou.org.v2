@@ -13,7 +13,8 @@
     "lint:html": "markuplint 'src/**/*.{astro,html}'",
     "format": "pnpm prettier --write 'src/**/*.{astro,ts,tsx,css,html}'",
     "lint": "pnpm run check && pnpm biome lint && pnpm run lint:html",
-    "vrt": "pnpm exec playwright test"
+    "vrt": "pnpm exec playwright test",
+    "vrt:upgrade": "pnpm vrt --update-snapshots"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.2.1",
