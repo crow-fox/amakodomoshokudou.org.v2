@@ -29,17 +29,6 @@ for (const path of paths) {
       const wrapper = document.querySelector<HTMLDivElement>("body > div");
       if (!wrapper) throw new Error("Wrapper not found");
       wrapper.style.blockSize = "auto";
-
-      // 画像が読み込まれないことがあるので、強制的に読み込む
-      const images = document.querySelectorAll<HTMLImageElement>("img");
-      // 画像を同期的に読み込むようにする
-      for (const image of images) {
-        image.setAttribute("decoding", "sync");
-        image.setAttribute("loading", "eager");
-      }
-      // ページ下部までスクロールすることで、画像が読み込まれる
-      const maxHeight = document.documentElement.clientHeight;
-      window.scrollTo(0, maxHeight);
     });
 
     await expect(page).toHaveScreenshot({
