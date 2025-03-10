@@ -4,14 +4,6 @@ import containerQuery from "@tailwindcss/container-queries";
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  corePlugins: {
-    margin: false,
-    padding: false,
-    width: false,
-    maxWidth: false,
-    height: false,
-    maxHeight: false,
-  },
   content: ["./src/**/*.{js,jsx,ts,tsx,astro,html}"],
   theme: {
     colors: {
@@ -99,103 +91,6 @@ export default {
     plugin(({ matchUtilities, theme, addComponents }) => {
       // デフォルトのユーティリティを論理プロパティで上書き
       // もし不都合な場合は、この部分とcorePluginsの設定をコメントアウトすればデフォルトの状態に戻る
-      matchUtilities(
-        {
-          mt: (value) => ({
-            marginBlockStart: value,
-          }),
-          mb: (value) => ({
-            marginBlockEnd: value,
-          }),
-          ml: (value) => ({
-            marginInlineStart: value,
-          }),
-          mr: (value) => ({
-            marginInlineEnd: value,
-          }),
-          mx: (value) => ({
-            marginInline: value,
-          }),
-          my: (value) => ({
-            marginBlock: value,
-          }),
-          m: (value) => ({
-            margin: value,
-          }),
-        },
-        {
-          values: theme("margin"),
-          supportsNegativeValues: true,
-        },
-      );
-      matchUtilities(
-        {
-          pt: (value) => ({
-            paddingBlockStart: value,
-          }),
-          pb: (value) => ({
-            paddingBlockEnd: value,
-          }),
-          pl: (value) => ({
-            paddingInlineStart: value,
-          }),
-          pr: (value) => ({
-            paddingInlineEnd: value,
-          }),
-          px: (value) => ({
-            paddingInline: value,
-          }),
-          py: (value) => ({
-            paddingBlock: value,
-          }),
-          p: (value) => ({
-            padding: value,
-          }),
-        },
-        {
-          values: theme("padding"),
-        },
-      );
-      matchUtilities(
-        {
-          "max-w": (value) => ({
-            maxInlineSize: value,
-          }),
-        },
-        {
-          values: theme("maxWidth"),
-        },
-      );
-      matchUtilities(
-        {
-          w: (value) => ({
-            inlineSize: value,
-          }),
-        },
-        {
-          values: theme("width"),
-        },
-      );
-      matchUtilities(
-        {
-          h: (value) => ({
-            blockSize: value,
-          }),
-        },
-        {
-          values: theme("height"),
-        },
-      );
-      matchUtilities(
-        {
-          "max-h": (value) => ({
-            maxBlockSize: value,
-          }),
-        },
-        {
-          values: theme("maxHeight"),
-        },
-      );
       addComponents({
         // tailwind-typographyプラグインの導入を検討
         ".prose": {
