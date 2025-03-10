@@ -4,9 +4,6 @@ import containerQuery from "@tailwindcss/container-queries";
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  corePlugins: {
-    height: false,
-  },
   content: ["./src/**/*.{js,jsx,ts,tsx,astro,html}"],
   theme: {
     colors: {
@@ -94,16 +91,6 @@ export default {
     plugin(({ matchUtilities, theme, addComponents }) => {
       // デフォルトのユーティリティを論理プロパティで上書き
       // もし不都合な場合は、この部分とcorePluginsの設定をコメントアウトすればデフォルトの状態に戻る
-      matchUtilities(
-        {
-          h: (value) => ({
-            blockSize: value,
-          }),
-        },
-        {
-          values: theme("height"),
-        },
-      );
       addComponents({
         // tailwind-typographyプラグインの導入を検討
         ".prose": {
