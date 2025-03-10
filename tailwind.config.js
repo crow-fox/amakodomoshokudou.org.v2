@@ -6,7 +6,6 @@ import containerQuery from "@tailwindcss/container-queries";
 export default {
   corePlugins: {
     width: false,
-    maxWidth: false,
     height: false,
     maxHeight: false,
   },
@@ -97,16 +96,6 @@ export default {
     plugin(({ matchUtilities, theme, addComponents }) => {
       // デフォルトのユーティリティを論理プロパティで上書き
       // もし不都合な場合は、この部分とcorePluginsの設定をコメントアウトすればデフォルトの状態に戻る
-      matchUtilities(
-        {
-          "max-w": (value) => ({
-            maxInlineSize: value,
-          }),
-        },
-        {
-          values: theme("maxWidth"),
-        },
-      );
       matchUtilities(
         {
           w: (value) => ({
