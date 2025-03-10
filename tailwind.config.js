@@ -5,7 +5,6 @@ import containerQuery from "@tailwindcss/container-queries";
 /** @type {import('tailwindcss').Config} */
 export default {
   corePlugins: {
-    width: false,
     height: false,
   },
   content: ["./src/**/*.{js,jsx,ts,tsx,astro,html}"],
@@ -95,16 +94,6 @@ export default {
     plugin(({ matchUtilities, theme, addComponents }) => {
       // デフォルトのユーティリティを論理プロパティで上書き
       // もし不都合な場合は、この部分とcorePluginsの設定をコメントアウトすればデフォルトの状態に戻る
-      matchUtilities(
-        {
-          w: (value) => ({
-            inlineSize: value,
-          }),
-        },
-        {
-          values: theme("width"),
-        },
-      );
       matchUtilities(
         {
           h: (value) => ({
