@@ -7,7 +7,6 @@ export default {
   corePlugins: {
     width: false,
     height: false,
-    maxHeight: false,
   },
   content: ["./src/**/*.{js,jsx,ts,tsx,astro,html}"],
   theme: {
@@ -114,16 +113,6 @@ export default {
         },
         {
           values: theme("height"),
-        },
-      );
-      matchUtilities(
-        {
-          "max-h": (value) => ({
-            maxBlockSize: value,
-          }),
-        },
-        {
-          values: theme("maxHeight"),
         },
       );
       addComponents({
