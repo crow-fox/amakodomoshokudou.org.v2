@@ -5,7 +5,6 @@ import containerQuery from "@tailwindcss/container-queries";
 /** @type {import('tailwindcss').Config} */
 export default {
   corePlugins: {
-    margin: false,
     padding: false,
     width: false,
     maxWidth: false,
@@ -99,35 +98,6 @@ export default {
     plugin(({ matchUtilities, theme, addComponents }) => {
       // デフォルトのユーティリティを論理プロパティで上書き
       // もし不都合な場合は、この部分とcorePluginsの設定をコメントアウトすればデフォルトの状態に戻る
-      matchUtilities(
-        {
-          mt: (value) => ({
-            marginBlockStart: value,
-          }),
-          mb: (value) => ({
-            marginBlockEnd: value,
-          }),
-          ml: (value) => ({
-            marginInlineStart: value,
-          }),
-          mr: (value) => ({
-            marginInlineEnd: value,
-          }),
-          mx: (value) => ({
-            marginInline: value,
-          }),
-          my: (value) => ({
-            marginBlock: value,
-          }),
-          m: (value) => ({
-            margin: value,
-          }),
-        },
-        {
-          values: theme("margin"),
-          supportsNegativeValues: true,
-        },
-      );
       matchUtilities(
         {
           pt: (value) => ({
