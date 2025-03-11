@@ -10,7 +10,7 @@ const pathname = Astro.url.pathname;
   class="group rounded-xl border border-primary-border bg-tertiary-background"
 >
   <summary
-    class="grid cursor-pointer grid-cols-[1fr,1.5em] items-center rounded-xl bg-primary-background px-12 py-8 group-open:rounded-b-none [&::-webkit-details-marker]:hidden"
+    class="grid cursor-pointer grid-cols-[1fr_1.5em] items-center rounded-xl bg-primary-background px-12 py-8 group-open:rounded-b-none [&::-webkit-details-marker]:hidden"
   >
     <span class="font-bold">地区で絞る</span>
     <span
@@ -25,7 +25,7 @@ const pathname = Astro.url.pathname;
   </summary>
   <nav class="border-t border-t-secondary-border p-12" aria-label="地区別">
     <ol
-      class="grid grid-cols-[repeat(auto-fill,min(theme(spacing[84]),100%))] gap-12"
+      class="grid grid-cols-[repeat(auto-fill,min(var(--spacing-84),100%))] gap-12"
     >
       <li>
         <a

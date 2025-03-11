@@ -29,9 +29,9 @@ const notifyId = `notify-${uid}`;
     id={buttonId}
     type="button"
     class={[
-      "inline-grid grid-cols-[1fr,auto] items-center rounded-xl border border-primary-border [grid-area:1/1]",
-      size === "sm" && " gap-x-4 px-8 py-4 text-sm",
-      size === "md" && " gap-x-8 px-12 py-8 text-md",
+      "inline-grid grid-cols-[1fr_auto] items-center rounded-xl border border-primary-border [grid-area:1/1]",
+      size === "sm" && " gap-x-4 px-8 py-4 text-sm/sm",
+      size === "md" && " gap-x-8 px-12 py-8 text-md/md",
     ].join(" ")}
   >
     <slot />
@@ -49,7 +49,7 @@ const notifyId = `notify-${uid}`;
     id={notifyId}
     aria-live="assertive"
     data-open="false"
-    class="isolate self-start justify-self-end rounded-sm border-secondary-border bg-tertiary-background text-xs [grid-area:1/1] data-[open=true]:border data-[open=true]:p-4"
+    class="border-secondary-border bg-tertiary-background text-xs/xs isolate self-start justify-self-end rounded-xs [grid-area:1/1] data-[open=true]:border data-[open=true]:p-4"
   ></span>
 </span>
 
