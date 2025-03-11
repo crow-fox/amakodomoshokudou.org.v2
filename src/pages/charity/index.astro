@@ -28,12 +28,14 @@ const breadcrumb: BreadcrumbItems = [
 >
   <Layout breadcrumb={breadcrumb}>
     <div
-      class="grid grid-cols-[minmax(theme(spacing[20]),1fr)_minmax(0,theme(spacing[932]))_minmax(theme(spacing[20]),1fr)] lg:grid-cols-[minmax(theme(spacing[32]),1fr)_minmax(0,theme(spacing[932]))_minmax(theme(spacing[32]),1fr)]"
+      class="grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] lg:grid-cols-[minmax(var(--spacing-32),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-32),1fr)]"
     >
       <div
-        class="grid grid-cols-subgrid gap-y-20 border-t-8 border-t-accent py-32 [grid-column:1/-1] lg:gap-y-32 lg:py-52 [&>*]:[grid-column:2]"
+        class="border-t-accent [grid-column:1/-1] grid grid-cols-subgrid gap-y-20 border-t-8 py-32 *:[grid-column:2] lg:gap-y-32 lg:py-52"
       >
-        <h1 class="text-2xl font-bold lg:text-3xl">尼崎のこども食堂への支援</h1>
+        <h1 class="text-2xl/2xl lg:text-3xl/3xl font-bold">
+          尼崎のこども食堂への支援
+        </h1>
         <ol class="flex flex-wrap gap-x-20 gap-y-12">
           <li>
             <ToSectionLink target="with-items">物品で支援する</ToSectionLink>
@@ -46,7 +48,7 @@ const breadcrumb: BreadcrumbItems = [
         </ol>
       </div>
       <div
-        class="grid grid-cols-subgrid gap-y-52 bg-secondary-background py-32 [grid-column:1/-1] lg:gap-y-84 lg:py-52 [&>*]:[grid-column:2]"
+        class="bg-secondary-background [grid-column:1/-1] grid grid-cols-subgrid gap-y-52 py-32 *:[grid-column:2] lg:gap-y-84 lg:py-52"
       >
         <section class="grid gap-y-32">
           <div class="prose grid gap-y-20">
@@ -55,9 +57,9 @@ const breadcrumb: BreadcrumbItems = [
               フードパントリーで使うレトルト食品や日持ちのする食料品、会食や弁当づくりに使う缶詰やお米等を寄付頂ける方は、こちらの手順にそって、ご支援をよろしくお願いします。
             </p>
             <aside
-              class="grid gap-y-12 rounded-xl border border-danger bg-primary-background p-12 lg:p-20"
+              class="border-danger bg-primary-background grid gap-y-12 rounded-xl border p-12 lg:p-20"
             >
-              <p class="font-bold text-danger">重要なお知らせ</p>
+              <p class="text-danger font-bold">重要なお知らせ</p>
               <p class="text-md/loose">
                 現在、生鮮食品は保管場所の関係から、原則受付していません。<br />
                 ご理解のほど、よろしくお願いします。
@@ -83,10 +85,10 @@ const breadcrumb: BreadcrumbItems = [
               </p>
               <p>送付先の情報等、折り返しご連絡させていただきます。</p>
               <div
-                class="grid gap-y-12 rounded-xl border border-secondary-border bg-primary-background p-12 lg:p-20"
+                class="border-secondary-border bg-primary-background grid gap-y-12 rounded-xl border p-12 lg:p-20"
               >
                 <p class="font-bold">連絡先のメールアドレス</p>
-                <p class="text-sm">{summary.mail.value}</p>
+                <p class="text-sm/sm">{summary.mail.value}</p>
                 <p>
                   <CopyButton copyText={summary.mail.value}>
                     メールアドレスをコピー
@@ -109,17 +111,17 @@ const breadcrumb: BreadcrumbItems = [
           <div class="grid gap-y-20">
             <FlowItem step={1} title="指定の口座までご振込ください">
               <div
-                class="grid gap-y-12 rounded-xl border border-secondary-border bg-primary-background p-12 lg:p-20"
+                class="border-secondary-border bg-primary-background grid gap-y-12 rounded-xl border p-12 lg:p-20"
               >
                 <p class="font-bold">口座情報</p>
                 <dl>
                   {
                     Object.values(bankAccount).map(({ title, value }) => (
-                      <div class="flex flex-wrap gap-y-8 rounded-md py-8 odd:bg-tertiary-background">
-                        <dt class="flex-[1_0_theme(spacing[136])] text-sm px-12">
+                      <div class="odd:bg-tertiary-background flex flex-wrap gap-y-8 rounded-md py-8">
+                        <dt class="text-sm/sm flex-[1_0_var(--spacing-136)] px-12">
                           {title}
                         </dt>
-                        <dd class="min-w-[60%] flex-[9999_0_0] text-sm px-12">
+                        <dd class="text-sm/sm min-w-[60%] flex-[9999_0_0] px-12">
                           {value}
                         </dd>
                       </div>
@@ -134,10 +136,10 @@ const breadcrumb: BreadcrumbItems = [
                 ご寄付をお寄せ頂いた場合は、お手数ですが下記のメールアドレスまでご連絡ください。
               </p>
               <div
-                class="grid gap-y-12 rounded-xl border border-secondary-border bg-primary-background p-12 lg:p-20"
+                class="border-secondary-border bg-primary-background grid gap-y-12 rounded-xl border p-12 lg:p-20"
               >
                 <p class="font-bold">連絡先のメールアドレス</p>
-                <p class="text-sm">{summary.mail.value}</p>
+                <p class="text-sm/sm">{summary.mail.value}</p>
                 <p>
                   <CopyButton copyText={summary.mail.value}>
                     メールアドレスをコピー

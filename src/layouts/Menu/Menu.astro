@@ -18,7 +18,7 @@ const menuDialogId = `menu-dialog-${id}`;
 <button
   id={menuOpenButtonId}
   aria-expanded="false"
-  class="inline-grid grid-cols-[auto,1fr] items-center gap-x-8 rounded-xl border border-primary-border text-sm font-bold px-12 py-8 lg:hidden"
+  class="border-primary-border text-sm/sm inline-grid grid-cols-[auto_1fr] items-center gap-x-8 rounded-xl border px-12 py-8 font-bold lg:hidden"
 >
   <span
     role="img"
@@ -32,13 +32,13 @@ const menuDialogId = `menu-dialog-${id}`;
 <dialog
   id={menuDialogId}
   aria-label="メニュー"
-  class="size-full bg-[rgb(0_0_0/0.8)] max-w-full max-h-full"
+  class="size-full max-h-full max-w-full bg-[rgb(0_0_0/0.8)]"
 >
-  <div class="border-b border-b-secondary-border bg-primary-background p-20">
-    <div class="grid gap-y-20 mx-auto max-w-576">
+  <div class="border-b-secondary-border bg-primary-background border-b p-20">
+    <div class="mx-auto grid max-w-576 gap-y-20">
       <button
         id={menuCloseButtonId}
-        class="flex items-center justify-center gap-x-8 rounded-xl border border-primary-border bg-primary-background font-bold px-12 py-8"
+        class="border-primary-border bg-primary-background flex items-center justify-center gap-x-8 rounded-xl border px-12 py-8 font-bold"
       >
         <span
           role="img"

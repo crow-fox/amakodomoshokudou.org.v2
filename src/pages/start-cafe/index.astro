@@ -28,14 +28,16 @@ const breadcrumb: BreadcrumbItems = [
 >
   <Layout breadcrumb={breadcrumb}>
     <div
-      class="grid grid-cols-[minmax(theme(spacing[20]),1fr)_minmax(0,theme(spacing[932]))_minmax(theme(spacing[20]),1fr)] lg:grid-cols-[minmax(theme(spacing[32]),1fr)_minmax(0,theme(spacing[932]))_minmax(theme(spacing[32]),1fr)]"
+      class="grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] lg:grid-cols-[minmax(var(--spacing-32),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-32),1fr)]"
     >
       <div
-        class="grid grid-cols-subgrid gap-y-20 border-t-8 border-t-accent py-32 [grid-column:1/-1] lg:gap-y-32 lg:py-52 [&>*]:[grid-column:2]"
+        class="border-t-accent [grid-column:1/-1] grid grid-cols-subgrid gap-y-20 border-t-8 py-32 *:[grid-column:2] lg:gap-y-32 lg:py-52"
       >
-        <h1 class="text-2xl font-bold lg:text-3xl">こども食堂の立ち上げ</h1>
+        <h1 class="text-2xl/2xl lg:text-3xl/3xl font-bold">
+          こども食堂の立ち上げ
+        </h1>
         <aside
-          class="grid gap-y-12 rounded-xl border border-secondary-border p-12 lg:p-20"
+          class="border-secondary-border grid gap-y-12 rounded-xl border p-12 lg:p-20"
         >
           <p class="font-bold">PDF版の資料</p>
           <p>
@@ -59,7 +61,7 @@ const breadcrumb: BreadcrumbItems = [
         </ol>
       </div>
       <div
-        class="grid grid-cols-subgrid gap-y-52 bg-secondary-background py-32 [grid-column:1/-1] lg:gap-y-84 lg:py-52 [&>*]:[grid-column:2]"
+        class="bg-secondary-background [grid-column:1/-1] grid grid-cols-subgrid gap-y-52 py-32 *:[grid-column:2] lg:gap-y-84 lg:py-52"
       >
         <section class="grid gap-y-20">
           <Heading id="flow">立ち上げの流れ</Heading>
@@ -132,10 +134,10 @@ const breadcrumb: BreadcrumbItems = [
             尼崎こども食堂ネットワーク事務局まで、登録希望のご連絡をお願いします。
           </p>
           <div
-            class="grid gap-y-12 rounded-xl border border-secondary-border bg-primary-background p-12 lg:p-20"
+            class="border-secondary-border bg-primary-background grid gap-y-12 rounded-xl border p-12 lg:p-20"
           >
             <p class="font-bold">連絡先のメールアドレス</p>
-            <p class="text-sm">{summary.mail.value}</p>
+            <p class="text-sm/sm">{summary.mail.value}</p>
             <p>
               <CopyButton copyText={summary.mail.value}>
                 メールアドレスをコピー

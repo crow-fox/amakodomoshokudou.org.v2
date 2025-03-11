@@ -18,12 +18,12 @@ const breadcrumb: BreadcrumbItems = [
 <Document title="お探しのページは見つかりませんでした">
   <Layout breadcrumb={breadcrumb}>
     <div
-      class="grid grid-cols-[minmax(theme(spacing[20]),1fr)_minmax(0,theme(spacing[932]))_minmax(theme(spacing[20]),1fr)] lg:grid-cols-[minmax(theme(spacing[32]),1fr)_minmax(0,theme(spacing[932]))_minmax(theme(spacing[32]),1fr)]"
+      class="grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] lg:grid-cols-[minmax(var(--spacing-32),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-32),1fr)]"
     >
       <div
-        class="grid grid-cols-subgrid gap-y-20 border-t-8 border-t-accent py-32 [grid-column:1/-1] lg:gap-y-32 lg:py-52 [&>*]:[grid-column:2]"
+        class="border-t-accent [grid-column:1/-1] grid grid-cols-subgrid gap-y-20 border-t-8 py-32 *:[grid-column:2] lg:gap-y-32 lg:py-52"
       >
-        <h1 class="text-2xl font-bold lg:text-3xl">
+        <h1 class="text-2xl/2xl lg:text-3xl/3xl font-bold">
           指定されたページは見つかりませんでした
         </h1>
         <div class="prose grid gap-y-20">

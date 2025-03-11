@@ -7,13 +7,13 @@ export type Props = {
 const props = Astro.props;
 ---
 
-<section class="grid gap-y-20 rounded-xl bg-primary-background p-20 lg:p-32">
+<section class="bg-primary-background grid gap-y-20 rounded-xl p-20 lg:p-32">
   <h3 class="grid justify-items-start gap-y-12">
     <span
-      class="inline-block rounded-sm bg-secondary-background text-sm px-8 py-4"
+      class="bg-secondary-background text-sm/sm inline-block rounded-xs px-8 py-4"
       >手順{props.step}</span
     >
-    <span class="text-lg font-bold lg:text-xl">{props.title}</span>
+    <span class="text-lg/lg lg:text-xl/xl font-bold">{props.title}</span>
   </h3>
   <div class="prose grid gap-y-20">
     <slot />
