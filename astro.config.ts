@@ -1,11 +1,14 @@
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import astroSsgMsw from "./astro-ssg-msw-integration";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [sitemap(), tailwind(), astroSsgMsw()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  integrations: [sitemap(), astroSsgMsw()],
   site: import.meta.env.PROD
     ? "https://amakodomoshokudou.org"
     : "http://localhost:4321",
