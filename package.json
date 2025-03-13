@@ -20,7 +20,7 @@
   "dependencies": {
     "@astrojs/sitemap": "3.2.1",
     "@fontsource-variable/noto-sans-jp": "^5.2.5",
-    "astro": "5.4.2",
+    "astro": "5.5.1",
     "newt-client-js": "^3.3.8",
     "sharp": "^0.33.5",
     "valibot": "1.0.0-rc.3"
