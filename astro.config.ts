@@ -24,4 +24,7 @@ export default defineConfig({
     assets: "assets",
   },
   outDir: "_dist",
+  experimental: {
+    preserveScriptOrder: true,
+  },
 });
