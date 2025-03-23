@@ -2,7 +2,6 @@
 import "../styles/globals.css";
 import { site } from "../consts/site";
 import "@fontsource-variable/noto-sans-jp";
-import { ClientRouter } from "astro:transitions";
 
 export type Props = {
   title?: string;
@@ -73,8 +72,6 @@ const title =
       name="twitter:image:alt"
       content="太陽と新芽を意識した尼崎こども食堂ネットワークのロゴ"
     />
-
-    <ClientRouter fallback="none" />
   </head>
 
   <body>
