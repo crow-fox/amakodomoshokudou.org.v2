@@ -139,7 +139,7 @@
   }
 
   :focus {
-    @apply outline-hidden;
+    @apply outline-outline outline-2 outline-offset-2;
   }
 
   :focus-visible {
