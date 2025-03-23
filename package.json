@@ -4,7 +4,7 @@
   "version": "1.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build && rm -rf _dist/_mock",
+    "build": "astro check && astro build",
     "dev:mock": "astro dev --mode mock",
     "build:mock": "astro check && astro build --mode mock",
     "start": "astro preview",
