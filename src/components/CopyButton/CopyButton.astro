@@ -1,7 +1,6 @@
 ---
 import { getImage } from "astro:assets";
 import img from "./assets/icon.svg";
-import { uniqueId } from "../../libs/unique-id";
 
 export type Props = {
   copyText: string;
@@ -17,16 +16,15 @@ const {
   label = false,
 } = Astro.props;
 const icon = await getImage({ src: img });
-
-const uid = uniqueId();
-
-const buttonId = `button-${uid}`;
-const notifyId = `notify-${uid}`;
 ---
 
-<span class="inline-grid w-fit">
+<span
+  class="inline-grid w-fit"
+  data-id="copy-button"
+  data-copy-text={copyText}
+  data-success-text={successText}
+>
   <button
-    id={buttonId}
     type="button"
     class={[
       "inline-grid grid-cols-[1fr_auto] items-center rounded-xl border border-primary-border [grid-area:1/1]",
@@ -46,61 +44,55 @@ const notifyId = `notify-${uid}`;
     ></span>
   </button>
   <span
-    id={notifyId}
     aria-live="assertive"
     data-open="false"
     class="border-secondary-border bg-tertiary-background text-xs/xs isolate self-start justify-self-end rounded-xs [grid-area:1/1] data-[open=true]:border data-[open=true]:p-4"
   ></span>
 </span>
 
-<script
-  is:inline
-  define:vars={{
-    __copyText: copyText,
-    __successText: successText,
-    __buttonId: buttonId,
-    __notifyId: notifyId,
-  }}
->
-  /**
-   * @typedef {Object} Vars
-   * @property {string} copyText - コピーするテキスト
-   * @property {string} successText - 成功時に表示するテキスト
-   * @property {string} buttonId - ボタンのID
-   * @property {string} notifyId - 通知エレメントのID
-   */
+<script>
+  const copyButtonList = document.querySelectorAll<HTMLSpanElement>(
+    "[data-id=copy-button]",
+  );
 
-  /** @type {Vars} */
-  const VARS = {
-    copyText: __copyText,
-    successText: __successText,
-    buttonId: __buttonId,
-    notifyId: __notifyId,
-  };
+  for (const copyButton of copyButtonList) {
+    const button = copyButton.querySelector<HTMLButtonElement>("button");
+    const notify = copyButton.querySelector<HTMLSpanElement>(
+      "[aria-live=assertive]",
+    );
 
-  const button = document.getElementById(VARS.buttonId);
-  const notify = document.getElementById(VARS.notifyId);
-
-  if ((!button) instanceof HTMLButtonElement) {
-    throw new Error("button is not found");
-  }
-  if ((!notify) instanceof HTMLSpanElement) {
-    throw new Error("notify is not found");
-  }
-
-  button.addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(VARS.copyText);
-      notify.textContent = VARS.successText;
-      notify.dataset.open = "true";
-    } catch {
-      notify.textContent = "コピーに失敗しました";
-      notify.dataset.open = "true";
-    } finally {
-      setTimeout(() => {
-        notify.textContent = "";
-        notify.dataset.open = "false";
-      }, 3000);
+    if (!button) {
+      throw new Error("button is not found");
     }
-  });
+    if (!notify) {
+      throw new Error("notify is not found");
+    }
+
+    const $copyText = copyButton.dataset.copyText;
+    const $successText = copyButton.dataset.successText;
+
+    if (!$copyText) {
+      throw new Error("copyText is not found");
+    }
+
+    if (!$successText) {
+      throw new Error("successText is not found");
+    }
+
+    button.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText($copyText);
+        notify.textContent = $successText;
+        notify.dataset.open = "true";
+      } catch {
+        notify.textContent = "コピーに失敗しました";
+        notify.dataset.open = "true";
+      } finally {
+        setTimeout(() => {
+          notify.textContent = "";
+          notify.dataset.open = "false";
+        }, 3000);
+      }
+    });
+  }
 </script>
