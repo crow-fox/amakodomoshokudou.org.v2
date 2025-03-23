@@ -2,92 +2,88 @@
 import { getImage } from "astro:assets";
 import closeImg from "./assets/close.svg";
 import menuImg from "./assets/menu.svg";
-import { uniqueId } from "../../libs/unique-id";
 
 const [closeIcon, menuIcon] = await Promise.all([
   getImage({ src: closeImg }),
   getImage({ src: menuImg }),
 ]);
-
-const id = uniqueId();
-const menuOpenButtonId = `menu-open-button-${id}`;
-const menuCloseButtonId = `menu-close-button-${id}`;
-const menuDialogId = `menu-dialog-${id}`;
 ---
 
-<button
-  id={menuOpenButtonId}
-  aria-expanded="false"
-  class="border-primary-border text-sm/sm inline-grid grid-cols-[auto_1fr] items-center gap-x-8 rounded-xl border px-12 py-8 font-bold lg:hidden"
->
-  <span
-    role="img"
-    style={{
-      maskImage: `url(${menuIcon.src})`,
-      WebkitMaskImage: `url(${menuIcon.src})`,
-    }}
-    class="size-[1.25em] bg-[currentColor] [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover]"
-  ></span>メニュー
-</button>
-<dialog
-  id={menuDialogId}
-  aria-label="メニュー"
-  class="size-full max-h-full max-w-full bg-[rgb(0_0_0/0.8)]"
->
-  <div class="border-b-secondary-border bg-primary-background border-b p-20">
-    <div class="mx-auto grid max-w-576 gap-y-20">
-      <button
-        id={menuCloseButtonId}
-        class="border-primary-border bg-primary-background flex items-center justify-center gap-x-8 rounded-xl border px-12 py-8 font-bold"
-      >
-        <span
-          role="img"
-          style={{
-            maskImage: `url(${closeIcon.src})`,
-            WebkitMaskImage: `url(${closeIcon.src})`,
-          }}
-          class="size-[1.25em] bg-[currentColor] [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover]"
-        ></span>閉じる
-      </button>
-      <slot />
+<div data-id="menu">
+  <button
+    data-id="menu-open-button"
+    aria-expanded="false"
+    class="border-primary-border text-sm/sm inline-grid grid-cols-[auto_1fr] items-center gap-x-8 rounded-xl border px-12 py-8 font-bold lg:hidden"
+  >
+    <span
+      role="img"
+      style={{
+        maskImage: `url(${menuIcon.src})`,
+        WebkitMaskImage: `url(${menuIcon.src})`,
+      }}
+      class="size-[1.25em] bg-[currentColor] [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover]"
+    ></span>メニュー
+  </button>
+  <dialog
+    data-id="menu-dialog"
+    aria-label="メニュー"
+    class="size-full max-h-full max-w-full bg-[rgb(0_0_0/0.8)]"
+  >
+    <div class="border-b-secondary-border bg-primary-background border-b p-20">
+      <div class="mx-auto grid max-w-576 gap-y-20">
+        <button
+          data-id="menu-close-button"
+          class="border-primary-border bg-primary-background flex items-center justify-center gap-x-8 rounded-xl border px-12 py-8 font-bold"
+        >
+          <span
+            role="img"
+            style={{
+              maskImage: `url(${closeIcon.src})`,
+              WebkitMaskImage: `url(${closeIcon.src})`,
+            }}
+            class="size-[1.25em] bg-[currentColor] [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover]"
+          ></span>閉じる
+        </button>
+        <slot />
+      </div>
     </div>
-  </div>
-</dialog>
+  </dialog>
+</div>
 
-<script
-  is:inline
-  define:vars={{
-    // ariasをつけることで、そんな変数は存在しないという tsのエラーが出なくなる
-    closeId: menuCloseButtonId,
-    openId: menuOpenButtonId,
-    dialogId: menuDialogId,
-  }}
->
-  const VARS = { closeId, openId, dialogId };
+<script>
+  const menuList = document.querySelectorAll<HTMLDivElement>("[data-id=menu]");
 
-  const menuDialog = document.getElementById(VARS.dialogId);
-  const menuOpenButton = document.getElementById(VARS.openId);
-  const menuCloseButton = document.getElementById(VARS.closeId);
+  for (const menu of menuList) {
+    const menuOpenButton = menu.querySelector<HTMLButtonElement>(
+      "[data-id=menu-open-button]",
+    );
+    const menuCloseButton = menu.querySelector<HTMLButtonElement>(
+      "[data-id=menu-close-button]",
+    );
+    const menuDialog = menu.querySelector<HTMLDialogElement>(
+      "[data-id=menu-dialog]",
+    );
 
-  if (
-    menuDialog instanceof HTMLDialogElement === false ||
-    menuOpenButton instanceof HTMLButtonElement === false ||
-    menuCloseButton instanceof HTMLButtonElement === false
-  ) {
-    throw new Error("DOMが正しく設定されていません。");
-  }
-
-  menuOpenButton.addEventListener("click", () => {
-    menuDialog.showModal();
-  });
-
-  menuCloseButton.addEventListener("click", () => {
-    menuDialog.close();
-  });
-
-  menuDialog.addEventListener("click", (event) => {
-    if (event.target === menuDialog) {
-      menuDialog.close();
+    if (
+      menuDialog instanceof HTMLDialogElement === false ||
+      menuOpenButton instanceof HTMLButtonElement === false ||
+      menuCloseButton instanceof HTMLButtonElement === false
+    ) {
+      throw new Error("DOMが正しく設定されていません。");
     }
-  });
+
+    menuOpenButton.addEventListener("click", () => {
+      menuDialog.showModal();
+    });
+
+    menuCloseButton.addEventListener("click", () => {
+      menuDialog.close();
+    });
+
+    menuDialog.addEventListener("click", (event) => {
+      if (event.target === menuDialog) {
+        menuDialog.close();
+      }
+    });
+  }
 </script>
