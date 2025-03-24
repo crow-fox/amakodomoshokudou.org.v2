@@ -1,13 +1,13 @@
 ---
-import TextLink from "../../../../components/TextLink/TextLink.astro";
+import TextLink from "../../../../components/ui/TextLink/TextLink.astro";
 import { summary } from "../../../../consts/summary";
 ---
 
 <dl class="@container">
   <div
-    class="grid gap-y-12 rounded-md py-12 odd:bg-primary-background @-640:grid-cols-[var(--spacing-136)_1fr]"
+    class="odd:bg-primary-background @-640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12"
   >
-    <dt class="px-20 @640:pr-0">
+    <dt class="@640:pr-0 px-20">
       {summary.name.title}
     </dt>
     <dd class="px-20">
@@ -15,9 +15,9 @@ import { summary } from "../../../../consts/summary";
     </dd>
   </div>
   <div
-    class="grid gap-y-12 rounded-md py-12 odd:bg-primary-background @-640:grid-cols-[var(--spacing-136)_1fr]"
+    class="odd:bg-primary-background @-640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12"
   >
-    <dt class="px-20 @640:pr-0">
+    <dt class="@640:pr-0 px-20">
       {summary.constituent.title}
     </dt>
     <dd class="px-20">
@@ -27,9 +27,9 @@ import { summary } from "../../../../consts/summary";
     </dd>
   </div>
   <div
-    class="grid gap-y-12 rounded-md py-12 odd:bg-primary-background @-640:grid-cols-[var(--spacing-136)_1fr]"
+    class="odd:bg-primary-background @-640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12"
   >
-    <dt class="px-20 @640:pr-0">
+    <dt class="@640:pr-0 px-20">
       {summary.establish.title}
     </dt>
     <dd class="px-20">
@@ -39,9 +39,9 @@ import { summary } from "../../../../consts/summary";
     </dd>
   </div>
   <div
-    class="grid gap-y-12 rounded-md py-12 odd:bg-primary-background @-640:grid-cols-[var(--spacing-136)_1fr]"
+    class="odd:bg-primary-background @-640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12"
   >
-    <dt class="px-20 @640:pr-0">
+    <dt class="@640:pr-0 px-20">
       {summary.representative.title}
     </dt>
     <dd class="px-20">
@@ -49,9 +49,9 @@ import { summary } from "../../../../consts/summary";
     </dd>
   </div>
   <div
-    class="grid gap-y-12 rounded-md py-12 odd:bg-primary-background @-640:grid-cols-[var(--spacing-136)_1fr]"
+    class="odd:bg-primary-background @-640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12"
   >
-    <dt class="px-20 @640:pr-0">
+    <dt class="@640:pr-0 px-20">
       {summary.location.title}
     </dt>
     <dd class="px-20">
@@ -61,9 +61,9 @@ import { summary } from "../../../../consts/summary";
     </dd>
   </div>
   <div
-    class="grid gap-y-12 rounded-md py-12 odd:bg-primary-background @-640:grid-cols-[var(--spacing-136)_1fr]"
+    class="odd:bg-primary-background @-640:grid-cols-[var(--spacing-136)_1fr] grid gap-y-12 rounded-md py-12"
   >
-    <dt class="px-20 @640:pr-0">
+    <dt class="@640:pr-0 px-20">
       {summary.facebook.title}
     </dt>
     <dd class="px-20">
