@@ -12,9 +12,11 @@ export type Props = {
   lastPage: number;
   cafes: NewtCafe[];
   area: NewtArea;
+  allAreas: NewtArea[];
 };
 
-const { isFirstPage, currentPage, lastPage, cafes, area } = Astro.props;
+const { isFirstPage, currentPage, lastPage, cafes, area, allAreas } =
+  Astro.props;
 ---
 
 <div
@@ -55,7 +57,7 @@ const { isFirstPage, currentPage, lastPage, cafes, area } = Astro.props;
   <div
     class="bg-secondary-background [grid-column:1/-1] grid grid-cols-subgrid gap-y-32 py-32 *:[grid-column:2] lg:gap-y-52 lg:py-52"
   >
-    <AreaFilter />
+    <AreaFilter areas={allAreas} />
     <CafeList cafes={cafes} />
     {
       lastPage > 1 && (

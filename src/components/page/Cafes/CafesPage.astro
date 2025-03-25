@@ -4,15 +4,17 @@ import AreaFilter from "./AreaFilter/AreaFilter.astro";
 import CafeList from "./CafeList/CafeList.astro";
 import Pagination from "./Pagination/Pagination.astro";
 import type { NewtCafe } from "../../../schemas/cafe";
+import type { NewtArea } from "../../../schemas/area";
 
 export type Props = {
   isFirstPage: boolean;
   currentPage: number;
   lastPage: number;
   cafes: NewtCafe[];
+  allAreas: NewtArea[];
 };
 
-const { isFirstPage, currentPage, lastPage, cafes } = Astro.props;
+const { isFirstPage, currentPage, lastPage, cafes, allAreas } = Astro.props;
 ---
 
 <div
@@ -51,7 +53,7 @@ const { isFirstPage, currentPage, lastPage, cafes } = Astro.props;
   <div
     class="bg-secondary-background [grid-column:1/-1] grid grid-cols-subgrid gap-y-32 py-32 *:[grid-column:2] lg:gap-y-52 lg:py-52"
   >
-    <AreaFilter />
+    <AreaFilter areas={allAreas} />
     <CafeList cafes={cafes} />
     {
       lastPage > 1 && (

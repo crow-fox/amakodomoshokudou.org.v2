@@ -1,8 +1,13 @@
 ---
-import { fetchAreas } from "../../../../pages/cafes/_utils/area";
+import type { NewtArea } from "../../../../schemas/area";
 import icon from "./assets/icon.svg";
 
-const areas = await fetchAreas();
+export type Props = {
+  areas: NewtArea[];
+};
+
+const { areas } = Astro.props;
+
 const pathname = Astro.url.pathname;
 ---
 

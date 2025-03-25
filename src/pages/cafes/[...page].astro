@@ -6,17 +6,23 @@ import CafesPage from "../../components/page/Cafes/CafesPage.astro";
 import type { BreadcrumbItems } from "../../components/ui/Breadcrumb/type";
 import { site } from "../../consts/site";
 import { fetchCafes } from "../../pages/cafes/_utils/cafe";
+import { fetchAreas } from "./_utils/area";
 
 export const getStaticPaths = (async ({ paginate }) => {
+  const areas = await fetchAreas();
   const cafes = await fetchCafes();
 
   return paginate(cafes, {
     pageSize: site.cafesPerPage,
+    props: {
+      areas,
+    },
   });
 }) satisfies GetStaticPaths;
 
 const props = Astro.props;
 const { data: cafes, lastPage, currentPage } = props.page;
+const { areas } = props;
 
 const isFirstPage = currentPage === 1;
 
@@ -53,6 +59,7 @@ const breadcrumb: BreadcrumbItems = isFirstPage
 >
   <Layout breadcrumb={breadcrumb}>
     <CafesPage
+      allAreas={areas}
       cafes={cafes}
       isFirstPage={isFirstPage}
       lastPage={lastPage}
