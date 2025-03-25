@@ -1,8 +1,10 @@
 ---
-import TextLink from "../../components/ui/TextLink/TextLink.astro";
 import type { BreadcrumbItems } from "../../components/ui/Breadcrumb/type";
 import Document from "../../components/layout/Document/Document.astro";
 import Layout from "../../components/layout/Layout/Layout.astro";
+import NotFoundPage from "../../components/page/NotFound/NotFoundPage.astro";
+
+const title = "指定されたページは見つかりませんでした";
 
 const breadcrumb: BreadcrumbItems = [
   {
@@ -10,33 +12,13 @@ const breadcrumb: BreadcrumbItems = [
     href: "/",
   },
   {
-    title: "指定されたページは見つかりませんでした",
+    title,
   },
 ];
 ---
 
-<Document title="お探しのページは見つかりませんでした">
+<Document title={title}>
   <Layout breadcrumb={breadcrumb}>
-    <div
-      class="grid grid-cols-[minmax(var(--spacing-20),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-20),1fr)] lg:grid-cols-[minmax(var(--spacing-32),1fr)_minmax(0,var(--spacing-932))_minmax(var(--spacing-32),1fr)]"
-    >
-      <div
-        class="border-t-accent [grid-column:1/-1] grid grid-cols-subgrid gap-y-20 border-t-8 py-32 *:[grid-column:2] lg:gap-y-32 lg:py-52"
-      >
-        <h1 class="text-2xl/2xl lg:text-3xl/3xl font-bold">
-          指定されたページは見つかりませんでした
-        </h1>
-        <div class="prose grid gap-y-20">
-          <p>
-            指定されたページはすでに削除もしくはURLが変更された可能性があります。
-          </p>
-          <p>
-            大変お手数ですが、URLをご確認の上、再度お試しいただくか、
-            <TextLink href="/">トップページ</TextLink>
-            からお探しください。
-          </p>
-        </div>
-      </div>
-    </div>
+    <NotFoundPage title={title} />
   </Layout>
 </Document>
