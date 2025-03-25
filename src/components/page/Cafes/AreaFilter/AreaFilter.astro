@@ -1,5 +1,5 @@
 ---
-import { fetchAreas } from "../../_utils/area";
+import { fetchAreas } from "../../../../pages/cafes/_utils/area";
 import icon from "./assets/icon.svg";
 
 const areas = await fetchAreas();
@@ -7,10 +7,10 @@ const pathname = Astro.url.pathname;
 ---
 
 <details
-  class="group rounded-xl border border-primary-border bg-tertiary-background"
+  class="group border-primary-border bg-tertiary-background rounded-xl border"
 >
   <summary
-    class="grid cursor-pointer grid-cols-[1fr_1.5em] items-center rounded-xl bg-primary-background px-12 py-8 group-open:rounded-b-none [&::-webkit-details-marker]:hidden"
+    class="bg-primary-background grid cursor-pointer grid-cols-[1fr_1.5em] items-center rounded-xl px-12 py-8 group-open:rounded-b-none [&::-webkit-details-marker]:hidden"
   >
     <span class="font-bold">地区で絞る</span>
     <span
@@ -23,7 +23,7 @@ const pathname = Astro.url.pathname;
       class="size-[1.5rem] bg-[currentColor] [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover] group-open:rotate-180"
     ></span>
   </summary>
-  <nav class="border-t border-t-secondary-border p-12" aria-label="地区別">
+  <nav class="border-t-secondary-border border-t p-12" aria-label="地区別">
     <ol
       class="grid grid-cols-[repeat(auto-fill,min(var(--spacing-84),100%))] gap-12"
     >
@@ -51,7 +51,7 @@ const pathname = Astro.url.pathname;
                 pathname === `/cafes/areas/${area.slug}` ? "page" : undefined
               }
               class={[
-                "grid justify-center rounded-xl border border-primary-border px-12 py-8",
+                "border-primary-border grid justify-center rounded-xl border px-12 py-8",
                 pathname.startsWith(`/cafes/areas/${area.slug}`)
                   ? "bg-secondary-background"
                   : "bg-primary-background",
