@@ -1,37 +1,5 @@
 {
   "extends": [
     "markuplint:recommended"
-  ],
-  "parser": {
-    ".astro$": "@markuplint/astro-parser"
-  },
-  "pretenders": [
-    {
-      "selector": "DownloadLink",
-      "as": "a"
-    },
-    {
-      "selector": "ToSectionLink",
-      "as": "a"
-    },
-    {
-      "selector": "TextLink",
-      "as": "a"
-    },
-    {
-      "selector": "Heading",
-      "as": "h2"
-    },
-    {
-      "selector": "CopyButton",
-      "as": "button"
-    },
-    {
-      "selector": "ButtonLink",
-      "as": "a"
-    }
-  ],
-  "rules": {
-    "character-reference": false
-  }
+  ]
 }
