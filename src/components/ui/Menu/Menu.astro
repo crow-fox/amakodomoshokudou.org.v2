@@ -21,7 +21,7 @@ const [closeIcon, menuIcon] = await Promise.all([
         maskImage: `url(${menuIcon.src})`,
         WebkitMaskImage: `url(${menuIcon.src})`,
       }}
-      class="size-[1.25em] bg-[currentColor] [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover]"
+      class="size-[1.25em] bg-[currentColor] [mask-size:cover] [mask-position:center] [mask-repeat:no-repeat]"
     ></span>メニュー
   </button>
   <dialog
@@ -41,7 +41,7 @@ const [closeIcon, menuIcon] = await Promise.all([
               maskImage: `url(${closeIcon.src})`,
               WebkitMaskImage: `url(${closeIcon.src})`,
             }}
-            class="size-[1.25em] bg-[currentColor] [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover]"
+            class="size-[1.25em] bg-[currentColor] [mask-size:cover] [mask-position:center] [mask-repeat:no-repeat]"
           ></span>閉じる
         </button>
         <slot />

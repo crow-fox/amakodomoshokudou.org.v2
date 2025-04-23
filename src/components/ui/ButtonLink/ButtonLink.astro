@@ -13,7 +13,7 @@ const icon = await getImage({ src: img });
 
 <a
   href={props.href}
-  class="inline-grid grid-cols-[1fr_auto] items-center gap-x-8 rounded-xl border border-primary-border bg-primary-background px-12 py-8"
+  class="border-primary-border bg-primary-background inline-grid grid-cols-[1fr_auto] items-center gap-x-8 rounded-xl border px-12 py-8"
 >
   <slot />
   <span
@@ -23,6 +23,6 @@ const icon = await getImage({ src: img });
       maskImage: `url(${icon.src})`,
       WebkitMaskImage: `url(${icon.src})`,
     }}
-    class="size-[1em] bg-[currentColor] [mask-position:center] [mask-repeat:no-repeat] [mask-size:cover]"
+    class="size-[1em] bg-[currentColor] [mask-size:cover] [mask-position:center] [mask-repeat:no-repeat]"
   ></span>
 </a>
