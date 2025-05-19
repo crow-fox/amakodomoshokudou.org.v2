@@ -18,26 +18,26 @@
     "remove:dist": "rm -rf _dist"
   },
   "dependencies": {
-    "@astrojs/sitemap": "3.3.0",
+    "@astrojs/sitemap": "3.4.0",
     "@fontsource-variable/noto-sans-jp": "^5.2.5",
-    "astro": "5.7.2",
+    "astro": "5.7.13",
     "newt-client-js": "^3.3.8",
     "sharp": "^0.34.1",
-    "valibot": "1.0.0"
+    "valibot": "1.1.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
     "@biomejs/biome": "1.9.4",
-    "@playwright/test": "^1.51.1",
-    "@tailwindcss/vite": "^4.1.4",
-    "@types/node": "^22.14.1",
+    "@playwright/test": "^1.52.0",
+    "@tailwindcss/vite": "^4.1.7",
+    "@types/node": "^22.15.19",
     "dotenv": "^16.5.0",
     "markuplint": "^4.12.0",
-    "msw": "^2.7.4",
+    "msw": "^2.8.4",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "tailwindcss": "^4.1.4",
+    "tailwindcss": "^4.1.7",
     "typescript": "^5.8.3"
   }
 }
