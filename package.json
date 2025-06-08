@@ -18,9 +18,9 @@
     "remove:dist": "rm -rf _dist"
   },
   "dependencies": {
-    "@astrojs/sitemap": "3.4.0",
+    "@astrojs/sitemap": "3.4.1",
     "@fontsource-variable/noto-sans-jp": "^5.2.5",
-    "astro": "5.8.0",
+    "astro": "5.9.1",
     "newt-client-js": "^3.3.8",
     "sharp": "^0.34.1",
     "valibot": "1.1.0"
