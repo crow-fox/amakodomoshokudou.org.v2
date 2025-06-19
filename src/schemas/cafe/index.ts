@@ -1,10 +1,10 @@
 import {
+  type InferOutput,
   nullable,
   number,
   object,
   parse,
   string,
-  type InferOutput,
 } from "valibot";
 import { newtAreaSchema } from "../area";
 

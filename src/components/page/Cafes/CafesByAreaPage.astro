@@ -1,10 +1,10 @@
 ---
 import DownloadLink from "../../../components/ui/DownloadLink/DownloadLink.astro";
+import type { NewtArea } from "../../../schemas/area";
+import type { NewtCafe } from "../../../schemas/cafe";
 import AreaFilter from "./AreaFilter/AreaFilter.astro";
 import CafeList from "./CafeList/CafeList.astro";
 import Pagination from "./Pagination/Pagination.astro";
-import type { NewtArea } from "../../../schemas/area";
-import type { NewtCafe } from "../../../schemas/cafe";
 
 export type Props = {
   isFirstPage: boolean;

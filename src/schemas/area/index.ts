@@ -1,4 +1,4 @@
-import { number, object, parse, string, type InferOutput } from "valibot";
+import { type InferOutput, number, object, parse, string } from "valibot";
 
 export const newtAreaSchema = object({
   _id: string(),

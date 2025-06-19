@@ -1,7 +1,7 @@
-import { HttpResponse, http } from "msw";
-import { cmsAreas, type CMSArea } from "./area";
-import { cmsCafes, type CMSCafe } from "./cafe";
 import dotenv from "dotenv";
+import { HttpResponse, http } from "msw";
+import { type CMSArea, cmsAreas } from "./area";
+import { type CMSCafe, cmsCafes } from "./cafe";
 
 // 環境変数を読み込む（./env ファイルを参照）
 dotenv.config();

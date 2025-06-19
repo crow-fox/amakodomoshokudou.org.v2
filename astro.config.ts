@@ -1,6 +1,6 @@
 import sitemap from "@astrojs/sitemap";
-import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "astro/config";
 import astroSsgMsw from "./astro-ssg-msw-integration";
 
 // https://astro.build/config

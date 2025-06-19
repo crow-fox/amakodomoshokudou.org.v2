@@ -1,5 +1,5 @@
 import { newtClient } from "../../../../libs/newt";
-import { parseArea, type NewtArea } from "../../../../schemas/area";
+import { type NewtArea, parseArea } from "../../../../schemas/area";
 
 export async function fetchAreas(): Promise<NewtArea[]> {
   const { items } = await newtClient.getContents({
