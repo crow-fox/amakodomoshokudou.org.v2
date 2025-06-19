@@ -1,5 +1,5 @@
-import { cmsAreas, type CMSArea } from "./area";
 import { randomUUID } from "node:crypto";
+import { type CMSArea, cmsAreas } from "./area";
 
 function uniqueString(): string {
   return randomUUID();
