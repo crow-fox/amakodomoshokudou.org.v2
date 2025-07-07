@@ -8,7 +8,9 @@ import { config } from "dotenv";
 // 画像の処理は複雑になるのでのちに手動で設定する
 // 移行が完了したのち、このscriptは削除する
 
-// 動作command: pnpm tsx _contents-export/main.ts
+// 動作command: pnpm tsx _newt-to-microcms-csv/main.ts
+
+const filepath = "./_newt-to-microcms-csv";
 
 config({ path: ".env" });
 
@@ -60,7 +62,7 @@ function exportAreas(areas: NewtArea[]): void {
   });
   csvRows.unshift("_id,name,slug,priority"); // ヘッダー行を追加
   const csvContent = csvRows.join("\n");
-  fs.writeFileSync("./_contents-export/areas.csv", csvContent, "utf8");
+  fs.writeFileSync(`${filepath}/areas.csv`, csvContent, "utf8");
 }
 
 const newtCafeSchema = v.object({
@@ -103,7 +105,7 @@ function exportCafes(cafes: NewtCafe[]): void {
   });
   csvRows.unshift("_id,name,slug,image,area,address,schedule,host,contact"); // ヘッダー行を追加
   const csvContent = csvRows.join("\n");
-  fs.writeFileSync("./_contents-export/cafes.csv", csvContent, "utf8");
+  fs.writeFileSync(`${filepath}/cafes.csv`, csvContent, "utf8");
 }
 
 async function main() {
