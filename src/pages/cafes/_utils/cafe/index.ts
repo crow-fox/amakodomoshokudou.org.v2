@@ -34,6 +34,7 @@ function parseNewtCafeToCafe(data: NewtCafe): Cafe {
   try {
     const cafe = parseCafe({
       ...data,
+      id: data._id, // modelはidを使用するが、newtからは_idが返ってくるため変換する
       area: {
         ...data.area,
         id: data.area._id, // modelはidを使用するが、newtからは_idが返ってくるため変換する

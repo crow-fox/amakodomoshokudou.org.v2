@@ -2,7 +2,7 @@ import * as v from "valibot";
 import { areaSchema } from "../area";
 
 export const cafeSchema = v.object({
-  _id: v.string(),
+  id: v.string(),
   name: v.string(),
   slug: v.string(),
   image: v.nullable(
