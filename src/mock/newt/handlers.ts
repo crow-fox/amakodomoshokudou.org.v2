@@ -11,7 +11,7 @@ function newtUrlRegExp(endpoint: string): RegExp {
   );
 }
 
-export const handlers = [
+export const newtHandlers = [
   http.get(newtUrlRegExp("cafes/cafe"), ({ request }) => {
     const url = new URL(request.url);
     const searchParams = url.searchParams;
