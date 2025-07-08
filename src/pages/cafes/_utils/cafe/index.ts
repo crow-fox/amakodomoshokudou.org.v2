@@ -8,67 +8,75 @@ function decodeSrcAttribute<T extends { src: string }>(image: T): T {
   };
 }
 
-export async function fetchCafes(): Promise<Cafe[]> {
-  const { items } = await newtClient.getContents({
-    appUid: "cafes",
-    modelUid: "cafe",
-    query: {
-      select: [
-        "_id",
-        "name",
-        "slug",
-        "image",
-        "area",
-        "address",
-        "schedule",
-        "host",
-        "contact",
-      ],
-    },
-  });
+type NewtCafe = {
+  _id: string;
+  name: string;
+  slug: string;
+  image: {
+    src: string;
+    width: number;
+    height: number;
+    fileName: string;
+  } | null;
+  area: {
+    _id: string;
+    name: string;
+    slug: string;
+    priority: number;
+  };
+  address: string;
+  schedule: string;
+  host: string;
+  contact: string;
+};
 
-  const cafes = items.map((item) => {
-    const cafe = parseCafe(item);
-
+function parseNewtCafeToCafe(data: NewtCafe): Cafe {
+  try {
+    console.log(data);
+    const cafe = parseCafe(data);
     return {
       ...cafe,
       // decodeしないとうまく動作しない
       image: cafe.image === null ? null : decodeSrcAttribute(cafe.image),
     };
-  });
-
-  return cafes;
+  } catch (error) {
+    throw new Error(`Invalid cafe data: ${error}`);
+  }
 }
 
-export async function fetchCafesByAreaId(areaId: string): Promise<Cafe[]> {
-  const { items } = await newtClient.getContents({
+const selectFields = [
+  "_id",
+  "name",
+  "slug",
+  "image",
+  "area",
+  "address",
+  "schedule",
+  "host",
+  "contact",
+];
+
+export async function fetchCafes(): Promise<Cafe[]> {
+  const { items } = await newtClient.getContents<NewtCafe>({
     appUid: "cafes",
     modelUid: "cafe",
     query: {
-      select: [
-        "_id",
-        "name",
-        "slug",
-        "image",
-        "area",
-        "address",
-        "schedule",
-        "host",
-        "contact",
-      ],
+      select: selectFields,
+    },
+  });
+
+  return items.map(parseNewtCafeToCafe);
+}
+
+export async function fetchCafesByAreaId(areaId: string): Promise<Cafe[]> {
+  const { items } = await newtClient.getContents<NewtCafe>({
+    appUid: "cafes",
+    modelUid: "cafe",
+    query: {
+      select: selectFields,
       area: areaId,
     },
   });
 
-  const cafes = items.map((item) => {
-    const cafe = parseCafe(item);
-
-    return {
-      ...cafe,
-      // decodeしないとうまく動作しない
-      image: cafe.image === null ? null : decodeSrcAttribute(cafe.image),
-    };
-  });
-
-  return cafes;
+  return items.map(parseNewtCafeToCafe);
 }
