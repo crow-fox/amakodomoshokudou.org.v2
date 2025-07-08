@@ -78,7 +78,7 @@ export async function fetchCafes(): Promise<Cafe[]> {
   return await fetchCafesUseNewt();
 }
 
-export async function fetchCafesByAreaId(areaId: string): Promise<Cafe[]> {
+async function fetchCafesByAreaIdUseNewt(areaId: string): Promise<Cafe[]> {
   const { items } = await newtClient.getContents<NewtCafe>({
     appUid: "cafes",
     modelUid: "cafe",
@@ -89,4 +89,8 @@ export async function fetchCafesByAreaId(areaId: string): Promise<Cafe[]> {
   });
 
   return items.map(parseNewtCafeToCafe);
+}
+
+export async function fetchCafesByAreaId(areaId: string): Promise<Cafe[]> {
+  return await fetchCafesByAreaIdUseNewt(areaId);
 }
