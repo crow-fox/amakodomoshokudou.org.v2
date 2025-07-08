@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import { HttpResponse, http } from "msw";
 import { newtAreas } from "./area";
-import { cmsCafes } from "./cafe";
+import { newtCafes } from "./cafe";
 import type { NewtArea, NewtCafe } from "../../libs/newt/types";
 
 // 環境変数を読み込む（./env ファイルを参照）
@@ -27,7 +27,7 @@ export const handlers = [
 
     if (searchParams.get("area")) {
       // 特定のareaのcafeの一覧を取得
-      const items = cmsCafes().filter(
+      const items = newtCafes().filter(
         (item: NewtCafe) => item.area._id === searchParams.get("area"),
       );
       return HttpResponse.json({
@@ -39,7 +39,7 @@ export const handlers = [
     }
 
     // 全てのcafeの一覧を取得
-    const items = cmsCafes();
+    const items = newtCafes();
     return HttpResponse.json({
       skip: 0,
       limit: 100,

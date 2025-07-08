@@ -6,7 +6,7 @@ function uniqueString(): string {
   return randomUUID();
 }
 
-export function cmsCafe(
+function newtCafe(
   area: NewtArea,
 ): (
   cafe: Pick<
@@ -27,14 +27,14 @@ export function cmsCafe(
   });
 }
 
-const mukoCafe = cmsCafe(newtAreas.muko);
-const tachibanaCafe = cmsCafe(newtAreas.tachibana);
-const sonodaCafe = cmsCafe(newtAreas.sonoda);
-const oshoCafe = cmsCafe(newtAreas.osho);
-const chuoCafe = cmsCafe(newtAreas.chuo);
-const odaCafe = cmsCafe(newtAreas.oda);
+const mukoCafe = newtCafe(newtAreas.muko);
+const tachibanaCafe = newtCafe(newtAreas.tachibana);
+const sonodaCafe = newtCafe(newtAreas.sonoda);
+const oshoCafe = newtCafe(newtAreas.osho);
+const chuoCafe = newtCafe(newtAreas.chuo);
+const odaCafe = newtCafe(newtAreas.oda);
 
-export function cmsCafes(): NewtCafe[] {
+export function newtCafes(): NewtCafe[] {
   const cafes: NewtCafe[] = [];
 
   for (let i = 1; i <= 10; i++) {
