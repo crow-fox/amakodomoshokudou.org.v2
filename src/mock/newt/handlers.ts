@@ -1,19 +1,18 @@
-import dotenv from "dotenv";
 import { HttpResponse, http } from "msw";
 import { newtAreas } from "./area";
 import { newtCafes } from "./cafe";
 import type { NewtArea, NewtCafe } from "../../libs/newt/types";
 
-// 環境変数を読み込む（./env ファイルを参照）
-dotenv.config();
-
-function newtUrl(path: `/${string}`): string {
-  const baseUrl = `https://${process.env.NEWT_SPACE_UID}.cdn.newt.so/`;
-  return new URL(`/v1${path}`, baseUrl).toString();
+function newtUrlRegExp(endpoint: string): RegExp {
+  // process.env.NEWT_SPACE_UIDを使うと、dotenvの読み込みが不安定だったので、正規表現で対応
+  const spaceUidRegExp = "[^/]+"; // (/) を含まない文字が１文字以上連続
+  return new RegExp(
+    `^https://${spaceUidRegExp}\\.cdn\\.newt\\.so/v1/${endpoint}$`,
+  );
 }
 
 export const handlers = [
-  http.get(newtUrl("/cafes/cafe"), ({ request }) => {
+  http.get(newtUrlRegExp("cafes/cafe"), ({ request }) => {
     const url = new URL(request.url);
     const searchParams = url.searchParams;
 
@@ -48,7 +47,7 @@ export const handlers = [
     });
   }),
 
-  http.get(newtUrl("/cafes/area"), ({ request }) => {
+  http.get(newtUrlRegExp("cafes/area"), ({ request }) => {
     const url = new URL(request.url);
     const searchParams = url.searchParams;
 
