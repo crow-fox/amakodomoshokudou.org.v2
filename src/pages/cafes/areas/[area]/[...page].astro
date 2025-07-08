@@ -5,8 +5,8 @@ import Layout from "../../../../components/layout/Layout/Layout.astro";
 import CafesByAreaPage from "../../../../components/page/Cafes/CafesByAreaPage.astro";
 import type { BreadcrumbItems } from "../../../../components/ui/Breadcrumb/type";
 import { site } from "../../../../consts/site";
-import { fetchAreas } from "../../../../pages/cafes/_utils/area";
-import { fetchCafesByAreaId } from "../../../../pages/cafes/_utils/cafe";
+import { fetchAreas } from "../../_fetchers/newt/area";
+import { fetchCafesByAreaId } from "../../_fetchers/newt/cafe";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const areas = await fetchAreas();
