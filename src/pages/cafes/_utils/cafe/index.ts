@@ -1,5 +1,5 @@
 import { newtClient } from "../../../../libs/newt";
-import { type NewtCafe, parseCafe } from "../../../../models/cafe";
+import { type Cafe, parseCafe } from "../../../../models/cafe";
 
 function decodeSrcAttribute<T extends { src: string }>(image: T): T {
   return {
@@ -8,7 +8,7 @@ function decodeSrcAttribute<T extends { src: string }>(image: T): T {
   };
 }
 
-export async function fetchCafes(): Promise<NewtCafe[]> {
+export async function fetchCafes(): Promise<Cafe[]> {
   const { items } = await newtClient.getContents({
     appUid: "cafes",
     modelUid: "cafe",
@@ -40,7 +40,7 @@ export async function fetchCafes(): Promise<NewtCafe[]> {
   return cafes;
 }
 
-export async function fetchCafesByAreaId(areaId: string): Promise<NewtCafe[]> {
+export async function fetchCafesByAreaId(areaId: string): Promise<Cafe[]> {
   const { items } = await newtClient.getContents({
     appUid: "cafes",
     modelUid: "cafe",

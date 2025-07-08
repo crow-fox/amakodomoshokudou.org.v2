@@ -1,17 +1,17 @@
-import { type InferOutput, number, object, parse, string } from "valibot";
+import * as v from "valibot";
 
-export const newtAreaSchema = object({
-  _id: string(),
-  name: string(),
-  slug: string(),
-  priority: number(),
+export const areaSchema = v.object({
+  _id: v.string(),
+  name: v.string(),
+  slug: v.string(),
+  priority: v.number(),
 });
 
-export type NewtArea = InferOutput<typeof newtAreaSchema>;
+export type Area = v.InferOutput<typeof areaSchema>;
 
 export function parseArea(data: unknown) {
   try {
-    return parse(newtAreaSchema, data);
+    return v.parse(areaSchema, data);
   } catch (error) {
     throw new Error(`Invalid data: ${error}`);
   }

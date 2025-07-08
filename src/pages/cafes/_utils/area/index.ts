@@ -1,7 +1,7 @@
 import { newtClient } from "../../../../libs/newt";
-import { type NewtArea, parseArea } from "../../../../models/area";
+import { type Area, parseArea } from "../../../../models/area";
 
-export async function fetchAreas(): Promise<NewtArea[]> {
+export async function fetchAreas(): Promise<Area[]> {
   const { items } = await newtClient.getContents({
     appUid: "cafes",
     modelUid: "area",

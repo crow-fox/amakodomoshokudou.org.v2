@@ -6,9 +6,9 @@ import {
   parse,
   string,
 } from "valibot";
-import { newtAreaSchema } from "../area";
+import { areaSchema } from "../area";
 
-export const newtCafeSchema = object({
+export const cafeSchema = object({
   _id: string(),
   name: string(),
   slug: string(),
@@ -20,18 +20,18 @@ export const newtCafeSchema = object({
       fileName: string(),
     }),
   ),
-  area: newtAreaSchema,
+  area: areaSchema,
   address: string(),
   schedule: string(),
   host: string(),
   contact: string(),
 });
 
-export type NewtCafe = InferOutput<typeof newtCafeSchema>;
+export type Cafe = InferOutput<typeof cafeSchema>;
 
 export function parseCafe(data: unknown) {
   try {
-    return parse(newtCafeSchema, data);
+    return parse(cafeSchema, data);
   } catch (error) {
     throw new Error(`Invalid data: ${error}`);
   }

@@ -1,7 +1,7 @@
 ---
 import DownloadLink from "../../../components/ui/DownloadLink/DownloadLink.astro";
-import type { NewtArea } from "../../../models/area";
-import type { NewtCafe } from "../../../models/cafe";
+import type { Area } from "../../../models/area";
+import type { Cafe } from "../../../models/cafe";
 import AreaFilter from "./AreaFilter/AreaFilter.astro";
 import CafeList from "./CafeList/CafeList.astro";
 import Pagination from "./Pagination/Pagination.astro";
@@ -10,9 +10,9 @@ export type Props = {
   isFirstPage: boolean;
   currentPage: number;
   lastPage: number;
-  cafes: NewtCafe[];
-  area: NewtArea;
-  allAreas: NewtArea[];
+  cafes: Cafe[];
+  area: Area;
+  allAreas: Area[];
 };
 
 const { isFirstPage, currentPage, lastPage, cafes, area, allAreas } =
