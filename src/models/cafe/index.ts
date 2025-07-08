@@ -10,7 +10,6 @@ export const cafeSchema = v.object({
       src: v.string(),
       width: v.number(),
       height: v.number(),
-      fileName: v.string(),
     }),
   ),
   area: areaSchema,
