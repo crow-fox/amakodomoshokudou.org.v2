@@ -1,7 +1,7 @@
 import * as v from "valibot";
 
 export const areaSchema = v.object({
-  _id: v.string(),
+  id: v.string(),
   name: v.string(),
   slug: v.string(),
   priority: v.number(),

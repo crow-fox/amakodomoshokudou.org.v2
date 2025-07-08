@@ -13,7 +13,7 @@ export const getStaticPaths = (async ({ paginate }) => {
 
   const cafesByArea = await Promise.all(
     areas.map(async (area) => {
-      const cafes = await fetchCafesByAreaId(area._id);
+      const cafes = await fetchCafesByAreaId(area.id);
 
       return {
         area,

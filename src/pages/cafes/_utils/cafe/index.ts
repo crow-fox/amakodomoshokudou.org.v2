@@ -32,8 +32,13 @@ type NewtCafe = {
 
 function parseNewtCafeToCafe(data: NewtCafe): Cafe {
   try {
-    console.log(data);
-    const cafe = parseCafe(data);
+    const cafe = parseCafe({
+      ...data,
+      area: {
+        ...data.area,
+        id: data.area._id, // modelはidを使用するが、newtからは_idが返ってくるため変換する
+      },
+    });
     return {
       ...cafe,
       // decodeしないとうまく動作しない
