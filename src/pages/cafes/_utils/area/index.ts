@@ -8,7 +8,7 @@ type NewtArea = {
   priority: number;
 };
 
-export async function fetchAreas(): Promise<Area[]> {
+async function fetchAreasUseNewt(): Promise<Area[]> {
   const { items } = await newtClient.getContents<NewtArea>({
     appUid: "cafes",
     modelUid: "area",
@@ -24,4 +24,8 @@ export async function fetchAreas(): Promise<Area[]> {
       id: item._id, //modelはidを使用するが、newtからは_idが返ってくるため変換する
     }),
   );
+}
+
+export async function fetchAreas(): Promise<Area[]> {
+  return await fetchAreasUseNewt();
 }

@@ -62,7 +62,7 @@ const selectFields = [
   "contact",
 ];
 
-export async function fetchCafes(): Promise<Cafe[]> {
+async function fetchCafesUseNewt(): Promise<Cafe[]> {
   const { items } = await newtClient.getContents<NewtCafe>({
     appUid: "cafes",
     modelUid: "cafe",
@@ -74,7 +74,11 @@ export async function fetchCafes(): Promise<Cafe[]> {
   return items.map(parseNewtCafeToCafe);
 }
 
-export async function fetchCafesByAreaId(areaId: string): Promise<Cafe[]> {
+export async function fetchCafes(): Promise<Cafe[]> {
+  return await fetchCafesUseNewt();
+}
+
+async function fetchCafesByAreaIdUseNewt(areaId: string): Promise<Cafe[]> {
   const { items } = await newtClient.getContents<NewtCafe>({
     appUid: "cafes",
     modelUid: "cafe",
@@ -85,4 +89,8 @@ export async function fetchCafesByAreaId(areaId: string): Promise<Cafe[]> {
   });
 
   return items.map(parseNewtCafeToCafe);
+}
+
+export async function fetchCafesByAreaId(areaId: string): Promise<Cafe[]> {
+  return await fetchCafesByAreaIdUseNewt(areaId);
 }
