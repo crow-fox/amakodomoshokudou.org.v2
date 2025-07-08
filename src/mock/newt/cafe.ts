@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { cmsAreas } from "./area";
+import { newtAreas } from "./area";
 import type { NewtArea, NewtCafe } from "../../libs/newt/types";
 
 function uniqueString(): string {
@@ -27,12 +27,12 @@ export function cmsCafe(
   });
 }
 
-const mukoCafe = cmsCafe(cmsAreas.muko);
-const tachibanaCafe = cmsCafe(cmsAreas.tachibana);
-const sonodaCafe = cmsCafe(cmsAreas.sonoda);
-const oshoCafe = cmsCafe(cmsAreas.osho);
-const chuoCafe = cmsCafe(cmsAreas.chuo);
-const odaCafe = cmsCafe(cmsAreas.oda);
+const mukoCafe = cmsCafe(newtAreas.muko);
+const tachibanaCafe = cmsCafe(newtAreas.tachibana);
+const sonodaCafe = cmsCafe(newtAreas.sonoda);
+const oshoCafe = cmsCafe(newtAreas.osho);
+const chuoCafe = cmsCafe(newtAreas.chuo);
+const odaCafe = cmsCafe(newtAreas.oda);
 
 export function cmsCafes(): NewtCafe[] {
   const cafes: NewtCafe[] = [];

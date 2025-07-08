@@ -42,7 +42,7 @@ const odaArea = {
   priority: 6,
 } as const satisfies NewtArea;
 
-export const cmsAreas = {
+export const newtAreas = {
   muko: mukoArea,
   tachibana: tachibanaArea,
   sonoda: sonodaArea,

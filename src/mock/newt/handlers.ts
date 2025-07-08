@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import { HttpResponse, http } from "msw";
-import { cmsAreas } from "./area";
+import { newtAreas } from "./area";
 import { cmsCafes } from "./cafe";
 import type { NewtArea, NewtCafe } from "../../libs/newt/types";
 
@@ -62,7 +62,7 @@ export const handlers = [
       return HttpResponse.json({}, { status: 400 });
     }
 
-    const items: NewtArea[] = Object.values(cmsAreas);
+    const items: NewtArea[] = Object.values(newtAreas);
     return HttpResponse.json({
       skip: 0,
       limit: 100,
