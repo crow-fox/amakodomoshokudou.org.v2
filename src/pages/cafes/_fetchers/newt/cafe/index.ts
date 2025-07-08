@@ -1,5 +1,5 @@
-import { newtClient } from "../../../../libs/newt";
-import { type Cafe, parseCafe } from "../../../../models/cafe";
+import { newtClient } from "../../../../../libs/newt";
+import { type Cafe, parseCafe } from "../../../../../models/cafe";
 
 function decodeSrcAttribute<T extends { src: string }>(image: T): T {
   return {

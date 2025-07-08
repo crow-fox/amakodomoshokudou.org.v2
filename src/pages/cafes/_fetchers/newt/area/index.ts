@@ -1,5 +1,5 @@
-import { newtClient } from "../../../../libs/newt";
-import { type Area, parseArea } from "../../../../models/area";
+import { newtClient } from "../../../../../libs/newt";
+import { type Area, parseArea } from "../../../../../models/area";
 
 type NewtArea = {
   _id: string;

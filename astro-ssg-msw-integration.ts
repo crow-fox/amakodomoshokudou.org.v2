@@ -1,5 +1,5 @@
 import type { AstroIntegration } from "astro";
-import { server as mockServer } from "./mock/node";
+import { server as mockServer } from "./src/mock/node";
 
 // https://astro.build/config
 export default function astroSSGMSWIntegration(): AstroIntegration {
