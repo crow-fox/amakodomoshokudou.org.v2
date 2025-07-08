@@ -1,37 +1,30 @@
-import {
-  type InferOutput,
-  nullable,
-  number,
-  object,
-  parse,
-  string,
-} from "valibot";
+import * as v from "valibot";
 import { areaSchema } from "../area";
 
-export const cafeSchema = object({
-  _id: string(),
-  name: string(),
-  slug: string(),
-  image: nullable(
-    object({
-      src: string(),
-      width: number(),
-      height: number(),
-      fileName: string(),
+export const cafeSchema = v.object({
+  _id: v.string(),
+  name: v.string(),
+  slug: v.string(),
+  image: v.nullable(
+    v.object({
+      src: v.string(),
+      width: v.number(),
+      height: v.number(),
+      fileName: v.string(),
     }),
   ),
   area: areaSchema,
-  address: string(),
-  schedule: string(),
-  host: string(),
-  contact: string(),
+  address: v.string(),
+  schedule: v.string(),
+  host: v.string(),
+  contact: v.string(),
 });
 
-export type Cafe = InferOutput<typeof cafeSchema>;
+export type Cafe = v.InferOutput<typeof cafeSchema>;
 
 export function parseCafe(data: unknown) {
   try {
-    return parse(cafeSchema, data);
+    return v.parse(cafeSchema, data);
   } catch (error) {
     throw new Error(`Invalid data: ${error}`);
   }
