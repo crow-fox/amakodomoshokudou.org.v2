@@ -18,5 +18,10 @@ export async function fetchAreas(): Promise<Area[]> {
     },
   });
 
-  return items.map(parseArea);
+  return items.map((item) =>
+    parseArea({
+      ...item,
+      id: item._id, //modelはidを使用するが、newtからは_idが返ってくるため変換する
+    }),
+  );
 }
