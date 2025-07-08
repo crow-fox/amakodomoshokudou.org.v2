@@ -1,37 +1,19 @@
 import { randomUUID } from "node:crypto";
-import { type CMSArea, cmsAreas } from "./area";
+import { newtAreas } from "./area";
+import type { NewtArea, NewtCafe } from "../../libs/newt/types";
 
 function uniqueString(): string {
   return randomUUID();
 }
 
-export type CMSCafe = {
-  _id: string;
-  name: string;
-  slug: string;
-  image: {
-    _id: string;
-    src: string;
-    altText: string;
-    height: number;
-    width: number;
-    // 本来はdescription,fileName,fileSize,fileType,metadata,titleが他にあるが、今回は不要なので省略
-  } | null;
-  address: string;
-  schedule: string;
-  host: string;
-  contact: string;
-  area: CMSArea;
-};
-
-export function cmsCafe(
-  area: CMSArea,
+function newtCafe(
+  area: NewtArea,
 ): (
   cafe: Pick<
-    CMSCafe,
+    NewtCafe,
     "name" | "slug" | "image" | "address" | "schedule" | "host" | "contact"
   >,
-) => CMSCafe {
+) => NewtCafe {
   return (cafe) => ({
     _id: uniqueString(),
     name: cafe.name,
@@ -45,15 +27,15 @@ export function cmsCafe(
   });
 }
 
-const mukoCafe = cmsCafe(cmsAreas.muko);
-const tachibanaCafe = cmsCafe(cmsAreas.tachibana);
-const sonodaCafe = cmsCafe(cmsAreas.sonoda);
-const oshoCafe = cmsCafe(cmsAreas.osho);
-const chuoCafe = cmsCafe(cmsAreas.chuo);
-const odaCafe = cmsCafe(cmsAreas.oda);
+const mukoCafe = newtCafe(newtAreas.muko);
+const tachibanaCafe = newtCafe(newtAreas.tachibana);
+const sonodaCafe = newtCafe(newtAreas.sonoda);
+const oshoCafe = newtCafe(newtAreas.osho);
+const chuoCafe = newtCafe(newtAreas.chuo);
+const odaCafe = newtCafe(newtAreas.oda);
 
-export function cmsCafes(): CMSCafe[] {
-  const cafes: CMSCafe[] = [];
+export function newtCafes(): NewtCafe[] {
+  const cafes: NewtCafe[] = [];
 
   for (let i = 1; i <= 10; i++) {
     cafes.push(
