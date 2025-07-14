@@ -1,39 +1,21 @@
 import { randomUUID } from "node:crypto";
-import { type CMSArea, cmsAreas } from "./area";
+import type { MicroCMSArea, MicroCMSCafe } from "../../libs/microcms/types";
+import { microcmsAreas } from "./area";
 
 function uniqueString(): string {
   return randomUUID();
 }
 
-export type CMSCafe = {
-  _id: string;
-  name: string;
-  slug: string;
-  image: {
-    _id: string;
-    src: string;
-    altText: string;
-    height: number;
-    width: number;
-    // 本来はdescription,fileName,fileSize,fileType,metadata,titleが他にあるが、今回は不要なので省略
-  } | null;
-  address: string;
-  schedule: string;
-  host: string;
-  contact: string;
-  area: CMSArea;
-};
-
-export function cmsCafe(
-  area: CMSArea,
+function microcmsCafe(
+  area: MicroCMSArea,
 ): (
   cafe: Pick<
-    CMSCafe,
+    MicroCMSCafe,
     "name" | "slug" | "image" | "address" | "schedule" | "host" | "contact"
   >,
-) => CMSCafe {
+) => MicroCMSCafe {
   return (cafe) => ({
-    _id: uniqueString(),
+    id: uniqueString(),
     name: cafe.name,
     slug: cafe.slug,
     image: cafe.image,
@@ -45,22 +27,22 @@ export function cmsCafe(
   });
 }
 
-const mukoCafe = cmsCafe(cmsAreas.muko);
-const tachibanaCafe = cmsCafe(cmsAreas.tachibana);
-const sonodaCafe = cmsCafe(cmsAreas.sonoda);
-const oshoCafe = cmsCafe(cmsAreas.osho);
-const chuoCafe = cmsCafe(cmsAreas.chuo);
-const odaCafe = cmsCafe(cmsAreas.oda);
+const mukoCafe = microcmsCafe(microcmsAreas.muko);
+const tachibanaCafe = microcmsCafe(microcmsAreas.tachibana);
+const sonodaCafe = microcmsCafe(microcmsAreas.sonoda);
+const oshoCafe = microcmsCafe(microcmsAreas.osho);
+const chuoCafe = microcmsCafe(microcmsAreas.chuo);
+const odaCafe = microcmsCafe(microcmsAreas.oda);
 
-export function cmsCafes(): CMSCafe[] {
-  const cafes: CMSCafe[] = [];
+export function microcmsCafes(): MicroCMSCafe[] {
+  const cafes: MicroCMSCafe[] = [];
 
   for (let i = 1; i <= 10; i++) {
     cafes.push(
       mukoCafe({
         name: `武庫の食堂${i}`,
         slug: `muko-cafe${uniqueString()}`,
-        image: null,
+        image: undefined,
         address: "尼崎市000-000-000",
         schedule: "毎週月曜日00~00",
         host: "田中太郎",
@@ -71,7 +53,7 @@ export function cmsCafes(): CMSCafe[] {
       tachibanaCafe({
         name: `立花の食堂${i}`,
         slug: `tachibana-cafe${uniqueString()}`,
-        image: null,
+        image: undefined,
         address: "尼崎市000-000-000",
         schedule: "毎週月曜日00~00",
         host: "山田花子",
@@ -82,7 +64,7 @@ export function cmsCafes(): CMSCafe[] {
       sonodaCafe({
         name: `園田の食堂${i}`,
         slug: `sonoda-cafe${uniqueString()}`,
-        image: null,
+        image: undefined,
         address: "尼崎市000-000-000",
         schedule: "毎週月曜日00~00",
         host: "佐藤次郎",
@@ -93,7 +75,7 @@ export function cmsCafes(): CMSCafe[] {
       oshoCafe({
         name: `大庄の食堂${i}`,
         slug: `osho-cafe${uniqueString()}`,
-        image: null,
+        image: undefined,
         address: "尼崎市000-000-000",
         schedule: "毎週月曜日00~00",
         host: "中村三郎",
@@ -104,7 +86,7 @@ export function cmsCafes(): CMSCafe[] {
       chuoCafe({
         name: `中央の食堂${i}`,
         slug: `chuo-cafe${uniqueString()}`,
-        image: null,
+        image: undefined,
         address: "尼崎市000-000-000",
         schedule: "毎週月曜日00~00",
         host: "鈴木四郎",
@@ -115,7 +97,7 @@ export function cmsCafes(): CMSCafe[] {
       odaCafe({
         name: `小田の食堂${i}`,
         slug: `oda-cafe${uniqueString()}`,
-        image: null,
+        image: undefined,
         address: "尼崎市000-000-000",
         schedule: "毎週月曜日00~00",
         host: "伊藤五郎",

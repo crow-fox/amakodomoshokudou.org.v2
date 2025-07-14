@@ -1,60 +1,48 @@
-export type CMSArea = {
-  _id: string;
-  _sys: unknown; // 使用する予定がないためunknown
-  name: string;
-  slug: string;
-  priority: number;
-};
+import type { MicroCMSArea } from "../../libs/microcms/types";
 
 const mukoArea = {
-  _id: "1",
-  _sys: {},
+  id: "1",
   name: "武庫",
   slug: "muko",
   priority: 1,
-} as const satisfies CMSArea;
+} as const satisfies MicroCMSArea;
 
 const tachibanaArea = {
-  _id: "2",
-  _sys: {},
+  id: "2",
   name: "立花",
   slug: "tachibana",
   priority: 2,
-} as const satisfies CMSArea;
+} as const satisfies MicroCMSArea;
 
 const sonodaArea = {
-  _id: "3",
-  _sys: {},
+  id: "3",
   name: "園田",
   slug: "sonoda",
   priority: 3,
-} as const satisfies CMSArea;
+} as const satisfies MicroCMSArea;
 
 const oshoArea = {
-  _id: "4",
-  _sys: {},
+  id: "4",
   name: "大庄",
   slug: "osho",
   priority: 4,
-} as const satisfies CMSArea;
+} as const satisfies MicroCMSArea;
 
 const chuoArea = {
-  _id: "5",
-  _sys: {},
+  id: "5",
   name: "中央",
   slug: "chuo",
   priority: 5,
-} as const satisfies CMSArea;
+} as const satisfies MicroCMSArea;
 
 const odaArea = {
-  _id: "6",
-  _sys: {},
+  id: "6",
   name: "小田",
   slug: "oda",
   priority: 6,
-} as const satisfies CMSArea;
+} as const satisfies MicroCMSArea;
 
-export const cmsAreas = {
+export const microcmsAreas = {
   muko: mukoArea,
   tachibana: tachibanaArea,
   sonoda: sonodaArea,
