@@ -4,13 +4,11 @@
 
 ### 環境変数の設定
 
-[Newt](https://www.newt.so/)というHeadlessCMSを使用しています。
-
 `.env`ファイルをルートディレクトリに作成し、以下の環境変数を設定してください。
 
 ```
-NEWT_SPACE_UID=xxxx
-NEWT_CDN_API_TOKEN=xxxx
+MICROCMS_SERVICE_DOMAIN=xxxx
+MICROCMS_API_KEY=xxxx
 ```
 
 ### 依存関係のインストール
@@ -56,7 +54,7 @@ NEWT_CDN_API_TOKEN=xxxx
 - フレームワーク：Astro
 - 言語：TypeScript
 - CSS：TailwindCSS
-- HeadlessCMS：Newt
+- HeadlessCMS：microCMS
 
 ## ディレクトリ構成
 
