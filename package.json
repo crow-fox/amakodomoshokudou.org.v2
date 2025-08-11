@@ -12,7 +12,8 @@
     "check": "astro check",
     "lint:html": "markuplint '_dist/**/*.html'",
     "format": "pnpm prettier --write 'src/**/*.{astro,ts,tsx,css,html}'",
-    "lint": "pnpm run check && pnpm  oxlint && pnpm run lint:html",
+    "lint:es": "oxlint",
+    "lint": "pnpm run check && pnpm run lint:es && pnpm run lint:html",
     "vrt": "pnpm exec playwright test",
     "vrt:upgrade": "pnpm vrt --update-snapshots",
     "remove:dist": "rm -rf _dist"
