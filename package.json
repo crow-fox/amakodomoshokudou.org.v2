@@ -19,9 +19,9 @@
     "remove:dist": "rm -rf _dist"
   },
   "dependencies": {
-    "@astrojs/sitemap": "3.4.2",
+    "@astrojs/sitemap": "3.5.0",
     "@fontsource-variable/noto-sans-jp": "^5.2.6",
-    "astro": "5.12.8",
+    "astro": "5.13.0",
     "microcms-js-sdk": "^3.2.0",
     "sharp": "^0.34.3",
     "valibot": "1.1.0"
