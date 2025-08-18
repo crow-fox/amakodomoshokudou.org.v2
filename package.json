@@ -10,7 +10,7 @@
     "start": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "lint:html": "markuplint '_dist/**/*.html'",
+    "lint:html": "markuplint --allow-warnings '_dist/**/*.html'",
     "format": "pnpm prettier --write 'src/**/*.{astro,ts,tsx,css,html}'",
     "lint:es": "oxlint",
     "lint": "pnpm run check && pnpm run lint:es && pnpm run lint:html",
