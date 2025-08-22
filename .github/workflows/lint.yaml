@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -37,8 +37,20 @@ jobs:
           echo "MICROCMS_SERVICE_DOMAIN=dummy" >> $GITHUB_ENV
           echo "MICROCMS_API_KEY=dummy" >> $GITHUB_ENV
 
-      - name: Build for HTML lint
+      - name: Build with mock
         run: pnpm run build:mock
 
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: ./_dist/
+
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: build
+
+    steps:
       - name: Run lint
         run: pnpm run lint
